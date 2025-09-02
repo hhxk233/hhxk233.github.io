@@ -7,9 +7,10 @@ first_name: Yuheng
 middle_name:
 last_name: Wang
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Undergraduate in Engineering Physics at the University of Michigan; dual-degree ECE at SJTU.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Yuheng Wang — Engineering Physics and ECE undergraduate. Research in quantum physics,
+  non-Hermitian photonics, and AI/ML for scientific discovery.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
@@ -264,8 +265,8 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
+  last_name: [Wang]
+  first_name: [Yuheng, Y.]
 
   style: apa
   locale: en

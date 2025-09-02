@@ -2,96 +2,123 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+      value: Yuheng Wang
+    - name: Affiliation
+      value: College of Engineering, University of Michigan
+    - name: Email
+      value: yuhengwa@umich.edu
+    - name: GitHub
+      value: hhxk233
+
+- title: Research Interests
+  type: list
+  contents:
+    - "I am broadly interested in the intersection of physics and computation. My primary focus lies in quantum physics and non-Hermitian photonics, with an emphasis on understanding fundamental physical principles through simulation and modeling. Leveraging my dual background in Engineering Physics and Electrical & Computer Engineering, I am also interested in developing and applying artificial intelligence and machine learning methods to accelerate scientific discovery, such as enhancing physical simulations, analyzing complex experimental data, and bridging theoretical models with experimental observables."
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: Undergraduate in Engineering Physics, minor in Computer Science
+      institution: University of Michigan, Ann Arbor, USA
+      year: Sep. 2024 – Current (Expected May 2026)
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
+        - "GPA: 4.00/4.00"
+    - title: Undergraduate in Electrical and Computer Engineering (Dual Degree)
+      institution: Shanghai Jiao Tong University, Shanghai, China
+      year: Sep. 2022 – Current (Expected July 2026)
+      description:
+        - "GPA: 3.77/4.00"
+
+- title: Research Experience
+  type: time_table
+  contents:
+    - title: Undergraduate Research Assistant
+      institution: University of Michigan, Department of Radiation Oncology, Ann Arbor, USA
+      year: May. 2025 – Current
+      description:
+        - "Advisor: Lise Wei"
+        - title: Equating the Biologically Effective Dose of SBRT and 90Y SIRT
           contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
-      description:
-        - Description 1.
-        - Description 2.
-
-- title: Experience
-  type: time_table
-  contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
-      description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
+            - Built a voxel-level pipeline aligning DGAE-MRI k1(x) maps to CT-based dosimetry; defined parenchyma masks and dose binning to quantify %Δk1 post-therapy.
+            - Harmonized modalities onto a common biological scale using LQ-based EQD2 for SBRT and protraction-aware BED (Lea–Catcheside kernel) for SIRT.
+            - Modeled subvoxel SIRT nonuniformity via EUD and fit mixed-effects 4-parameter logistic dose–response with covariates; calibrated repair rate μ and micro-dose CV c by aligning SBRT/SIRT curves with bootstrap uncertainty.
+        - title: ReMasker-Cox — Survival-Guided Masked Autoencoder for Missing Data Imputation
           contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+            - Extended a masked autoencoder (ReMasker) to jointly optimize imputation and survival consistency by adding a CoxPH loss (PyCox) to the reconstruction objective.
+            - Implemented a training workflow with random masking, joint loss weighting, and evaluation focused on preserving risk structure for clinical tabular data.
+
+    - title: Undergraduate Research Assistant
+      institution: University of Michigan, Deng Research Lab, Ann Arbor, USA
+      year: Sep. 2024 – Aug. 2025
       description:
-        - Description 1.
-        - Description 2.
+        - "Advisor: Chulwon Lee; Faculty Instructor: Hui Deng"
+        - title: Loss–Induced Synthetic Magnetic Field
+          contents:
+            - Designed and simulated rotationally asymmetric Si ring–resonator arrays to engineer loss–induced synthetic magnetic fields; observed two-sided non-Hermitian skin-effect localization in 3D FDTD.
+            - Built a non-Hermitian tight-binding model; eigen-analysis identified zero net loop phase as a barrier to the skin effect; proposed phase/loss asymmetry and distance-offset remedies and validated designs in simulation.
+            - "Tools: ANSYS Lumerical FDTD, MATLAB; GreatLake HPC."
+        - title: Non-Hermitian Exciton-Polariton Transport beyond Lorentz Reciprocity
+          contents:
+            - Simulated a nanobeam cavity integrated with a grating coupler in Ansys Lumerical.
+            - Exfoliated MoSe2 to prepare monolayer samples.
+            - "Manuscript in preparation: Breaking PT symmetry of hybridized edge modes in non-Hermitian topological photonic molecules. (target journal: Nature Communications)."
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
+    - title: Undergraduate Research Assistant
+      institution: Shanghai Jiao Tong University, Laboratory of Ultrafast Integrated Systems (LUIS), Shanghai, China
+      year: Aug. 2023 – May 2024
       description:
+        - "Advisor: Xuyang Lu — Lab website: https://sites.gc.sjtu.edu.cn/xuyang-lu/"
+        - title: Chip-scale switch-mode wireless power transfer (Parity–Time method)
+          contents:
+            - Applied the Kuramoto model and Adler equation to design an array of oscillators with tunable mutual phase via coupling coefficients.
+            - Learned Cadence workflows and analog circuit methodologies.
+        - title: ML for mmWave-based voice and vital signal recognition
+          contents:
+            - Implemented the VMD–HHT algorithm for improved denoising and signal reconstruction.
+            - Studied microcontroller systems and signal I/O between controllers.
 
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
+- title: Internship
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: Internship, Department of Software
+      institution: K-free Technology Co., LTD., Shenzhen, China
+      year: Aug. 2023 – Oct. 2023
+      description:
+        - Implemented new features on single-chip microcontrollers and related systems in C.
+        - Followed company code specifications and professional development practices.
 
-- title: Honors and Awards
+- title: Teaching and Mentoring Experience
   type: time_table
   contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
+    - title: Teaching Assistant (ENGR151, ECE311)
+      institution: JI Center for Learning and Teaching, Shanghai Jiao Tong University
+      year: Sep. 2023 – Aug. 2024
+      description:
+        - Held RC sessions for ENGR151 (Accelerated Introduction to Programming).
+        - Led laboratory sessions for ECE311 (Analog Circuits).
+        - Built scripts to automate teaching team workflows.
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
+- title: Technical Skills
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - "Languages: C, C++, Python, Elm, Bash"
+    - "Miscellaneous: LaTeX, Scratch, Verilog, Russian"
+
+- title: Achievements
+  type: time_table
+  contents:
+    - year: 2025
+      items:
+        - Michigan Engineering Continuing Student Scholarship (Roger King Scholarship)
+        - Umich University Honors 2024–2025
+        - Umich Dean's List 2024–2025
+    - year: 2024
+      items:
+        - SJTU Undergraduate Excellent Scholarship for the Academic Year 2023–2024
+        - Meritorious Winner, 2024 COMAP's Mathematical Contest in Modeling (MCM)
+    - year: 2023
+      items:
+        - SJTU Undergraduate Excellent Scholarship for the Academic Year 2022–2023
+    - year: 2020
+      items:
+        - First Prize, Chinese Physics Olympic (CPhO) of Guangdong province
