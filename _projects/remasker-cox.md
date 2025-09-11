@@ -1,5 +1,4 @@
-## <!-- File: remasker-cox.md -->
-
+---
 layout: page
 title: ReMasker-Cox — Survival-Guided Masked Autoencoder
 description: Joint imputation + CoxPH risk consistency for clinical tabular data with missingness.
@@ -7,7 +6,6 @@ img: assets/img/PLACEHOLDER_remasker-cox.jpg
 importance: 3
 category: ML
 giscus_comments: true
-
 ---
 
 ## Problem

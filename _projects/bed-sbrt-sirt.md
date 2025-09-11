@@ -1,5 +1,4 @@
-## <!-- File: bed-sbrt-sirt.md -->
-
+---
 layout: page
 title: Unified BED for SBRT vs 90Y SIRT
 description: Voxel-level liver function dose–response aligning SBRT EQD2 with protraction-aware SIRT BED.
@@ -8,7 +7,6 @@ importance: 3
 category: ML
 giscus_comments: true
 related_publications: true
-
 ---
 
 ## Overview

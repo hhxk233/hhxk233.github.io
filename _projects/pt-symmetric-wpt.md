@@ -1,12 +1,10 @@
-## <!-- File: pt-symmetric-wpt.md -->
-
+---
 layout: page
 title: PT-Symmetric Wireless Power Transfer (Chip-Scale)
 description: Switch-mode WPT array using Kuramoto/Adler-guided coupling phase control.
 img: assets/img/PLACEHOLDER_pt-wpt.jpg
 importance: 2
 category: EE
-
 ---
 
 ## Concept

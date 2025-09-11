@@ -1,12 +1,10 @@
-## <!-- File: mmwave-voice-vital-ml.md -->
-
+---
 layout: page
 title: ML for mmWave Voice & Vital Signal Recognition
 description: VMD-HHT pipeline for denoising + reconstruction; embedded microcontroller signal I/O.
 img: assets/img/PLACEHOLDER_mmwave.jpg
 importance: 2
 category: EE
-
 ---
 
 ## Pipeline

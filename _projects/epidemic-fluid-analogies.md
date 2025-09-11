@@ -1,12 +1,10 @@
-## <!-- File: epidemic-fluid-analogies.md -->
-
+---
 layout: page
 title: Epidemics as Fluid Phase Transitions
 description: Meta cellular automata in Python/MATLAB; second-order transitions linked to outbreak dynamics.
 img: assets/img/PLACEHOLDER_epidemic.jpg
 importance: 2
 category: Physics
-
 ---
 
 ## Idea

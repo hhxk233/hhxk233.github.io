@@ -1,5 +1,4 @@
-## <!-- File: curie.md -->
-
+---
 layout: page
 title: Curie — Automate Rigorous Scientific Experimentation
 description: LangGraph-based multi-agent system with plan-scoped memory for reliable experiment loops.
@@ -7,7 +6,6 @@ img: assets/img/PLACEHOLDER_curie.jpg
 importance: 3
 category: fun
 giscus_comments: true
-
 ---
 
 ## Overview

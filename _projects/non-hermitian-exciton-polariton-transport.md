@@ -1,5 +1,4 @@
-## <!-- File: non-hermitian-exciton-polariton-transport.md -->
-
+---
 layout: page
 title: Non-Hermitian Exciton-Polariton Transport beyond Lorentz Reciprocity
 description: Nanobeam cavity + grating coupler; toward PT-symmetry breaking in hybridized edge modes.
@@ -8,7 +7,6 @@ importance: 2
 category: Physics
 giscus_comments: true
 related_publications: true
-
 ---
 
 ## Scope

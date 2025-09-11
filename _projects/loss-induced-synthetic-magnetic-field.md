@@ -1,5 +1,4 @@
-## <!-- File: loss-induced-synthetic-magnetic-field.md -->
-
+---
 layout: page
 title: Loss-Induced Synthetic Magnetic Field
 description: Rotationally asymmetric Si ring–resonator arrays showing two-sided non-Hermitian skin effect.
@@ -7,7 +6,6 @@ img: assets/img/PLACEHOLDER_smf.jpg
 importance: 3
 category: Physics
 giscus_comments: true
-
 ---
 
 ## Summary
