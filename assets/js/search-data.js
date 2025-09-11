@@ -96,7 +96,47 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{
+          section: "News",},{id: "projects-unified-bed-for-sbrt-vs-90y-sirt",
+          title: 'Unified BED for SBRT vs 90Y SIRT',
+          description: "Voxel-level liver function dose–response aligning SBRT EQD2 with protraction-aware SIRT BED.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/bed-sbrt-sirt/";
+            },},{id: "projects-curie-automate-rigorous-scientific-experimentation",
+          title: 'Curie — Automate Rigorous Scientific Experimentation',
+          description: "LangGraph-based multi-agent system with plan-scoped memory for reliable experiment loops.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/curie/";
+            },},{id: "projects-epidemics-as-fluid-phase-transitions",
+          title: 'Epidemics as Fluid Phase Transitions',
+          description: "Meta cellular automata in Python/MATLAB; second-order transitions linked to outbreak dynamics.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/epidemic-fluid-analogies/";
+            },},{id: "projects-loss-induced-synthetic-magnetic-field",
+          title: 'Loss-Induced Synthetic Magnetic Field',
+          description: "Rotationally asymmetric Si ring–resonator arrays showing two-sided non-Hermitian skin effect.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/loss-induced-synthetic-magnetic-field/";
+            },},{id: "projects-ml-for-mmwave-voice-amp-vital-signal-recognition",
+          title: 'ML for mmWave Voice &amp;amp; Vital Signal Recognition',
+          description: "VMD-HHT pipeline for denoising + reconstruction; embedded microcontroller signal I/O.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/mmwave-voice-vital-ml/";
+            },},{id: "projects-non-hermitian-exciton-polariton-transport-beyond-lorentz-reciprocity",
+          title: 'Non-Hermitian Exciton-Polariton Transport beyond Lorentz Reciprocity',
+          description: "Nanobeam cavity + grating coupler; toward PT-symmetry breaking in hybridized edge modes.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/non-hermitian-exciton-polariton-transport/";
+            },},{id: "projects-pt-symmetric-wireless-power-transfer-chip-scale",
+          title: 'PT-Symmetric Wireless Power Transfer (Chip-Scale)',
+          description: "Switch-mode WPT array using Kuramoto/Adler-guided coupling phase control.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/pt-symmetric-wpt/";
+            },},{id: "projects-remasker-cox-survival-guided-masked-autoencoder",
+          title: 'ReMasker-Cox — Survival-Guided Masked Autoencoder',
+          description: "Joint imputation + CoxPH risk consistency for clinical tabular data with missingness.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/remasker-cox/";
+            },},{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
