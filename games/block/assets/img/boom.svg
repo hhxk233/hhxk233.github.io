@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Vectornator (http://vectornator.io/) -->
+
+<svg
+   height="595.35"
+   stroke-miterlimit="10"
+   style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+   version="1.1"
+   viewBox="0 0 841.995 595.35"
+   width="841.995"
+   xml:space="preserve"
+   id="svg152"
+   sodipodi:docname="boom.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:vectornator="http://vectornator.io"><sodipodi:namedview
+   id="namedview154"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="1.3571848"
+   inkscape:cx="355.88373"
+   inkscape:cy="298.04341"
+   inkscape:window-width="1920"
+   inkscape:window-height="991"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg152" />
+<defs
+   id="defs107">
+<radialGradient
+   cx="549.09"
+   cy="265.497"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient"
+   r="43.9488">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop2" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop4" />
+</radialGradient>
+<radialGradient
+   cx="499.773"
+   cy="199.483"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_2"
+   r="19.9652">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop7" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop9" />
+</radialGradient>
+<radialGradient
+   cx="596.885"
+   cy="194.396"
+   gradientTransform="matrix(2.10569 0 0 1.79722 -730.41 -199.682)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_3"
+   r="20.5161">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop12" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop14" />
+</radialGradient>
+<radialGradient
+   cx="464.56"
+   cy="289.507"
+   gradientTransform="matrix(1.71401 0 0 1.69313 -532.033 -155.148)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_4"
+   r="39.932">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop17" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop19" />
+</radialGradient>
+<radialGradient
+   cx="548.78"
+   cy="340.693"
+   gradientTransform="matrix(1.92727 0 0 1.92727 -630.736 -213.577)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_5"
+   r="0.363018">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop22" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop24" />
+</radialGradient>
+<radialGradient
+   cx="623.746"
+   cy="286.069"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_6"
+   r="30.6777">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop27" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop29" />
+</radialGradient>
+<radialGradient
+   cx="547.391"
+   cy="205.127"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_7"
+   r="0.300046">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop32" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop34" />
+</radialGradient>
+<radialGradient
+   cx="602.581"
+   cy="244.718"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_8"
+   r="26.2121">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop37" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop39" />
+</radialGradient>
+<radialGradient
+   cx="586.205"
+   cy="312.573"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_9"
+   r="14.2132">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop42" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop44" />
+</radialGradient>
+<radialGradient
+   cx="519.738"
+   cy="309.19"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_10"
+   r="10.8662">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop47" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop49" />
+</radialGradient>
+<radialGradient
+   cx="490.541"
+   cy="243.89"
+   gradientTransform="matrix(2.0949 0 0 2.0949 -724.189 -266.139)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_11"
+   r="25.9813">
+<stop
+   offset="0.791667"
+   stop-color="#ffaaa5"
+   stop-opacity="0.990991"
+   id="stop52" />
+<stop
+   offset="1"
+   stop-color="#a4cebc"
+   id="stop54" />
+</radialGradient>
+<linearGradient
+   gradientTransform="matrix(-1.16335 1.07593 -1.07593 -1.16335 1114.3 357.501)"
+   gradientUnits="userSpaceOnUse"
+   id="LinearGradient"
+   x1="341.854"
+   x2="383.975"
+   y1="464.6"
+   y2="464.6">
+<stop
+   offset="0.935417"
+   stop-color="#ffd3b6"
+   stop-opacity="0.990991"
+   id="stop57" />
+<stop
+   offset="1"
+   stop-color="#000000"
+   id="stop59" />
+</linearGradient>
+<linearGradient
+   gradientTransform="matrix(-1.16335 1.07593 -1.07593 -1.16335 1227.23 615.171)"
+   gradientUnits="userSpaceOnUse"
+   id="LinearGradient_2"
+   x1="341.854"
+   x2="383.975"
+   y1="464.6"
+   y2="464.6">
+<stop
+   offset="0.935417"
+   stop-color="#ffd3b6"
+   stop-opacity="0.990991"
+   id="stop62" />
+<stop
+   offset="1"
+   stop-color="#000000"
+   id="stop64" />
+</linearGradient>
+<linearGradient
+   gradientTransform="matrix(-1.16335 1.07593 -1.07593 -1.16335 1489.82 620.786)"
+   gradientUnits="userSpaceOnUse"
+   id="LinearGradient_3"
+   x1="341.854"
+   x2="383.975"
+   y1="464.6"
+   y2="464.6">
+<stop
+   offset="0.935417"
+   stop-color="#ffd3b6"
+   stop-opacity="0.990991"
+   id="stop67" />
+<stop
+   offset="1"
+   stop-color="#000000"
+   id="stop69" />
+</linearGradient>
+<linearGradient
+   gradientTransform="matrix(-1.16335 1.07593 -1.07593 -1.16335 1565.28 357.501)"
+   gradientUnits="userSpaceOnUse"
+   id="LinearGradient_4"
+   x1="341.854"
+   x2="383.975"
+   y1="464.6"
+   y2="464.6">
+<stop
+   offset="0.935417"
+   stop-color="#ffd3b6"
+   stop-opacity="0.990991"
+   id="stop72" />
+<stop
+   offset="1"
+   stop-color="#000000"
+   id="stop74" />
+</linearGradient>
+<linearGradient
+   gradientTransform="matrix(-1.16335 1.07593 -1.07593 -1.16335 1344.73 213.913)"
+   gradientUnits="userSpaceOnUse"
+   id="LinearGradient_5"
+   x1="341.854"
+   x2="383.975"
+   y1="464.6"
+   y2="464.6">
+<stop
+   offset="0.935417"
+   stop-color="#ffd3b6"
+   stop-opacity="0.990991"
+   id="stop77" />
+<stop
+   offset="1"
+   stop-color="#000000"
+   id="stop79" />
+</linearGradient>
+<radialGradient
+   cx="341.854"
+   cy="464.6"
+   gradientTransform="matrix(-0.610652 0.564763 -0.564763 -0.610652 1070.83 156.99)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_12"
+   r="42.1206">
+<stop
+   offset="0.879167"
+   stop-color="#ffcb85"
+   stop-opacity="0.990991"
+   id="stop82" />
+<stop
+   offset="0.94375"
+   stop-color="#79e373"
+   id="stop84" />
+</radialGradient>
+<radialGradient
+   cx="341.854"
+   cy="464.6"
+   gradientTransform="matrix(-0.513547 0.654312 -0.654312 -0.513547 1167.33 364.724)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_13"
+   r="42.1206">
+<stop
+   offset="0.879167"
+   stop-color="#ffcb85"
+   stop-opacity="0.990991"
+   id="stop87" />
+<stop
+   offset="0.94375"
+   stop-color="#79e373"
+   id="stop89" />
+</radialGradient>
+<radialGradient
+   cx="341.854"
+   cy="464.6"
+   gradientTransform="matrix(-0.831777 0.0010126 -0.0010126 -0.831777 729.948 929.022)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_14"
+   r="42.1206">
+<stop
+   offset="0.879167"
+   stop-color="#ffcb85"
+   stop-opacity="0.990991"
+   id="stop92" />
+<stop
+   offset="0.94375"
+   stop-color="#79e373"
+   id="stop94" />
+</radialGradient>
+<radialGradient
+   cx="341.854"
+   cy="464.6"
+   gradientTransform="matrix(-0.610652 0.564763 -0.564763 -0.610652 644.78 447.232)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_15"
+   r="42.1206">
+<stop
+   offset="0.879167"
+   stop-color="#ffcb85"
+   stop-opacity="0.990991"
+   id="stop97" />
+<stop
+   offset="0.94375"
+   stop-color="#79e373"
+   id="stop99" />
+</radialGradient>
+<radialGradient
+   cx="341.854"
+   cy="464.6"
+   gradientTransform="matrix(-0.610652 0.564763 -0.564763 -0.610652 740.309 156.99)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient_16"
+   r="42.1206">
+<stop
+   offset="0.879167"
+   stop-color="#ffcb85"
+   stop-opacity="0.990991"
+   id="stop102" />
+<stop
+   offset="0.94375"
+   stop-color="#79e373"
+   id="stop104" />
+</radialGradient>
+</defs>
+<g
+   id="Layer-1"
+   vectornator:layerName="Layer 1">
+<path
+   d="M426.098 377.612L397.647 319.965L334.029 310.72L380.064 265.849L369.196 202.487L426.098 232.402L482.999 202.487L472.131 265.849L518.166 310.72L454.548 319.965L426.098 377.612Z"
+   fill="url(#RadialGradient)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#40fefe"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Star 1"
+   id="path109" />
+<path
+   d="M364.608 202.319C267.267 85.9647 281.715 101.936 281.715 101.936"
+   fill="url(#RadialGradient_2)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#8fe76c"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 1"
+   id="path111" />
+<path
+   d="M483.244 201.559C573.444 97.1724 569.623 97.824 569.623 97.824"
+   fill="url(#RadialGradient_3)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#00ffff"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 2"
+   id="path113" />
+<path
+   d="M332.669 312.591C195.158 358.073 195.78 357.459 195.78 357.459"
+   fill="url(#RadialGradient_4)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#d733ba"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 3"
+   id="path115" />
+<path
+   d="M427.608 377.612C427.608 509.142 426.209 508.443 426.209 508.443"
+   fill="url(#RadialGradient_5)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#ff997f"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="6.68218"
+   vectornator:layerName="Curve 4"
+   id="path117" />
+<path
+   d="M518.227 312.591C650.551 356.699 646.749 353.657 646.749 353.657"
+   fill="url(#RadialGradient_6)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#ffe000"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 5"
+   id="path119" />
+<path
+   d="M423.167 209.164C420.885 88.2482 422.406 122.468 422.406 122.468"
+   fill="url(#RadialGradient_7)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#cc55e3"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 6"
+   id="path121" />
+<path
+   d="M483.244 260.878C623.428 224.932 589.445 232.92 589.445 232.92"
+   fill="url(#RadialGradient_8)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#bc64ca"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 7"
+   id="path123" />
+<path
+   d="M474.075 340.348C549.418 463.907 531.848 433.743 531.848 433.743"
+   fill="url(#RadialGradient_9)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#5cff45"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 8"
+   id="path125" />
+<path
+   d="M387.373 340.348C328.676 444.657 343.521 420.363 343.521 420.363"
+   fill="url(#RadialGradient_10)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#28f2ff"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 9"
+   id="path127" />
+<path
+   d="M357.871 260.878C219.283 219.204 252.504 229.93 252.504 229.93"
+   fill="url(#RadialGradient_11)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#d7b565"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="7.26338"
+   vectornator:layerName="Curve 10"
+   id="path129" />
+<path
+   d="M170.679 184.178L192.437 192.515L211.643 179.318L210.436 202.59L228.922 216.776L206.416 222.82L198.638 244.785L185.934 225.248L162.641 224.636L177.295 206.52L170.679 184.178Z"
+   fill="url(#LinearGradient)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="5.49416"
+   vectornator:layerName="Star 2"
+   id="path131" />
+<path
+   d="M283.603 441.848L305.362 450.186L324.566 436.99L323.36 460.26L341.845 474.447L319.342 480.49L311.561 502.455L298.86 482.918L275.565 482.307L290.218 464.19L283.603 441.848Z"
+   fill="url(#LinearGradient_2)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="5.49416"
+   vectornator:layerName="Star 4"
+   id="path133" />
+<path
+   d="M546.194 447.46L567.953 455.798L587.157 442.602L585.951 465.872L604.436 480.059L581.933 486.103L574.152 508.068L561.451 488.533L538.156 487.921L552.812 469.802L546.194 447.46Z"
+   fill="url(#LinearGradient_3)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="5.49416"
+   vectornator:layerName="Star 5"
+   id="path135" />
+<path
+   d="M621.658 184.178L643.416 192.515L662.622 179.318L661.415 202.59L679.901 216.776L657.397 222.82L649.617 244.785L636.915 225.248L613.62 224.636L628.274 206.52L621.658 184.178Z"
+   fill="url(#LinearGradient_4)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="5.49416"
+   vectornator:layerName="Star 6"
+   id="path137" />
+<path
+   d="M401.105 40.5872L422.865 48.927L442.069 35.7291L440.862 58.9992L459.348 73.1859L436.844 79.2297L429.064 101.195L416.363 81.6597L393.067 81.048L407.723 62.9314L401.105 40.5872Z"
+   fill="url(#LinearGradient_5)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="5.49416"
+   vectornator:layerName="Star 7"
+   id="path139" />
+<path
+   d="M575.516 66.0109L586.937 70.3871L597.018 63.4614L596.385 75.6746L606.087 83.122L594.276 86.2936L590.191 97.824L583.525 87.5694L571.297 87.2489L578.989 77.7381L575.516 66.0109Z"
+   fill="url(#RadialGradient_12)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="2.88392"
+   vectornator:layerName="Star 8"
+   id="path141" />
+<path
+   d="M663.856 353.305L675.826 355.819L684.683 347.383L685.99 359.544L696.75 365.361L685.588 370.364L683.382 382.393L675.174 373.324L663.051 374.943L669.141 364.335L663.856 353.305Z"
+   fill="url(#RadialGradient_13)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="2.88392"
+   vectornator:layerName="Star 9"
+   id="path143" />
+<path
+   d="M427.593 526.287L433.019 537.249L445.125 538.992L436.377 547.542L438.46 559.594L427.627 553.916L416.807 559.621L418.86 547.563L410.09 539.036L422.193 537.262L427.593 526.287Z"
+   fill="url(#RadialGradient_14)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="2.88392"
+   vectornator:layerName="Star 10"
+   id="path145" />
+<path
+   d="M149.464 356.253L160.886 360.629L170.966 353.701L170.334 365.916L180.037 373.364L168.224 376.535L164.139 388.066L157.473 377.811L145.245 377.491L152.938 367.98L149.464 356.253Z"
+   fill="url(#RadialGradient_15)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="2.88392"
+   vectornator:layerName="Star 11"
+   id="path147" />
+<path
+   d="M244.994 66.0109L256.415 70.3871L266.496 63.4614L265.861 75.6746L275.565 83.122L263.751 86.2936L259.668 97.824L253 87.5694L240.775 87.2489L248.467 77.7381L244.994 66.0109Z"
+   fill="url(#RadialGradient_16)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#9cb9cc"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-width="2.88392"
+   vectornator:layerName="Star 12"
+   id="path149" />
+</g>
+</svg>
