@@ -2,7 +2,7 @@
 layout: page
 title: PT-Symmetric Wireless Power Transfer
 description: Chip-scale WPT architecture using coupled-oscillator phase control (Kuramoto/Adler) and PT-symmetric coupling to maximize transfer efficiency and robustness.
-img: assets/img/fig1.png
+img: assets/img/fig1_PT.png
 importance: 3
 category: EE
 giscus_comments: true
@@ -35,19 +35,19 @@ giscus_comments: true
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/fig1.png" title="Two-oscillator element with bidirectional injection (Adler/Kuramoto base)" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/fig1_PT.png" title="Two-oscillator element with bidirectional injection (Adler/Kuramoto base)" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/fig2.png" title="2n-node chain with alternating types and asymmetric couplings (PT-symmetric layout)" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/fig2_PT.png" title="2n-node chain with alternating types and asymmetric couplings (PT-symmetric layout)" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/fig4.png" title="Phase-difference traces across nodes under perturbations" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/fig4_PT.png" title="Phase-difference traces across nodes under perturbations" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/fig6.png" title="Cadence prototype of the coupled VCO element" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/fig6_PT.png" title="Cadence prototype of the coupled VCO element" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 

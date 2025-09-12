@@ -1,17 +1,23 @@
 ---
 layout: page
-title: Elm Game — Journey Through Seasons
+title: Elm Game — Seasonal Memoir
 description: A comforting pixel-art puzzle platformer about memory, seasons, and a loyal companion.
-img: assets/img/title.png
+img: assets/games/elm_game/thumbnail.jpg
 importance: 2
 category: fun
 permalink: /projects/elm-game/
 ---
 
 - Link to play: [Open game page]({{ '/elm_game/' | relative_url }})
-- Trailer/SMV:
+- Trailer:
 
-<video src="{{ '/assets/video/smv.mp4' | relative_url }}" controls style="max-width:100%; height:auto;" preload="metadata"></video>
+<video src="{{ '/assets/games/elm_game/trailer.mp4' | relative_url }}" controls style="max-width:100%; height:auto;" preload="metadata"></video>
+
+- SMV:
+
+<video src="{{ '/assets/games/elm_game/smv.mp4' | relative_url }}" controls style="max-width:100%; height:auto;" preload="metadata"></video>
+
+- Docs: [Poster (PDF)]({{ '/assets/games/elm_game/poster.pdf' | relative_url }}) · [Booklet (PDF)]({{ '/assets/games/elm_game/booklet.pdf' | relative_url }})
 
 ## Game Story
 

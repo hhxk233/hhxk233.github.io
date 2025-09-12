@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Game
+title: Seasonal Memoir
 permalink: /elm_game/
 nav: false
 nav_order: 9
