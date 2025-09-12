@@ -73,8 +73,8 @@ ninja.data = [{
           description: "Contributions to a LangGraph-based multi-agent system for rigorous experiment loops with plan-scoped memory.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/curie/";
-            },},{id: "projects-elm-game-journey-through-seasons",
-          title: 'Elm Game — Journey Through Seasons',
+            },},{id: "projects-elm-game-seasonal-memoir",
+          title: 'Elm Game — Seasonal Memoir',
           description: "A comforting pixel-art puzzle platformer about memory, seasons, and a loyal companion.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/elm-game/";
