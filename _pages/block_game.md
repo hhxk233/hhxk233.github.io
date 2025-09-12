@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Break the Bricks
+title: Skyward Scholar
 permalink: /block_game/
 nav: false
 nav_order: 10

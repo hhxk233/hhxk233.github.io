@@ -2,7 +2,7 @@
 layout: page
 title: Elm Game — Seasonal Memoir
 description: A comforting pixel-art puzzle platformer about memory, seasons, and a loyal companion.
-img: assets/games/elm_game/thumbnail.jpg
+img: assets/img/thumbnail.jpg
 importance: 2
 category: fun
 permalink: /projects/elm-game/
