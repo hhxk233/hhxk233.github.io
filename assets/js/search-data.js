@@ -91,42 +91,42 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "projects-unified-bed-for-sbrt-vs-90y-sirt",
           title: 'Unified BED for SBRT vs 90Y SIRT',
-          description: "Voxel-level liver function dose–response aligning SBRT EQD2 with protraction-aware SIRT BED.",
+          description: "Voxel-level liver function dose–response aligning SBRT EQD2 with protraction-aware SIRT BED and subvoxel EUD.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/bed-sbrt-sirt/";
             },},{id: "projects-curie-automate-rigorous-scientific-experimentation",
           title: 'Curie — Automate Rigorous Scientific Experimentation',
-          description: "LangGraph-based multi-agent system with plan-scoped memory for reliable experiment loops.",
+          description: "Contributions to a LangGraph-based multi-agent system for rigorous experiment loops with plan-scoped memory.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/curie/";
-            },},{id: "projects-epidemics-as-fluid-phase-transitions",
-          title: 'Epidemics as Fluid Phase Transitions',
-          description: "Meta cellular automata in Python/MATLAB; second-order transitions linked to outbreak dynamics.",
+            },},{id: "projects-epidemic-dynamics-as-phase-transitions",
+          title: 'Epidemic Dynamics as Phase Transitions',
+          description: "Modeling discontinuous outbreak transitions under finite testing/isolation and validating with cellular automata &amp; ODE analysis.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/epidemic-fluid-analogies/";
             },},{id: "projects-loss-induced-synthetic-magnetic-field",
           title: 'Loss-Induced Synthetic Magnetic Field',
-          description: "Rotationally asymmetric Si ring–resonator arrays showing two-sided non-Hermitian skin effect.",
+          description: "Rotationally asymmetric Si ring–resonator arrays engineered for non-Hermitian skin localization via controllable loss.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/loss-induced-synthetic-magnetic-field/";
-            },},{id: "projects-ml-for-mmwave-voice-amp-vital-signal-recognition",
-          title: 'ML for mmWave Voice &amp;amp; Vital Signal Recognition',
-          description: "VMD-HHT pipeline for denoising + reconstruction; embedded microcontroller signal I/O.",
+            },},{id: "projects-mmwave-respiration-amp-voice-sensing",
+          title: 'mmWave Respiration &amp;amp; Voice Sensing',
+          description: "End-to-end 77-GHz FMCW pipeline for breathing/heartbeat from phase, with YOLOv8 camera guidance, real-time GUI, and hardware rig.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/mmwave-voice-vital-ml/";
-            },},{id: "projects-non-hermitian-exciton-polariton-transport-beyond-lorentz-reciprocity",
-          title: 'Non-Hermitian Exciton-Polariton Transport beyond Lorentz Reciprocity',
-          description: "Nanobeam cavity + grating coupler; toward PT-symmetry breaking in hybridized edge modes.",
+            },},{id: "projects-non-hermitian-exciton-polariton-transport",
+          title: 'Non-Hermitian Exciton–Polariton Transport',
+          description: "3D-FDTD nanobeam–grating design, parameter sweeps, and a loss-engineered resonator platform toward PT-symmetry breaking.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/non-hermitian-exciton-polariton-transport/";
-            },},{id: "projects-pt-symmetric-wireless-power-transfer-chip-scale",
-          title: 'PT-Symmetric Wireless Power Transfer (Chip-Scale)',
-          description: "Switch-mode WPT array using Kuramoto/Adler-guided coupling phase control.",
+            },},{id: "projects-pt-symmetric-wireless-power-transfer",
+          title: 'PT-Symmetric Wireless Power Transfer',
+          description: "Chip-scale WPT architecture using coupled-oscillator phase control (Kuramoto/Adler) and PT-symmetric coupling to maximize transfer efficiency and robustness.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/pt-symmetric-wpt/";
-            },},{id: "projects-remasker-cox-survival-guided-masked-autoencoder",
-          title: 'ReMasker-Cox — Survival-Guided Masked Autoencoder',
-          description: "Joint imputation + CoxPH risk consistency for clinical tabular data with missingness.",
+            },},{id: "projects-remasker-cox",
+          title: 'ReMasker-Cox',
+          description: "Survival-guided masked autoencoder that couples imputation with a CoxPH risk signal for clinical tabular data.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/remasker-cox/";
             },},{
