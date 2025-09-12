@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Vectornator (http://vectornator.io/) -->
+
+<svg
+   height="595.35"
+   stroke-miterlimit="10"
+   style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+   version="1.1"
+   viewBox="0 0 841.995 595.35"
+   width="841.995"
+   xml:space="preserve"
+   id="svg483"
+   sodipodi:docname="brick.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:vectornator="http://vectornator.io"><sodipodi:namedview
+   id="namedview485"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="1.3571848"
+   inkscape:cx="355.88373"
+   inkscape:cy="298.04341"
+   inkscape:window-width="1920"
+   inkscape:window-height="991"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg483" />
+<defs
+   id="defs476">
+<radialGradient
+   cx="219.704"
+   cy="307.295"
+   gradientTransform="matrix(6.06568 0 0 6.06568 -911.656 -1566.28)"
+   gradientUnits="userSpaceOnUse"
+   id="RadialGradient"
+   r="45.9218">
+<stop
+   offset="1"
+   stop-color="#d2afff"
+   stop-opacity="0.694432"
+   id="stop471" />
+<stop
+   offset="1"
+   stop-color="#000000"
+   id="stop473" />
+</radialGradient>
+</defs>
+<g
+   id="Layer-1"
+   vectornator:layerName="Layer 1">
+<path
+   d="M142.45 297.675C142.45 141.405 267.16 14.7234 420.998 14.7234C574.835 14.7234 699.545 141.405 699.545 297.675C699.545 453.945 574.835 580.627 420.998 580.627C267.16 580.627 142.45 453.945 142.45 297.675Z"
+   fill="url(#RadialGradient)"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#63fdff"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-opacity="0.286972"
+   stroke-width="21.2299"
+   vectornator:layerName="Oval 1"
+   id="path478" />
+<path
+   d="M216.24 175.346C228.057 151.22 250.781 110.864 268.275 110.864C285.77 110.864 277.325 137.166 277.325 164.034C277.325 190.897 247.309 290.736 229.814 290.736C212.32 290.736 189.085 230.779 216.24 175.346Z"
+   fill="#ebecf0"
+   fill-opacity="0.990991"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="#084444"
+   stroke-linecap="butt"
+   stroke-linejoin="round"
+   stroke-opacity="0"
+   stroke-width="21.8139"
+   vectornator:layerName="Oval 2"
+   id="path480" />
+</g>
+</svg>

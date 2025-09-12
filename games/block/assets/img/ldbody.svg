@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 419.3 90.77"
+   height="90.77"
+   width="419.3"
+   version="1.1"
+   sodipodi:docname="ldbody.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+   <sodipodi:namedview
+     id="namedview163"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.2542883"
+     inkscape:cx="244.76031"
+     inkscape:cy="322.49363"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs150">
+    <linearGradient
+       id="linear-gradient"
+       x1="-102"
+       y1="-143.14"
+       x2="241.68"
+       y2="-143.14"
+       gradientTransform="translate(188.22 581.77) scale(1.81)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="1"
+         stop-color="#fad090"
+         id="stop145" />
+      <stop
+         offset="1"
+         stop-color="#010101"
+         id="stop147" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="namedview13"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="3.2601957"
+     inkscape:cx="182.50438"
+     inkscape:cy="45.549413"
+     inkscape:window-width="1920"
+     inkscape:window-height="991"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <path
+     d="m0,33.95h341.69"
+     fill="none"
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="6.35"
+     id="path2" />
+  <path
+     d="m55.23,31.97S83.78-3.57,125.69,4.32"
+     fill="none"
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="6.35"
+     id="path4" />
+  <path
+     d="m90.46,38.23s53.34,7.23,78.04,49.39"
+     fill="none"
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="6.35"
+     id="path6" />
+  <path
+     d="m335.11,33.95c61.24-37.54,81.66,5.93,81-5.27"
+     fill="none"
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="6.35"
+     id="path8" />
+  <path
+     d="m308.11,35.27s48.01,45.91,108.02,52.35"
+     fill="none"
+     stroke="#000000"
+     stroke-linejoin="round"
+     stroke-width="6.35"
+     id="path10" />
+</svg>

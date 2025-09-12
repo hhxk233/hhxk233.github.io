@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-projects",
           title: "projects",
-          description: "A growing collection of your cool projects.",
+          description: "Research and personal projects.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -37,12 +37,19 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/courses/";
           },
-        },{id: "dropdown-game",
-              title: "game",
+        },{id: "dropdown-elm-game",
+              title: "Elm Game",
               description: "",
               section: "Dropdown",
               handler: () => {
                 window.location.href = "/elm_game/";
+              },
+            },{id: "dropdown-break-the-bricks",
+              title: "Break the Bricks",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/block_game/";
               },
             },{id: "dropdown-blog",
               title: "blog",
@@ -66,6 +73,11 @@ ninja.data = [{
           description: "Contributions to a LangGraph-based multi-agent system for rigorous experiment loops with plan-scoped memory.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/curie/";
+            },},{id: "projects-elm-game-journey-through-seasons",
+          title: 'Elm Game — Journey Through Seasons',
+          description: "A comforting pixel-art puzzle platformer about memory, seasons, and a loyal companion.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/elm-game/";
             },},{id: "projects-epidemic-dynamics-as-phase-transitions",
           title: 'Epidemic Dynamics as Phase Transitions',
           description: "Modeling discontinuous outbreak transitions under finite testing/isolation and validating with cellular automata &amp; ODE analysis.",
