@@ -1,38 +1,43 @@
 ---
 layout: page
-title: ReMasker-Cox — Survival-Guided Masked Autoencoder
-description: Joint imputation + CoxPH risk consistency for clinical tabular data with missingness.
-img: assets/img/PLACEHOLDER_remasker-cox.jpg
+title: ReMasker-Cox
+description: Survival-guided masked autoencoder that couples imputation with a CoxPH risk signal for clinical tabular data.
+img: assets/img/remasker_cox.png
 importance: 3
 category: ML
 giscus_comments: true
 ---
 
-## Problem
+- **Cox-guided imputation objective.** Added a Cox proportional hazards head on the imputed features and optimized a **joint loss**  
+  \[
+  \mathcal{L}=\mathcal{L}_{\text{recon}}+\lambda_{\text{cox}}\cdot \mathcal{L}\_{\text{CoxPH}}
+  \]
+  so the imputer preserves survival risk ordering rather than only minimizing reconstruction error. Implemented in PyCox with end-to-end backprop through the imputer.
 
-Imputation often distorts survival risk structure. We couple a masked-autoencoder objective with a **Cox proportional hazards** loss to preserve risk.
+- **Training workflow & data path.** Split data into complete/missing subsets, trained the imputer with **random masks**, then computed Cox loss on both **imputed-complete** and **imputed-missing** pathways; wired gradients from the Cox head back into the imputer.
 
-## Approach
+- **Loss-weighting & schedules.** Exposed `lambda_cox` (default **0.5**) and epochs (**600**) as knobs; instrumented dashboards for total loss, internal Cox loss, and C-index to compare against imputation-only baselines.
 
-- Random masking during training; dual loss = reconstruction + CoxPH partial likelihood.
-- Risk-preserving validation: concordance, calibration vs. imputation-only baselines.
+- **Evaluation suite.** Reported train/test **C-index**, Cox loss improvement, and stability of the Cox weight over time; added figure exports for paper-ready plots.
 
-## My contributions
+## Key results
 
-Model design, training workflow, loss weighting, evaluation pipeline.
+- **Cox loss improves with coupling.** Internal Cox loss drops steadily; summary bars show **9.12%** (train) and **8.24%** (test) improvement at convergence.
+- **Concordance is competitive.** Final C-index reaches **0.731** (train) and **0.714** (test) with the Cox-guided imputer.
+- **Stable optimization.** The Cox weight remains effectively constant (flat trace), indicating the joint objective is well-conditioned under the chosen schedule.
 
-## Results (to add)
-
-- Concordance↑ vs. baselines on held-out cohorts.
-- Risk rank stability across missingness regimes.
+## Figures
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid loading="eager" path="assets/img/PLACEHOLDER_arch.png" title="Model architecture (placeholder)" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/remasker_cox.png" title="End-to-end training graph: imputation + Cox loss backprop to imputer" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid loading="eager" path="assets/img/remasker_cox_result.png" title="Training progress: losses, Cox improvement, and C-index" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-<div class="caption">Replace with an encoder–decoder diagram and Cox head.</div>
 
-## Repo / Notes
+## Impact
 
-- Add Git repo or internal note links here.
+- **Risk-preserving imputations.** By aligning the imputer with CoxPH, reconstructed features maintain survival structure, improving downstream ranking without a separate post-hoc survival model.
+- **Plug-and-play for clinical tables.** The module slots into existing MAE pipelines and yields interpretable survival metrics (C-index, Cox loss) during training.

@@ -89,7 +89,6 @@ Below is a simple, editable list of courses I have taken. Organized by instituti
 - CHEM2110J — Chemistry Lab (1)
 - ENGL2000J — Academic Writing II (4)
 - MATH2140J — Linear Algebra (4)
-- MIL1201 — Military Theory (2)
 - PSY1201 — University Students’ Mental Health (1)
 
 ### 2022–2023 (Sem 1 — Fall)
@@ -98,6 +97,5 @@ Below is a simple, editable list of courses I have taken. Organized by instituti
 - ENGL1000J — Academic Writing I (4)
 - ENGR1510J — Accelerated Intro to Computers & Programming (4)
 - MATH1860J — Honors Mathematics II (4)
-- MIL1202 — Military Training (2)
 
 ---
