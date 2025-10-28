@@ -68,6 +68,11 @@ ninja.data = [{
           description: "Voxel-level liver function dose–response aligning SBRT EQD2 with protraction-aware SIRT BED and subvoxel EUD.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/bed-sbrt-sirt/";
+            },},{id: "projects-coupled-flow-matching-cpfm",
+          title: 'Coupled Flow Matching (CPFM)',
+          description: "Controllable dimensionality reduction with generalized Gromov–Wasserstein OT and Dual Conditional Flow Matching (DCFM) for bidirectional sampling p(y|x) and p(x|y).",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/coupled-flow-matching/";
             },},{id: "projects-curie-automate-rigorous-scientific-experimentation",
           title: 'Curie — Automate Rigorous Scientific Experimentation',
           description: "Contributions to a LangGraph-based multi-agent system for rigorous experiment loops with plan-scoped memory.",
