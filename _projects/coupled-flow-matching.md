@@ -1,5 +1,4 @@
-## <!-- File: coupled-flow-matching.md -->
-
+---
 layout: page
 title: Coupled Flow Matching (CPFM)
 description: Controllable dimensionality reduction with generalized Gromov–Wasserstein OT and Dual Conditional Flow Matching (DCFM) for bidirectional sampling p(y|x) and p(x|y).
@@ -8,7 +7,6 @@ importance: 3
 category: work
 giscus_comments: true
 related_publications: true
-
 ---
 
 > **Paper:** _Coupled Flow Matching_ — Wenxi Cai, **Yuheng Wang**, Naichen Shi (arXiv:2510.23015, v1, Oct 27, 2025). :contentReference[oaicite:0]{index=0}
