@@ -2,9 +2,9 @@
 layout: page
 title: Coupled Flow Matching (CPFM)
 description: Controllable dimensionality reduction with generalized Gromov–Wasserstein OT and Dual Conditional Flow Matching (DCFM) for bidirectional sampling p(y|x) and p(x|y).
-img: assets/img/PLACEHOLDER_cpfm-hero.jpg
+img: assets/img/grid_AFHQ.png
 importance: 3
-category: work
+category: ML
 giscus_comments: true
 related_publications: true
 ---
@@ -45,14 +45,17 @@ Classical DR (PCA, t-SNE, UMAP) compresses data but sheds information that is ha
 2. **Stage B — Extend to the full space (DCFM).**  
    Train a shared conditional flow to sample \(p(y|x)\) or \(p(x|y)\) by toggling a role flag \(r\in\{0,1\}\). Inference integrates the learned ODE in the chosen space from a simple base distribution.
 
-<!-- <div class="row">
+{% comment %}
+
+<div class="row">
   <div class="col-sm mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/PLACEHOLDER_gwot-kernel.png" title="Kernelized GWOT (placeholder): aligning x-relationships with y-geometry" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/PLACEHOLDER_dual-flow.png" title="Dual conditional flows (placeholder): shared drift, role flag r" class="img-fluid rounded z-depth-1" %}
   </div>
-</div> -->
+</div>
+{% endcomment %}
 
 ## Results (snapshots)
 

@@ -187,6 +187,18 @@
   "references": [],
   "projects": [
     {
+      "name": "Coupled Flow Matching (CPFM)",
+      "summary": "Controllable DR via kernelized generalized GWOT + dual conditional flow matching for bidirectional sampling p(y|x), p(x|y).",
+      "highlights": [
+        "Kernelized generalized GWOT coupling",
+        "Dual conditional flows with shared drift",
+        "2-D embeddings with faithful reconstructions"
+      ],
+      "startDate": "2025-05",
+      "endDate": "",
+      "url": "/projects/coupled-flow-matching/"
+    },
+    {
       "name": "Loss–Induced Synthetic Magnetic Field",
       "summary": "Design and simulation of rotationally asymmetric Si ring–resonator arrays to engineer loss–induced synthetic magnetic fields; analysis of non-Hermitian skin effect.",
       "highlights": ["FDTD simulations", "Tight-binding modeling"],
