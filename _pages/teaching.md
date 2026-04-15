@@ -45,7 +45,7 @@ Below is a simple, editable list of courses I have taken. Organized by instituti
 
 ## Shanghai Jiao Tong University (SJTU)
 
-> SJTU uses three semesters per academic year: **Fall (Sem 1)**, **Spring (Sem 2)**, **Summer (Sem 3)**.  
+> SJTU uses three semesters per academic year: **Fall (Sem 1)**, **Spring (Sem 2)**, **Summer (Sem 3)**.
 > **Note:** In **2023–2024 Fall** and **2023–2024 Summer** I had a **1-credit overload**.
 
 ### 2023–2024 (Sem 3 — Summer) — _1 credit overload_

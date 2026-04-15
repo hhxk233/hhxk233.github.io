@@ -5,23 +5,23 @@ description: Modeling discontinuous outbreak transitions under finite testing/is
 img: assets/img/epidamic_schemetic.png
 importance: 3
 category: ML
-giscus_comments: true
+giscus_comments: false
 ---
 
-- **Extended SEIRQ model with finite isolation capacity.**  
+- **Extended SEIRQ model with finite isolation capacity.**
   Formulated an ODE system with compartments S, E, I, Q, R and a hard cap on isolation throughput via `min(κ, δI)` to capture **testing/quarantine saturation**. Derived equilibria and the basic reproduction number using the next-generation matrix, then proved the **outbreak onset at \(R_0=1\)** and located the **discontinuous jump** when \(I\) hits κ.
 
-- **Closed-form thresholds for “jump” outbreaks.**  
+- **Closed-form thresholds for “jump” outbreaks.**
   Obtained a practical condition linking \(\beta\), κ, and re-susceptibility rates \(f_1, f_2\) to predict the **critical β where cases surge despite controls**; validated accuracy against simulation peaks.
 
-- **CA simulator with realism knobs.**  
+- **CA simulator with realism knobs.**
   Reproduced Nature Comms–style cellular-automaton results and added two levers often missing in baseline demos:
 
   1. **Population density** (random long-range contacts scale with density)
-  2. **Community lockdown** (grid sub-blocks sealed when positives exceed a threshold).  
+  2. **Community lockdown** (grid sub-blocks sealed when positives exceed a threshold).
      This shows higher stochasticity and earlier tipping under broader contacts, aligning with the analytical thresholds.
 
-- **Policy-readable artifacts.**  
+- **Policy-readable artifacts.**
   Produced figures and narratives that separate **“start of epidemic”** vs **“capacity-breach jump”** and quantify how much κ (testing/isolation throughput) delays the jump before it fails.
 
 ## Key results (figures)

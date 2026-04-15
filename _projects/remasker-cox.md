@@ -5,10 +5,10 @@ description: Survival-guided masked autoencoder that couples imputation with a C
 img: assets/img/remasker_cox.png
 importance: 3
 category: ML
-giscus_comments: true
+giscus_comments: false
 ---
 
-- **Cox-guided imputation objective.** Added a Cox proportional hazards head on the imputed features and optimized a **joint loss**  
+- **Cox-guided imputation objective.** Added a Cox proportional hazards head on the imputed features and optimized a **joint loss**
   \[
   \mathcal{L}=\mathcal{L}_{\text{recon}}+\lambda_{\text{cox}}\cdot \mathcal{L}\_{\text{CoxPH}}
   \]

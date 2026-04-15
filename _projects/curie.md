@@ -5,12 +5,12 @@ description: Contributions to a LangGraph-based multi-agent system for rigorous 
 img: assets/img/curie_research-lifecyle.png
 importance: 3
 category: fun
-giscus_comments: true
+giscus_comments: false
 ---
 
 ## What I built
 
-- **Per-experiment logging scaffold.** Created an auto-named run folder for every iteration to keep artifacts (configs, plots, reports, checkpoints) isolated and reproducible.  
+- **Per-experiment logging scaffold.** Created an auto-named run folder for every iteration to keep artifacts (configs, plots, reports, checkpoints) isolated and reproducible.
   _Example pattern:_ `logs/{workspace}_{uid}_iter{n}`
 
 - **Plotting + reporting workflow.** Added a reusable plotting prompt/template and captions in the experiment report so each run yields publication-ready visuals with consistent narrative.

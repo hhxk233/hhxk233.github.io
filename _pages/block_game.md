@@ -11,5 +11,5 @@ nav_order: 10
   <div style="margin-top:0.5rem; text-align:right;">
     <a href="{{ '/games/block/' | relative_url }}" target="_blank" rel="noopener">Open full screen ↗</a>
   </div>
-  
+
 </div>

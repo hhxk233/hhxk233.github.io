@@ -5,7 +5,7 @@ description: Voxel-level liver function dose–response aligning SBRT EQD2 with 
 img: assets/img/dose_response_SIRT_SIRT_EUD_vs_SBRT.png
 importance: 3
 category: ML
-giscus_comments: true
+giscus_comments: false
 related_publications: true
 ---
 

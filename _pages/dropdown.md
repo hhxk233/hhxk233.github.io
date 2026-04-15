@@ -9,6 +9,8 @@ children:
     permalink: /elm_game/
   - title: Break the Bricks
     permalink: /block_game/
+  - title: N2 Small Structure
+    permalink: /n2_small_structure/
   - title: divider
   - title: blog
     permalink: /blog/

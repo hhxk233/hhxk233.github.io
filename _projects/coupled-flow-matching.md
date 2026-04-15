@@ -31,18 +31,18 @@ Classical DR (PCA, t-SNE, UMAP) compresses data but sheds information that is ha
 
 ## Core ideas
 
-- **Kernelized generalized GWOT**  
+- **Kernelized generalized GWOT**
   Encode priors—labels, graphs, or similarity kernels—directly in the transport cost to align \(x\)-space relations with \(y\)-space geometry. Alternating minimization with entropic regularization gives a scalable **\(O(n^2)\)** per-iteration solver.
-- **Dual Conditional Flow Matching (DCFM)**  
+- **Dual Conditional Flow Matching (DCFM)**
   One shared drift network with a role flag \(r\) learns **both** directions: a latent-space flow for \(p(y|x)\) and a data-space flow for \(p(x|y)\). A mute-masking strategy keeps gradients from interfering between roles.
-- **Controllability by design**  
+- **Controllability by design**
   You pick which semantic factors populate \(y\); complementary information is preserved implicitly in the flow weights, staying recoverable during \(x\) reconstruction.
 
 ## Method at a glance
 
-1. **Stage A — Controllable coupling (GWOT).**  
+1. **Stage A — Controllable coupling (GWOT).**
    Build a coupling \(\pi\_{\text{OT}}\) between discrete samples of \(x\) and \(y\) using a kernel \(k(x,x')\) that encodes structure or labels. Optimize via entropic, alternating updates (Sinkhorn + closed-form auxiliary update).
-2. **Stage B — Extend to the full space (DCFM).**  
+2. **Stage B — Extend to the full space (DCFM).**
    Train a shared conditional flow to sample \(p(y|x)\) or \(p(x|y)\) by toggling a role flag \(r\in\{0,1\}\). Inference integrates the learned ODE in the chosen space from a simple base distribution.
 
 {% comment %}

@@ -11,5 +11,5 @@ nav_order: 9
   <div style="margin-top:0.5rem; text-align:right;">
     <a href="{{ '/games/elm_game/' | relative_url }}" target="_blank" rel="noopener">Open full screen ↗</a>
   </div>
-  
+
 </div>

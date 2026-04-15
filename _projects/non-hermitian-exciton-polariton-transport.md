@@ -5,21 +5,21 @@ description: 3D-FDTD nanobeam–grating design, parameter sweeps, and a loss-eng
 img: assets/img/grating_schemetic.png
 importance: 3
 category: Physics
-giscus_comments: true
+giscus_comments: false
 ---
 
 ## What I built
 
-- **3D-FDTD stack for nanobeam + apodized grating**  
+- **3D-FDTD stack for nanobeam + apodized grating**
   Ported the prior 2D workflow to full **3D FDTD** on GreatLake, rebuilt monitors (out-coupled power, waveguide transmission), and automated sweeps over the **initial fill factor \(F_0\)** and **linear apodization \(R\)** for a Si\(_3\)N\(\_4\) nanobeam cavity. Reported operating point around \*\*\(R_{\text{opt}}\approx0.034\)** and **\(F\_{0,\text{opt}}\approx0.62\)\*\* that maximizes collected power near the design wavelength.
 
-- **Design rules from effective-index apodization**  
+- **Design rules from effective-index apodization**
   Implemented the index mixing model \(n*{\mathrm{eff}}(z)=F(z)n_O+(1-F(z))n_E,\; F(z)=F_0+Rz\) to generate **segment lengths and duty cycles** directly from \(\Lambda_i=\lambda_c/n*{\mathrm{eff},i}\). This yields fabrication-ready **grating period and trench width tables** instead of ad-hoc tuning.
 
-- **Loss-engineered resonator chain for non-reciprocal transport**  
+- **Loss-engineered resonator chain for non-reciprocal transport**
   Proposed and simulated a **C-site (aux) lossy ring** coupled to A/B rings to create **direction-selective dissipation**—a _pure-loss_ route to synthetic magnetic bias and potential **non-Hermitian skin accumulation**. Delivered single-ring optimization near **\(\lambda_0\approx1554.7\,\mathrm{nm}\)** with **\(Q\sim1.19\times10^6\)**, extracted nearest-neighbor couplings \(J*{AB},J*{AC},J\_{BC}\), and built the NH tight-binding model to diagnose net loop phase.
 
-- **Integrated polariton device concept**  
+- **Integrated polariton device concept**
   Sketched a Si\(\_3\)N\(\_4\) nanobeam cavity butt-coupled to apodized gratings and over-layered **hBN/MoSe\(\_2\)** to form exciton–photon hybrids; outlined measurement layout and monitors for induced light and out-coupled emission—groundwork for **PT-symmetry tests of edge modes**.
 
 ## Impact
