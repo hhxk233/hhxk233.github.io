@@ -9,7 +9,7 @@ giscus_comments: true
 related_publications: true
 ---
 
-> **Paper:** _Coupled Flow Matching_ — Wenxi Cai, **Yuheng Wang**, Naichen Shi (arXiv:2510.23015, v1, Oct 27, 2025).
+> **Paper:** _Coupled Flow Matching_ — Wenxi Cai, **Yuheng Wang**, Naichen Shi ([arXiv:2510.23015](https://arxiv.org/abs/2510.23015), v1, Oct 27, 2025).
 
 ## TL;DR
 
@@ -100,7 +100,17 @@ Classical DR (PCA, t-SNE, UMAP) compresses data but sheds information that is ha
   </div>
 </div>
 
-> **Table placeholder:** Replace with quantitative metrics (e.g., Distance-to-Gaussian, FID/LPIPS where applicable) comparing PCA / t-SNE / UMAP / VAE / DiffAE / Info-Diffusion / **CPFM**.
+### Quantitative metrics (from Table 1 in the paper)
+
+| Method         |             MNIST |        CIFAR-10 |              AFHQ |    TinyImageNet |
+| -------------- | ----------------: | --------------: | ----------------: | --------------: |
+| KPCA           |           245 ± 4 |        720 ± 60 |      48000 ± 5900 |    47000 ± 5000 |
+| VAE            |            32 ± 5 |          52 ± 7 |            48 ± 7 |          49 ± 8 |
+| DiffAE         |       4.96 ± 0.04 |     7.40 ± 0.02 |            28 ± 2 |      20.3 ± 0.2 |
+| Info-Diffusion |    0.1608 ± 1e-06 |  0.3092 ± 2e-06 |    0.2996 ± 2e-07 |   0.253 ± 0.006 |
+| **CPFM**       | **0.113 ± 0.002** | **0.17 ± 0.01** | **0.138 ± 0.008** | **0.25 ± 0.03** |
+
+_Metric shown: Distance to Gaussian (mean ± std over 5 independent generations; lower is better)._
 
 ## Practical notes
 
@@ -111,7 +121,7 @@ Classical DR (PCA, t-SNE, UMAP) compresses data but sheds information that is ha
 
 ## Resources
 
-- **arXiv:** arXiv:2510.23015 (v1).
+- **arXiv:** [https://arxiv.org/abs/2510.23015](https://arxiv.org/abs/2510.23015) (v1).
 - **Code:** add repo link when available (paper references an anonymous artifact; replace with public repo upon release).
 
 ## BibTeX
