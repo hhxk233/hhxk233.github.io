@@ -7,11 +7,11 @@ nav: true
 nav_order: 6
 ---
 
-Below is a simple, editable list of courses I have taken. Organized by institution and term.
+Below is a list of courses I have taken. Organized by institution and term.
 
 ## University of Michigan (UMich)
 
-### Fall 2025 (elected)
+### Fall 2025
 
 - ECE 598 — Information Theory and Statistics (3)
 - EECS 496 — Major Design/Professionalism (2)
