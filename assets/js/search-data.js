@@ -70,7 +70,10 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-unified-bed-for-sbrt-vs-90y-sirt",
+            },},{id: "news-i-will-join-the-applied-physics-department-at-rice-university-for-my-phd-in-fall-2026",
+          title: 'I will join the Applied Physics Department at Rice University for my PhD...',
+          description: "",
+          section: "News",},{id: "projects-unified-bed-for-sbrt-vs-90y-sirt",
           title: 'Unified BED for SBRT vs 90Y SIRT',
           description: "Voxel-level liver function dose–response aligning SBRT EQD2 with protraction-aware SIRT BED and subvoxel EUD.",
           section: "Projects",handler: () => {
