@@ -51,6 +51,13 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/block_game/";
               },
+            },{id: "dropdown-n2-small-structure",
+              title: "N2 Small Structure",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/n2_small_structure/";
+              },
             },{id: "dropdown-blog",
               title: "blog",
               description: "",
