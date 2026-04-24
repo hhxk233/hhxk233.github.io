@@ -15,7 +15,7 @@ nav: false
   and is intended to host supplementary analysis/plots that do not fit in the report.
 </p>
 
-<div style="width: min(1500px, 96vw); margin: 0 auto;">
+<div style="width: min(1500px, calc(100vw - 2rem)); margin-left: 50%; transform: translateX(-50%);">
   <iframe
     id="n2-small-structure-frame"
     src="{{ '/assets/html/n2_small_structure_interactive.html' | relative_url }}"
