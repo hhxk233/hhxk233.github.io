@@ -10,14 +10,18 @@
         background: #fafafa;
       }
       #wrap {
-        max-width: 1400px;
+        max-width: 1440px;
         margin: auto;
       }
       #canvas {
         border: 1px solid #ccc;
         background: white;
         display: block;
-        cursor: crosshair;
+        cursor: grab;
+        touch-action: none;
+      }
+      #canvas.dragging {
+        cursor: grabbing;
       }
       .hud {
         font-family: monospace;
@@ -47,8 +51,8 @@
     <div id="wrap">
       <h2>N2 small-structure spectrum</h2>
       <p>
-        Move mouse over the plot to read (λ, I). Scroll to zoom, drag to pan. Click a peak marker (red ▽) or row in the list to highlight. Peaks are
-        preliminary — tell me which to use and I'll produce the summary table.
+        Move mouse over the plot to read (λ, I). Scroll to zoom, drag to pan in any direction, and click a peak marker (red ▽) or row in the list to
+        highlight. Peaks are preliminary — tell me which to use and I'll produce the summary table.
       </p>
       <canvas id="canvas" width="1360" height="520"></canvas>
       <div class="hud" id="hud">λ = —, I = —</div>
@@ -232,11 +236,17 @@
       document.getElementById("peakcount").textContent = " (" + PEAKS.length + " peaks)";
       let showLabels = true,
         highlight = -1;
-      const M = { l: 60, r: 20, t: 20, b: 50 };
-      let xmin0 = Math.min(...WL),
-        xmax0 = Math.max(...WL);
-      let ymin0 = Math.min(...II),
-        ymax0 = Math.max(...II);
+      const M = { l: 88, r: 44, t: 44, b: 62 };
+      const rawXmin = Math.min(...WL),
+        rawXmax = Math.max(...WL);
+      const rawYmin = Math.min(...II),
+        rawYmax = Math.max(...II);
+      const xpad = (rawXmax - rawXmin) * 0.015;
+      const ypad = (rawYmax - rawYmin) * 0.08;
+      let xmin0 = rawXmin - xpad,
+        xmax0 = rawXmax + xpad;
+      let ymin0 = Math.max(0, rawYmin - ypad * 0.35),
+        ymax0 = rawYmax + ypad;
       let xmin = xmin0,
         xmax = xmax0,
         ymin = ymin0,
@@ -253,6 +263,13 @@
       function yinv(p) {
         return ymin + ((cv.height - M.b - p) / (cv.height - M.t - M.b)) * (ymax - ymin);
       }
+      function canvasPoint(e) {
+        const r = cv.getBoundingClientRect();
+        return {
+          mx: (e.clientX - r.left) * (cv.width / r.width),
+          my: (e.clientY - r.top) * (cv.height / r.height),
+        };
+      }
       function draw() {
         ctx.clearRect(0, 0, cv.width, cv.height);
         // axes
@@ -266,6 +283,8 @@
         ctx.fillStyle = "#333";
         ctx.font = "12px system-ui";
         // ticks
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
         for (let k = 0; k <= 10; k++) {
           const x = xmin + (k * (xmax - xmin)) / 10;
           const px = xpix(x);
@@ -273,21 +292,32 @@
           ctx.moveTo(px, cv.height - M.b);
           ctx.lineTo(px, cv.height - M.b + 5);
           ctx.stroke();
-          ctx.fillText(x.toFixed(2), px - 18, cv.height - M.b + 18);
+          const labelX = Math.min(Math.max(px, M.l + 24), cv.width - M.r - 24);
+          ctx.fillText(x.toFixed(2), labelX, cv.height - M.b + 12);
           const y = ymin + (k * (ymax - ymin)) / 10;
           const py = ypix(y);
           ctx.beginPath();
           ctx.moveTo(M.l, py);
           ctx.lineTo(M.l - 5, py);
           ctx.stroke();
-          ctx.fillText(y.toFixed(0), 6, py + 4);
         }
-        ctx.fillText("Wavelength (nm)", cv.width / 2 - 50, cv.height - 10);
+        ctx.textAlign = "right";
+        ctx.textBaseline = "middle";
+        for (let k = 0; k <= 10; k++) {
+          const y = ymin + (k * (ymax - ymin)) / 10;
+          const py = ypix(y);
+          ctx.fillText(y.toFixed(0), M.l - 12, py);
+        }
+        ctx.textAlign = "center";
+        ctx.textBaseline = "alphabetic";
+        ctx.fillText("Wavelength (nm)", cv.width / 2, cv.height - 14);
         ctx.save();
-        ctx.translate(14, cv.height / 2);
+        ctx.translate(26, cv.height / 2);
         ctx.rotate(-Math.PI / 2);
         ctx.fillText("Intensity", 0, 0);
         ctx.restore();
+        ctx.textAlign = "start";
+        ctx.textBaseline = "alphabetic";
         // spectrum
         ctx.strokeStyle = "#111";
         ctx.lineWidth = 1;
@@ -329,9 +359,7 @@
         }
       }
       cv.addEventListener("mousemove", (e) => {
-        const r = cv.getBoundingClientRect();
-        const mx = (e.clientX - r.left) * (cv.width / r.width);
-        const my = (e.clientY - r.top) * (cv.height / r.height);
+        const { mx, my } = canvasPoint(e);
         const x = xinv(mx),
           y = yinv(my);
         if (x >= xmin && x <= xmax && y >= ymin && y <= ymax) {
@@ -352,8 +380,7 @@
         "wheel",
         (e) => {
           e.preventDefault();
-          const r = cv.getBoundingClientRect();
-          const mx = (e.clientX - r.left) * (cv.width / r.width);
+          const { mx } = canvasPoint(e);
           const x = xinv(mx);
           const f = e.deltaY > 0 ? 1.2 : 1 / 1.2;
           xmin = x - (x - xmin) * f;
@@ -363,18 +390,32 @@
         { passive: false }
       );
       let drag = null;
-      cv.addEventListener("mousedown", (e) => {
-        const r = cv.getBoundingClientRect();
-        drag = { mx: (e.clientX - r.left) * (cv.width / r.width), xmin, xmax };
+      function stopDrag(e) {
+        if (drag && e.pointerId !== undefined && drag.pointerId !== e.pointerId) return;
+        drag = null;
+        cv.classList.remove("dragging");
+      }
+      cv.addEventListener("pointerdown", (e) => {
+        const { mx, my } = canvasPoint(e);
+        drag = { pointerId: e.pointerId, mx, my, xmin, xmax, ymin, ymax };
+        cv.classList.add("dragging");
+        cv.setPointerCapture(e.pointerId);
       });
-      window.addEventListener("mouseup", () => (drag = null));
-      cv.addEventListener("mousemove", (e) => {
-        if (!drag) return;
-        const r = cv.getBoundingClientRect();
-        const mx = (e.clientX - r.left) * (cv.width / r.width);
+      cv.addEventListener("pointerup", stopDrag);
+      cv.addEventListener("pointercancel", stopDrag);
+      cv.addEventListener("lostpointercapture", () => {
+        drag = null;
+        cv.classList.remove("dragging");
+      });
+      cv.addEventListener("pointermove", (e) => {
+        if (!drag || drag.pointerId !== e.pointerId) return;
+        const { mx, my } = canvasPoint(e);
         const dx = ((mx - drag.mx) / (cv.width - M.l - M.r)) * (drag.xmax - drag.xmin);
+        const dy = ((my - drag.my) / (cv.height - M.t - M.b)) * (drag.ymax - drag.ymin);
         xmin = drag.xmin - dx;
         xmax = drag.xmax - dx;
+        ymin = drag.ymin + dy;
+        ymax = drag.ymax + dy;
         draw();
       });
       function resetView() {
@@ -411,8 +452,11 @@
         highlight = i;
         const p = PEAKS[i];
         const w = xmax - xmin;
+        const h = ymax - ymin;
         xmin = p.wavelength_nm - w / 2;
         xmax = p.wavelength_nm + w / 2;
+        ymin = p.intensity - h / 2;
+        ymax = p.intensity + h / 2;
         draw();
       }
       buildList();
