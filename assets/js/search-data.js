@@ -65,7 +65,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/blog/";
               },
-            },{id: "books-the-godfather",
+            },{id: "post-some-notes-on-umich-physics-courses",
+        
+          title: "Some Notes on UMich Physics Courses",
+        
+        description: "Personal impressions of several physics courses I have taken at Michigan.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/umich-physics-course-notes/";
+          
+        },
+      },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
