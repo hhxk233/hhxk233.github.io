@@ -2,7 +2,7 @@
 layout: page
 permalink: /courses/
 title: courses
-description: A curated list of courses I have taken.
+description: A list of courses I have taken.
 nav: true
 nav_order: 6
 ---
@@ -46,7 +46,6 @@ Below is a list of courses I have taken. Organized by institution and term.
 ## Shanghai Jiao Tong University (SJTU)
 
 > SJTU uses three semesters per academic year: **Fall (Sem 1)**, **Spring (Sem 2)**, **Summer (Sem 3)**.
-> **Note:** In **2023–2024 Fall** and **2023–2024 Summer** I had a **1-credit overload**.
 
 ### 2023–2024 (Sem 3 — Summer) — _1 credit overload_
 
