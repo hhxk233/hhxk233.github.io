@@ -58,7 +58,7 @@
       "startDate": "2023-08-01",
       "endDate": "2024-05-01",
       "summary": "PT method for chip-scale WPT; ML for mmWave voice/vital signals.",
-        "highlights": ["Kuramoto/Adler oscillator array design", "Cadence analog workflows", "VMD-HHT denoising and reconstruction"]
+      "highlights": ["Kuramoto/Adler oscillator array design", "Cadence analog workflows", "VMD-HHT denoising and reconstruction"]
     },
     {
       "name": "K-free Technology Co., LTD.",
