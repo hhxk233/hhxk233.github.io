@@ -11,6 +11,10 @@ Below is a list of courses I have taken. Organized by institution and term.
 
 ## University of Michigan (UMich)
 
+### Winter 2026
+
+- PHYSICS 441 — Advanced Laboratory I
+
 ### Fall 2025
 
 - ECE 598 — Information Theory and Statistics (3)
