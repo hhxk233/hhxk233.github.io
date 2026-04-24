@@ -20,12 +20,12 @@
   contents:
     - title: Undergraduate in Engineering Physics, minor in Computer Science
       institution: University of Michigan, Ann Arbor, USA
-      year: Sep. 2024 – Current (Expected May 2026)
+      year: Sep. 2024 - Current (Expected to graduate in May 2026)
       description:
-        - "GPA: 4.00/4.00"
+        - "GPA: 3.96/4.00"
     - title: Undergraduate in Electrical and Computer Engineering (Dual Degree)
       institution: Shanghai Jiao Tong University, Shanghai, China
-      year: Sep. 2022 – Current (Expected July 2026)
+      year: Sep. 2022 - Current (Expected to graduate in July 2026)
       description:
         - "GPA: 3.77/4.00"
 
@@ -34,69 +34,97 @@
   contents:
     - title: Undergraduate Research Assistant
       institution: University of Michigan, Department of Radiation Oncology, Ann Arbor, USA
-      year: May. 2025 – Current
+      year: May. 2025 - May. 2026
       description:
         - "Advisor: Lise Wei"
-        - title: Equating the Biologically Effective Dose of SBRT and 90Y SIRT
+        - title: "Equating the Biologically Effective Dose of SBRT and 90Y SIRT: A Unified Voxel-Level Liver Function Dose-Response"
           contents:
-            - Built a voxel-level pipeline aligning DGAE-MRI k1(x) maps to CT-based dosimetry; defined parenchyma masks and dose binning to quantify %Δk1 post-therapy.
-            - Harmonized modalities onto a common biological scale using LQ-based EQD2 for SBRT and protraction-aware BED (Lea–Catcheside kernel) for SIRT.
-            - Modeled subvoxel SIRT nonuniformity via EUD and fit mixed-effects 4-parameter logistic dose–response with covariates; calibrated repair rate μ and micro-dose CV c by aligning SBRT/SIRT curves with bootstrap uncertainty.
-        - title: ReMasker-Cox — Survival-Guided Masked Autoencoder for Missing Data Imputation
+            - Built a voxel-level pipeline aligning DGAE-MRI k1(x) maps to CT-based dosimetry; defined parenchyma masks and dose binning to quantify the percent change in k1 post-therapy.
+            - Harmonized modalities onto a common biological scale using LQ-based EQD2 for SBRT and protraction-aware BED (Lea-Catcheside kernel) for SIRT.
+            - Modeled subvoxel SIRT nonuniformity via EUD and fit mixed-effects 4-parameter logistic dose-response with covariates; calibrated repair rate mu and micro-dose CV c by aligning SBRT/SIRT curves with bootstrap uncertainty.
+        - title: "ReMasker-Cox: Survival-Guided Masked Autoencoder for Missing Data Imputation"
           contents:
             - Extended a masked autoencoder (ReMasker) to jointly optimize imputation and survival consistency by adding a CoxPH loss (PyCox) to the reconstruction objective.
             - Implemented a training workflow with random masking, joint loss weighting, and evaluation focused on preserving risk structure for clinical tabular data.
 
     - title: Undergraduate Research Assistant
       institution: University of Michigan, Deng Research Lab, Ann Arbor, USA
-      year: Sep. 2024 – Aug. 2025
+      year: Sep. 2024 - Aug. 2025
       description:
         - "Advisor: Chulwon Lee; Faculty Instructor: Hui Deng"
-        - title: Loss–Induced Synthetic Magnetic Field
+        - title: Loss-Induced Synthetic Magnetic Field
           contents:
-            - Designed and simulated rotationally asymmetric Si ring–resonator arrays to engineer loss–induced synthetic magnetic fields; observed two-sided non-Hermitian skin-effect localization in 3D FDTD.
+            - Designed and simulated rotationally asymmetric Si ring-resonator arrays to engineer loss-induced synthetic magnetic fields; observed two-sided non-Hermitian skin-effect localization in 3D FDTD.
             - Built a non-Hermitian tight-binding model; eigen-analysis identified zero net loop phase as a barrier to the skin effect; proposed phase/loss asymmetry and distance-offset remedies and validated designs in simulation.
             - "Tools: ANSYS Lumerical FDTD, MATLAB; GreatLake HPC."
-        - title: Non-Hermitian Exciton-Polariton Transport beyond Lorentz Reciprocity
+        - title: Non-Hermitian Exciton-Polariton Transport beyond Lorentz Reciprocity Theorem
           contents:
-            - Simulated a nanobeam cavity integrated with a grating coupler in Ansys Lumerical.
-            - Exfoliated MoSe2 to prepare monolayer samples.
-            - "Manuscript in preparation: Breaking PT symmetry of hybridized edge modes in non-Hermitian topological photonic molecules. (target journal: Nature Communications)."
+            - Fall 2024 - Winter 2025 Undergraduate Research Opportunity Program
+            - Using Ansys Lumerical to simulate a nanobeam cavity integrated with a grating coupler.
+            - Exfoliating MoSe2 to make monolayer samples.
+            - 'Manuscript submitted: Lee, C., Lee, J.H., Zhang, K., Wang, Y., Wang, Y., Lydick, N., Miao, J., Xin, X., Liu, Y., Sun, K., & Deng, H. "Harnessing nanophotonic edgemodes by engineering PT symmetry".'
 
     - title: Undergraduate Research Assistant
       institution: Shanghai Jiao Tong University, Laboratory of Ultrafast Integrated Systems (LUIS), Shanghai, China
-      year: Aug. 2023 – May 2024
+      year: Aug. 2023 - May 2024
       description:
-        - "Advisor: Xuyang Lu — Lab website: https://sites.gc.sjtu.edu.cn/xuyang-lu/"
-        - title: Chip-scale switch-mode wireless power transfer (Parity–Time method)
+        - "Advisor: Xuyang Lu"
+        - "Lab website: https://sites.gc.sjtu.edu.cn/xuyang-lu/"
+        - title: "ENGR4903J Spring 2024: Chip-scale switch-mode wireless power transfer system based on parity-time method"
           contents:
-            - Applied the Kuramoto model and Adler equation to design an array of oscillators with tunable mutual phase via coupling coefficients.
-            - Learned Cadence workflows and analog circuit methodologies.
-        - title: ML for mmWave-based voice and vital signal recognition
+            - Used the Kuramoto model and Adler equation to design an array of oscillators that can change the mutual phase difference by adjusting the coupling coefficient.
+            - Learned the basic usage of Cadence and methods associated with analog circuits.
+        - title: "ENGR4903J Fall 2023: Machine-learning method for mmWave-based voice and vital signal recognition"
           contents:
-            - Implemented the VMD–HHT algorithm for improved denoising and signal reconstruction.
-            - Studied microcontroller systems and signal I/O between controllers.
+            - Implemented the VMD-HHT algorithm to better filter noise and reconstruct the received signal.
+            - Learned the underlying principles of microcontroller systems and how signals are sent and received between microcontrollers.
 
 - title: Internship
   type: time_table
   contents:
     - title: Internship, Department of Software
       institution: K-free Technology Co., LTD., Shenzhen, China
-      year: Aug. 2023 – Oct. 2023
+      year: Aug. 2023 - Oct. 2023
       description:
-        - Implemented new features on single-chip microcontrollers and related systems in C.
-        - Followed company code specifications and professional development practices.
+        - Responsible for implementing new features in single-chip microcomputers and other system coding tasks in C.
+        - Became familiar with the company's code specifications and professional development environment.
 
 - title: Teaching and Mentoring Experience
   type: time_table
   contents:
-    - title: Teaching Assistant (ENGR151, ECE311)
+    - title: Teaching Assistant
       institution: JI Center for Learning and Teaching, Shanghai Jiao Tong University
-      year: Sep. 2023 – Aug. 2024
+      year: Sep. 2023 - Aug. 2024
       description:
-        - Held RC sessions for ENGR151 (Accelerated Introduction to Programming).
-        - Led laboratory sessions for ECE311 (Analog Circuits).
-        - Built scripts to automate teaching team workflows.
+        - "Courses: ENGR151 (Accelerated Introduction to Programming), ECE311 (Analog Circuits)"
+        - Held RC sessions for ENGR151 students.
+        - Led laboratory sessions for ECE311 students.
+        - Contributed scripts that automated teaching-team workflows.
+
+- title: Projects
+  type: time_table
+  contents:
+    - title: "Coupled Flow Matching (CPFM): Controllable Dimensionality Reduction & Reconstruction"
+      institution: Ann Arbor, USA
+      year: May. 2025 - Oct. 2025
+      description:
+        - "Paper: https://arxiv.org/abs/2510.23015"
+        - CPFM learns coupled continuous flows for data x and low-dimensional embeddings y to enable both p(y|x) sampling and p(x|y) reconstruction.
+        - Extended Gromov-Wasserstein OT with a kernelized quadratic objective to encode semantic priors; derived an alternating minimization with entropic Sinkhorn and O(n^2) per-iteration complexity.
+        - Implemented Dual Conditional Flow Matching (DCFM) with a shared drift network, role flagging, and mute-masking to jointly learn bidirectional flows with 2D embeddings and high-fidelity reconstructions.
+        - Evaluated on MNIST, CIFAR-10, TinyImageNet, AFHQ, and QM9; obtained semantically rich 2D embeddings and stronger reconstructions than VAE/DiffAE/Info-Diffusion under extreme compression.
+    - title: "Curie: Automate Rigorous Scientific Experimentation"
+      institution: Ann Arbor, USA
+      year: Mar. 2025 - Aug. 2025
+      description:
+        - "Repo: https://github.com/Just-Curieous/Curie"
+        - Tested and developed new features.
+    - title: Analogical Analyses of Epidemic Evolution from the Fluid Mechanics View
+      institution: The 26th Shanghai Jiaotong University Student Innovation and Practice Programme Project, Shanghai, China
+      year: Sep. 2022 - May. 2024
+      description:
+        - Modeled epidemic evolution using meta cellular automata written in Python and MATLAB.
+        - Studied second-order phase transitions and links to epidemic outbreaks.
 
 - title: Technical Skills
   type: list
@@ -110,15 +138,15 @@
     - year: 2025
       items:
         - Michigan Engineering Continuing Student Scholarship (Roger King Scholarship)
-        - Umich University Honors 2024–2025
-        - Umich Dean's List 2024–2025
+        - University Honors 2024-2025
+        - Dean's List 2024-2025
     - year: 2024
       items:
-        - SJTU Undergraduate Excellent Scholarship for the Academic Year 2023–2024
+        - SJTU Undergraduate Excellent Scholarship for the Academic Year 2023-2024
         - Meritorious Winner, 2024 COMAP's Mathematical Contest in Modeling (MCM)
     - year: 2023
       items:
-        - SJTU Undergraduate Excellent Scholarship for the Academic Year 2022–2023
+        - SJTU Undergraduate Excellent Scholarship for the Academic Year 2022-2023
     - year: 2020
       items:
         - First Prize, Chinese Physics Olympic (CPhO) of Guangdong province

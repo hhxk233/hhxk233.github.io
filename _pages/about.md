@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Undergraduate in Engineering Physics (UMich) · ECE Dual-Degree (SJTU)
+subtitle: Engineering Physics Undergraduate (UMich) | Computer Science Minor | ECE Dual-Degree (SJTU)
 
 profile:
   align: right
@@ -27,9 +27,10 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am broadly interested in the intersection of physics and computation. My primary focus lies in quantum
-physics and non-Hermitian photonics, with an emphasis on understanding fundamental physical principles through
-simulation and modeling. Leveraging my dual background in Engineering Physics and Electrical & Computer Engineering,
-I am also interested in developing and applying artificial intelligence and machine learning methods to accelerate
-scientific discovery, such as enhancing physical simulations, analyzing complex experimental data, and bridging
-theoretical models with experimental observables.
+I am an undergraduate in Engineering Physics at the University of Michigan, where I am also pursuing a minor in
+Computer Science, and a dual-degree student in Electrical and Computer Engineering at Shanghai Jiao Tong University.
+
+I am broadly interested in the intersection of physics and computation. My primary focus lies in quantum physics
+and non-Hermitian photonics, with an emphasis on understanding physical principles through simulation and modeling.
+I am also interested in developing and applying AI/ML methods for scientific discovery, especially to improve
+physical simulations, analyze experimental data, and bridge theoretical models with observables.
