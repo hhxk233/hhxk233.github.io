@@ -1,7 +1,8 @@
 {
   "scripts": {
     "format:check": "prettier . --check",
-    "portfolio:data": "node _scripts/generate-portfolio-data.mjs"
+    "portfolio:data": "node _scripts/generate-portfolio-data.mjs",
+    "portfolio:test": "node --test --experimental-test-isolation=none _scripts/portfolio-lib.test.mjs"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "1.4.0",

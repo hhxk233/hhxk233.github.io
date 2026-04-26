@@ -2,9 +2,8 @@
 layout: page
 title: Portfolio Overview
 permalink: /portfolio/
-description: Normalized percentage performance since 2026-02-02. This page intentionally omits dollar balances, share counts, cost basis, and raw brokerage exports.
-nav: true
-nav_order: 4.5
+description: Transaction-aware percentage performance from 2026-02-02 onward using open-lot FIFO cost basis. This page intentionally omits dollar balances, share counts, cost basis, and raw brokerage exports.
+nav: false
 chart:
   chartjs: true
 _styles: |
