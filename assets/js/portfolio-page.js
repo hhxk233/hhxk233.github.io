@@ -92,7 +92,7 @@
                 <div>
                   <strong>Privacy-first portfolio view</strong>
                   <p>
-                    This page shows only normalized returns, dates, tickers, and allocation percentages.
+                    This page shows only normalized returns, dates, tickers, and allocation percentages. Public market prices refresh daily.
                   </p>
                 </div>
               </section>

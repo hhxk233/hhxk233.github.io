@@ -13,25 +13,27 @@ import {
 const BASELINE_DATE = process.env.PORTFOLIO_BASELINE_DATE ?? "2026-02-02";
 const AS_OF_DATE = process.env.PORTFOLIO_AS_OF_DATE ?? toIsoDate(new Date());
 const INPUT_CSV = process.env.PORTFOLIO_TRADES_CSV;
+const INPUT_CSV_TEXT = process.env.PORTFOLIO_TRADES_CSV_TEXT;
+const INPUT_CSV_B64 = process.env.PORTFOLIO_TRADES_CSV_B64 ?? process.env.PORTFOLIO_TRADES_CSV_BASE64;
 const OUTPUT_JSON = process.env.PORTFOLIO_OUTPUT_JSON ?? path.join("assets", "json", "portfolio-data.json");
 const CACHE_DIR = process.env.PORTFOLIO_MARKET_DATA_CACHE_DIR ?? path.join(".cache", "portfolio-market-data");
 const CACHE_TTL_MS = Number(process.env.PORTFOLIO_MARKET_DATA_CACHE_TTL_HOURS ?? 12) * 60 * 60 * 1000;
 const GENERATED_AT = new Date().toISOString();
 
 async function main() {
-  if (!INPUT_CSV) {
+  if (!INPUT_CSV && !INPUT_CSV_TEXT && !INPUT_CSV_B64) {
     await writePayload(
       createErrorPayload(
         "holdings",
-        "Set PORTFOLIO_TRADES_CSV to a Robinhood trade history export before generating portfolio data.",
+        "Set PORTFOLIO_TRADES_CSV, PORTFOLIO_TRADES_CSV_TEXT, or PORTFOLIO_TRADES_CSV_B64 before generating portfolio data.",
         { asOfDate: AS_OF_DATE, baselineDate: BASELINE_DATE, generatedAt: GENERATED_AT }
       )
     );
-    throw new Error("PORTFOLIO_TRADES_CSV is required.");
+    throw new Error("A private Robinhood trade history input is required.");
   }
 
   try {
-    const csvText = await fs.readFile(INPUT_CSV, "utf8");
+    const csvText = await loadCsvText();
     const trades = parsePortfolioTradeRows(csvText);
 
     if (!trades.length) {
@@ -94,6 +96,18 @@ async function writePayload(payload) {
   const outputDir = path.dirname(OUTPUT_JSON);
   await fs.mkdir(outputDir, { recursive: true });
   await fs.writeFile(OUTPUT_JSON, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+}
+
+async function loadCsvText() {
+  if (INPUT_CSV_TEXT) {
+    return INPUT_CSV_TEXT;
+  }
+
+  if (INPUT_CSV_B64) {
+    return Buffer.from(INPUT_CSV_B64, "base64").toString("utf8");
+  }
+
+  return fs.readFile(INPUT_CSV, "utf8");
 }
 
 main().catch((error) => {
