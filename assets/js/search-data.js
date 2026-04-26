@@ -23,13 +23,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-portfolio-overview",
-          title: "Portfolio Overview",
-          description: "Normalized percentage performance since 2026-02-02. This page intentionally omits dollar balances, share counts, cost basis, and raw brokerage exports.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/portfolio/";
-          },
         },{id: "nav-cv",
           title: "cv",
           description: "Curriculum Vitae of Yuheng Wang.",
@@ -64,6 +57,13 @@ ninja.data = [{
               section: "Dropdown",
               handler: () => {
                 window.location.href = "/n2_small_structure/";
+              },
+            },{id: "dropdown-portfolio-overview",
+              title: "Portfolio Overview",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/portfolio/";
               },
             },{id: "dropdown-blog",
               title: "blog",
