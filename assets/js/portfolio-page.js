@@ -68,6 +68,7 @@
 
     const failedTickers = Array.isArray(payload.failedTickers) ? payload.failedTickers : [];
     const latestPoint = payload.performance.at(-1);
+    const seriesStartDate = payload.firstInvestmentDate || payload.baselineDate;
 
     app.innerHTML = `
       <div class="portfolio-shell">
@@ -80,7 +81,7 @@
                   <strong>Partial market data</strong>
                   <p>
                     ${failedTickers.length} holding${failedTickers.length === 1 ? "" : "s"} could not be priced and
-                    were excluded from the allocation and performance calculations.
+                    were excluded from the transaction-aware allocation and performance calculations.
                   </p>
                 </div>
               </section>
@@ -101,7 +102,7 @@
           ${renderSummaryCard(
             "Current Total Return",
             formatPercent(payload.summary.currentReturnPct, PERFORMANCE_DECIMALS),
-            "Since 2026-02-02",
+            "Current holdings vs remaining FIFO cost basis",
             classForSignedValue(payload.summary.currentReturnPct)
           )}
           ${renderSummaryCard(
@@ -123,7 +124,7 @@
             <div>
               <h2>Portfolio Performance</h2>
               <p class="portfolio-chart-meta">
-                Normalized portfolio return relative to ${payload.baselineDate}. Baseline starts at 0%.
+                Transaction-aware return for open holdings from ${formatDate(seriesStartDate)} onward. Holdings begin on their actual trade dates.
               </p>
             </div>
             <div class="portfolio-range-tabs" role="tablist" aria-label="Portfolio chart range">
@@ -155,7 +156,7 @@
             <div>
               <h2>Holdings Allocation</h2>
               <p>
-                Current allocation weights and normalized returns only. No share counts, balances, or cost basis are shown.
+                Current allocation uses live market-value weights. Only percentages are shown, never shares, balances, or cost basis.
               </p>
             </div>
           </div>
@@ -169,7 +170,7 @@
                   <tr>
                     <th>Holding</th>
                     <th>Weight</th>
-                    <th>Return Since 2026-02-02</th>
+                    <th>Current Return</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -203,7 +204,7 @@
         <section class="portfolio-state-card" aria-live="polite">
           <div class="portfolio-spinner" aria-hidden="true"></div>
           <h2>Preparing sanitized portfolio data</h2>
-          <p>Loading normalized performance since 2026-02-02 without exposing any raw account values.</p>
+          <p>Loading transaction-aware performance without exposing any raw account values.</p>
         </section>
       </div>
     `;
