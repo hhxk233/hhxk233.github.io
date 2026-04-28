@@ -59,6 +59,14 @@ on:
       - "!FAQ.md"
       - "!INSTALL.md"
       - "!README.md"
+  workflow_run:
+    workflows:
+      - Update portfolio data
+    types:
+      - completed
+    branches:
+      - master
+      - main
   workflow_dispatch:
 
 permissions:
@@ -66,6 +74,7 @@ permissions:
 
 jobs:
   deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
