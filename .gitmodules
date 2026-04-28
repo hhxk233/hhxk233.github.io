@@ -1,0 +1,6 @@
+[submodule "_game/block"]
+	path = _game/block
+	url = ssh://git@focs.ji.sjtu.edu.cn:2222/SilverFOCS-23/p1team11.git
+[submodule "_game/elm_game"]
+	path = _game/elm_game
+	url = ssh://git@focs.ji.sjtu.edu.cn:2222/SilverFOCS-23/p2team11.git
