@@ -1,13 +1,13 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-05-04",
+  "asOfDate": "2026-05-05",
   "firstInvestmentDate": "2026-02-02",
-  "latestTradingDate": "2026-05-01",
-  "generatedAt": "2026-05-04T00:06:30.871Z",
+  "latestTradingDate": "2026-05-04",
+  "generatedAt": "2026-05-05T00:11:29.953Z",
   "summary": {
-    "currentReturnPct": 4.85,
-    "latestTradingDayChangePct": 1.45,
+    "currentReturnPct": 4.86,
+    "latestTradingDayChangePct": 0.01,
     "maxDrawdownPct": -9.95,
     "holdingsCount": 18
   },
@@ -15,110 +15,110 @@
     {
       "ticker": "MSFT",
       "name": "Microsoft",
-      "weightPct": 18.24,
-      "currentReturnPct": 0.26
+      "weightPct": 18.2,
+      "currentReturnPct": 0.06
     },
     {
       "ticker": "VTI",
       "name": "Vanguard Total Stock Market ETF",
-      "weightPct": 16.38,
-      "currentReturnPct": 7.44
+      "weightPct": 16.32,
+      "currentReturnPct": 7.04
     },
     {
       "ticker": "AAPL",
       "name": "Apple",
-      "weightPct": 13.74,
-      "currentReturnPct": 2.78
+      "weightPct": 13.57,
+      "currentReturnPct": 1.56
     },
     {
       "ticker": "TSLA",
       "name": "Tesla",
-      "weightPct": 8.06,
-      "currentReturnPct": -5.4
+      "weightPct": 8.09,
+      "currentReturnPct": -4.99
     },
     {
       "ticker": "SCHD",
       "name": "Schwab US Dividend Equity ETF",
-      "weightPct": 6.43,
-      "currentReturnPct": 4.85
+      "weightPct": 6.37,
+      "currentReturnPct": 3.73
     },
     {
       "ticker": "GOOGL",
       "name": "Alphabet Class A",
-      "weightPct": 5.78,
-      "currentReturnPct": 31.3
+      "weightPct": 5.74,
+      "currentReturnPct": 30.47
     },
     {
       "ticker": "BOXX",
       "name": "Alpha Architect 1-3 Month Box ETF",
       "weightPct": 5.73,
-      "currentReturnPct": 0.73
+      "currentReturnPct": 0.74
     },
     {
       "ticker": "NVDA",
       "name": "NVIDIA",
       "weightPct": 5.72,
-      "currentReturnPct": 8.97
+      "currentReturnPct": 8.98
     },
     {
       "ticker": "TSM",
       "name": "Taiwan Semiconductor Manufacturing",
-      "weightPct": 4.52,
-      "currentReturnPct": 6.28
+      "weightPct": 4.57,
+      "currentReturnPct": 7.33
     },
     {
       "ticker": "FSLY",
       "name": "Fastly",
-      "weightPct": 2.92,
-      "currentReturnPct": 28.78
+      "weightPct": 2.86,
+      "currentReturnPct": 26.12
     },
     {
       "ticker": "QQQ",
       "name": "Invesco QQQ",
       "weightPct": 2.5,
-      "currentReturnPct": 10.03
+      "currentReturnPct": 9.83
     },
     {
       "ticker": "VXUS",
       "name": "Vanguard Total International Stock ETF",
-      "weightPct": 2.33,
-      "currentReturnPct": 2.53
+      "weightPct": 2.31,
+      "currentReturnPct": 1.64
     },
     {
       "ticker": "CRCL",
       "name": "Circle Internet Group",
-      "weightPct": 1.7,
-      "currentReturnPct": -16.54
+      "weightPct": 2.04,
+      "currentReturnPct": 0.06
     },
     {
       "ticker": "VOO",
       "name": "Vanguard S&P 500 ETF",
       "weightPct": 1.26,
-      "currentReturnPct": 11.02
+      "currentReturnPct": 10.61
     },
     {
       "ticker": "GPIQ",
       "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
       "weightPct": 1.24,
-      "currentReturnPct": 8.06
-    },
-    {
-      "ticker": "VYM",
-      "name": "Vanguard High Dividend Yield ETF",
-      "weightPct": 1.18,
-      "currentReturnPct": 3.37
-    },
-    {
-      "ticker": "LVHI",
-      "name": "Franklin International Low Volatility High Dividend Index ETF",
-      "weightPct": 1.16,
-      "currentReturnPct": 2.05
+      "currentReturnPct": 7.94
     },
     {
       "ticker": "MU",
       "name": "Micron Technology",
-      "weightPct": 1.11,
-      "currentReturnPct": 21.74
+      "weightPct": 1.18,
+      "currentReturnPct": 29.43
+    },
+    {
+      "ticker": "VYM",
+      "name": "Vanguard High Dividend Yield ETF",
+      "weightPct": 1.17,
+      "currentReturnPct": 2.53
+    },
+    {
+      "ticker": "LVHI",
+      "name": "Franklin International Low Volatility High Dividend Index ETF",
+      "weightPct": 1.14,
+      "currentReturnPct": 0.85
     }
   ],
   "performance": [
@@ -488,7 +488,11 @@
     },
     {
       "date": "2026-05-04",
-      "returnPct": 4.8514
+      "returnPct": 4.8625
+    },
+    {
+      "date": "2026-05-05",
+      "returnPct": 4.8625
     }
   ],
   "failedTickers": []
