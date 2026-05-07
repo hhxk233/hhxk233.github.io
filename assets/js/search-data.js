@@ -111,6 +111,11 @@ ninja.data = [{
           description: "A comforting pixel-art puzzle platformer about memory, seasons, and a loyal companion.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/elm-game/";
+            },},{id: "projects-email-digest-bot",
+          title: 'Email Digest Bot',
+          description: "A personal email digest tool powered by Claude that summarizes emails from multiple accounts.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/email_digest_bot/";
             },},{id: "projects-epidemic-dynamics-as-phase-transitions",
           title: 'Epidemic Dynamics as Phase Transitions',
           description: "Modeling discontinuous outbreak transitions under finite testing/isolation and validating with cellular automata &amp; ODE analysis.",
