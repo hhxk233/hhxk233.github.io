@@ -34,3 +34,5 @@ I am broadly interested in the intersection of physics and computation. My prima
 and non-Hermitian photonics, with an emphasis on understanding physical principles through simulation and modeling.
 I am also interested in developing and applying AI/ML methods for scientific discovery, especially to improve
 physical simulations, analyze experimental data, and bridge theoretical models with observables.
+
+Projects: Email Digest Bot
