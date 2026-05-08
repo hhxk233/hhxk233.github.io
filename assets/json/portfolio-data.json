@@ -1,13 +1,13 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-05-07",
+  "asOfDate": "2026-05-08",
   "firstInvestmentDate": "2026-02-02",
-  "latestTradingDate": "2026-05-06",
-  "generatedAt": "2026-05-07T00:07:49.410Z",
+  "latestTradingDate": "2026-05-07",
+  "generatedAt": "2026-05-08T00:10:22.922Z",
   "summary": {
-    "currentReturnPct": 7.67,
-    "latestTradingDayChangePct": 1.69,
+    "currentReturnPct": 6.61,
+    "latestTradingDayChangePct": -0.99,
     "maxDrawdownPct": -9.95,
     "holdingsCount": 18
   },
@@ -15,110 +15,110 @@
     {
       "ticker": "MSFT",
       "name": "Microsoft",
-      "weightPct": 17.74,
-      "currentReturnPct": 0.14
+      "weightPct": 18.21,
+      "currentReturnPct": 1.79
     },
     {
       "ticker": "VTI",
       "name": "Vanguard Total Stock Market ETF",
-      "weightPct": 16.25,
-      "currentReturnPct": 9.42
+      "weightPct": 16.34,
+      "currentReturnPct": 8.92
     },
     {
       "ticker": "AAPL",
       "name": "Apple",
-      "weightPct": 13.73,
-      "currentReturnPct": 5.48
+      "weightPct": 13.86,
+      "currentReturnPct": 5.45
     },
     {
       "ticker": "TSLA",
       "name": "Tesla",
-      "weightPct": 8,
-      "currentReturnPct": -3.49
+      "weightPct": 8.35,
+      "currentReturnPct": -0.33
     },
     {
       "ticker": "SCHD",
       "name": "Schwab US Dividend Equity ETF",
-      "weightPct": 6.23,
-      "currentReturnPct": 4.19
+      "weightPct": 6.26,
+      "currentReturnPct": 3.8
     },
     {
       "ticker": "NVDA",
       "name": "NVIDIA",
-      "weightPct": 5.84,
-      "currentReturnPct": 14.12
+      "weightPct": 6,
+      "currentReturnPct": 16.13
     },
     {
       "ticker": "GOOGL",
       "name": "Alphabet Class A",
-      "weightPct": 5.81,
-      "currentReturnPct": 35.5
+      "weightPct": 5.87,
+      "currentReturnPct": 35.49
     },
     {
       "ticker": "BOXX",
       "name": "Alpha Architect 1-3 Month Box ETF",
-      "weightPct": 5.58,
-      "currentReturnPct": 0.74
+      "weightPct": 5.64,
+      "currentReturnPct": 0.76
     },
     {
       "ticker": "TSM",
       "name": "Taiwan Semiconductor Manufacturing",
-      "weightPct": 4.65,
-      "currentReturnPct": 12.11
-    },
-    {
-      "ticker": "FSLY",
-      "name": "Fastly",
-      "weightPct": 3.2,
-      "currentReturnPct": 44.84
+      "weightPct": 4.63,
+      "currentReturnPct": 10.68
     },
     {
       "ticker": "QQQ",
       "name": "Invesco QQQ",
-      "weightPct": 2.51,
-      "currentReturnPct": 13.56
+      "weightPct": 2.54,
+      "currentReturnPct": 13.43
     },
     {
       "ticker": "VXUS",
       "name": "Vanguard Total International Stock ETF",
-      "weightPct": 2.34,
-      "currentReturnPct": 5.81
+      "weightPct": 2.33,
+      "currentReturnPct": 4.12
+    },
+    {
+      "ticker": "FSLY",
+      "name": "Fastly",
+      "weightPct": 2,
+      "currentReturnPct": -10.54
     },
     {
       "ticker": "CRCL",
       "name": "Circle Internet Group",
-      "weightPct": 2.02,
-      "currentReturnPct": 1.96
+      "weightPct": 1.9,
+      "currentReturnPct": -5.2
     },
     {
       "ticker": "MU",
       "name": "Micron Technology",
-      "weightPct": 1.32,
-      "currentReturnPct": 49.67
+      "weightPct": 1.3,
+      "currentReturnPct": 45.19
     },
     {
       "ticker": "VOO",
       "name": "Vanguard S&P 500 ETF",
-      "weightPct": 1.25,
-      "currentReturnPct": 13.05
+      "weightPct": 1.26,
+      "currentReturnPct": 12.7
     },
     {
       "ticker": "GPIQ",
       "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
-      "weightPct": 1.23,
-      "currentReturnPct": 10.68
+      "weightPct": 1.25,
+      "currentReturnPct": 10.7
     },
     {
       "ticker": "VYM",
       "name": "Vanguard High Dividend Yield ETF",
       "weightPct": 1.15,
-      "currentReturnPct": 3.66
+      "currentReturnPct": 2.48
     },
     {
       "ticker": "LVHI",
       "name": "Franklin International Low Volatility High Dividend Index ETF",
-      "weightPct": 1.14,
-      "currentReturnPct": 2.8
+      "weightPct": 1.13,
+      "currentReturnPct": 1.05
     }
   ],
   "performance": [
@@ -500,7 +500,11 @@
     },
     {
       "date": "2026-05-07",
-      "returnPct": 7.6668
+      "returnPct": 6.605
+    },
+    {
+      "date": "2026-05-08",
+      "returnPct": 6.605
     }
   ],
   "failedTickers": []
