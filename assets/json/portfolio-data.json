@@ -3,122 +3,158 @@
   "baselineDate": "2026-02-02",
   "asOfDate": "2026-05-13",
   "firstInvestmentDate": "2026-02-02",
-  "latestTradingDate": "2026-05-12",
-  "generatedAt": "2026-05-13T00:15:03.655Z",
+  "latestTradingDate": "2026-05-13",
+  "generatedAt": "2026-05-13T21:52:34.068Z",
   "summary": {
-    "currentReturnPct": 7.43,
-    "latestTradingDayChangePct": -0.74,
+    "currentReturnPct": 7.14,
+    "latestTradingDayChangePct": 1.4,
     "maxDrawdownPct": -9.95,
-    "holdingsCount": 18
+    "holdingsCount": 24
   },
   "holdings": [
     {
-      "ticker": "MSFT",
-      "name": "Microsoft",
-      "weightPct": 17.51,
-      "currentReturnPct": -1.36
-    },
-    {
       "ticker": "VTI",
       "name": "Vanguard Total Stock Market ETF",
-      "weightPct": 16.33,
-      "currentReturnPct": 9.7
-    },
-    {
-      "ticker": "AAPL",
-      "name": "Apple",
-      "weightPct": 14.11,
-      "currentReturnPct": 8.15
-    },
-    {
-      "ticker": "TSLA",
-      "name": "Tesla",
-      "weightPct": 8.72,
-      "currentReturnPct": 4.92
-    },
-    {
-      "ticker": "SCHD",
-      "name": "Schwab US Dividend Equity ETF",
-      "weightPct": 6.26,
-      "currentReturnPct": 4.52
-    },
-    {
-      "ticker": "NVDA",
-      "name": "NVIDIA",
-      "weightPct": 6.21,
-      "currentReturnPct": 21.23
-    },
-    {
-      "ticker": "GOOGL",
-      "name": "Alphabet Class A",
-      "weightPct": 5.67,
-      "currentReturnPct": 31.86
+      "weightPct": 14.41,
+      "currentReturnPct": 9.92
     },
     {
       "ticker": "BOXX",
       "name": "Alpha Architect 1-3 Month Box ETF",
-      "weightPct": 5.6,
-      "currentReturnPct": 0.81
+      "weightPct": 9.46,
+      "currentReturnPct": 0.41
     },
     {
-      "ticker": "TSM",
-      "name": "Taiwan Semiconductor Manufacturing",
-      "weightPct": 4.41,
-      "currentReturnPct": 6.17
+      "ticker": "MSFT",
+      "name": "Microsoft",
+      "weightPct": 7.4,
+      "currentReturnPct": 1.38
     },
     {
-      "ticker": "QQQ",
-      "name": "Invesco QQQ",
-      "weightPct": 2.56,
-      "currentReturnPct": 15.43
+      "ticker": "AAPL",
+      "name": "Apple",
+      "weightPct": 6.52,
+      "currentReturnPct": 10.54
+    },
+    {
+      "ticker": "GRID",
+      "name": "First Trust NASDAQ Clean Edge Smart Grid Infrastructure ETF",
+      "weightPct": 6.25,
+      "currentReturnPct": 0.55
+    },
+    {
+      "ticker": "SCHD",
+      "name": "Schwab US Dividend Equity ETF",
+      "weightPct": 5.55,
+      "currentReturnPct": 4.29
     },
     {
       "ticker": "VXUS",
       "name": "Vanguard Total International Stock ETF",
-      "weightPct": 2.31,
-      "currentReturnPct": 4.09
-    },
-    {
-      "ticker": "CRCL",
-      "name": "Circle Internet Group",
-      "weightPct": 2.06,
-      "currentReturnPct": 3.51
-    },
-    {
-      "ticker": "FSLY",
-      "name": "Fastly",
-      "weightPct": 1.93,
-      "currentReturnPct": -12.69
-    },
-    {
-      "ticker": "MU",
-      "name": "Micron Technology",
-      "weightPct": 1.53,
-      "currentReturnPct": 72.12
-    },
-    {
-      "ticker": "VOO",
-      "name": "Vanguard S&P 500 ETF",
-      "weightPct": 1.26,
-      "currentReturnPct": 13.72
-    },
-    {
-      "ticker": "GPIQ",
-      "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
-      "weightPct": 1.25,
-      "currentReturnPct": 12.21
-    },
-    {
-      "ticker": "VYM",
-      "name": "Vanguard High Dividend Yield ETF",
-      "weightPct": 1.14,
-      "currentReturnPct": 3.01
+      "weightPct": 4.85,
+      "currentReturnPct": 3.12
     },
     {
       "ticker": "LVHI",
       "name": "Franklin International Low Volatility High Dividend Index ETF",
-      "weightPct": 1.13,
-      "currentReturnPct": 2.35
+      "weightPct": 4.77,
+      "currentReturnPct": 1.4
+    },
+    {
+      "ticker": "SCHG",
+      "name": "Schwab US Large-Cap Growth ETF",
+      "weightPct": 4.29,
+      "currentReturnPct": 1.38
+    },
+    {
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufacturing",
+      "weightPct": 4.24,
+      "currentReturnPct": 6.07
+    },
+    {
+      "ticker": "AAOI",
+      "name": "Applied Optoelectronics",
+      "weightPct": 3.96,
+      "currentReturnPct": 40.16
+    },
+    {
+      "ticker": "GPIQ",
+      "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
+      "weightPct": 3.93,
+      "currentReturnPct": 3.8
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "weightPct": 3.77,
+      "currentReturnPct": 27.09
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Class A",
+      "weightPct": 3.61,
+      "currentReturnPct": 39.91
+    },
+    {
+      "ticker": "VYM",
+      "name": "Vanguard High Dividend Yield ETF",
+      "weightPct": 3.37,
+      "currentReturnPct": 0.87
+    },
+    {
+      "ticker": "QQQ",
+      "name": "Invesco QQQ",
+      "weightPct": 2.44,
+      "currentReturnPct": 15.03
+    },
+    {
+      "ticker": "NOK",
+      "name": "Nokia",
+      "weightPct": 2.1,
+      "currentReturnPct": 11.68
+    },
+    {
+      "ticker": "GEV",
+      "name": "GE Vernova",
+      "weightPct": 1.9,
+      "currentReturnPct": 1.17
+    },
+    {
+      "ticker": "CRCL",
+      "name": "Circle Internet Group",
+      "weightPct": 1.79,
+      "currentReturnPct": 5.95
+    },
+    {
+      "ticker": "NASA",
+      "name": "Tema Space Innovators ETF",
+      "weightPct": 1.62,
+      "currentReturnPct": 14.62
+    },
+    {
+      "ticker": "CEG",
+      "name": "Constellation Energy",
+      "weightPct": 0.99,
+      "currentReturnPct": -12.37
+    },
+    {
+      "ticker": "XTL",
+      "name": "State Street SPDR S&P Telecom ETF",
+      "weightPct": 0.94,
+      "currentReturnPct": -0.33
+    },
+    {
+      "ticker": "SMR",
+      "name": "NuScale Power",
+      "weightPct": 0.93,
+      "currentReturnPct": -0.95
+    },
+    {
+      "ticker": "TLN",
+      "name": "Talen Energy",
+      "weightPct": 0.91,
+      "currentReturnPct": -3.26
     }
   ],
   "performance": [
@@ -416,115 +452,115 @@
     },
     {
       "date": "2026-04-16",
-      "returnPct": 1.7131
+      "returnPct": 1.6831
     },
     {
       "date": "2026-04-17",
-      "returnPct": 3.0171
+      "returnPct": 2.9723
     },
     {
       "date": "2026-04-18",
-      "returnPct": 3.0171
+      "returnPct": 2.9723
     },
     {
       "date": "2026-04-19",
-      "returnPct": 3.0171
+      "returnPct": 2.9723
     },
     {
       "date": "2026-04-20",
-      "returnPct": 2.7068
+      "returnPct": 2.8202
     },
     {
       "date": "2026-04-21",
-      "returnPct": 2.11
+      "returnPct": 2.1254
     },
     {
       "date": "2026-04-22",
-      "returnPct": 3.6682
+      "returnPct": 3.9321
     },
     {
       "date": "2026-04-23",
-      "returnPct": 2.3063
+      "returnPct": 2.2506
     },
     {
       "date": "2026-04-24",
-      "returnPct": 3.2863
+      "returnPct": 3.1033
     },
     {
       "date": "2026-04-25",
-      "returnPct": 3.2863
+      "returnPct": 3.1033
     },
     {
       "date": "2026-04-26",
-      "returnPct": 3.2863
+      "returnPct": 3.1033
     },
     {
       "date": "2026-04-27",
-      "returnPct": 3.7498
+      "returnPct": 3.1641
     },
     {
       "date": "2026-04-28",
-      "returnPct": 3.4994
+      "returnPct": 2.7106
     },
     {
       "date": "2026-04-29",
-      "returnPct": 3.3319
+      "returnPct": 2.5145
     },
     {
       "date": "2026-04-30",
-      "returnPct": 3.3486
+      "returnPct": 2.7803
     },
     {
       "date": "2026-05-01",
-      "returnPct": 4.8514
+      "returnPct": 3.6829
     },
     {
       "date": "2026-05-02",
-      "returnPct": 4.8514
+      "returnPct": 3.6829
     },
     {
       "date": "2026-05-03",
-      "returnPct": 4.8514
+      "returnPct": 3.6829
     },
     {
       "date": "2026-05-04",
-      "returnPct": 4.8625
+      "returnPct": 3.73
     },
     {
       "date": "2026-05-05",
-      "returnPct": 5.8723
+      "returnPct": 4.1586
     },
     {
       "date": "2026-05-06",
-      "returnPct": 7.6668
+      "returnPct": 6.026
     },
     {
       "date": "2026-05-07",
-      "returnPct": 6.605
+      "returnPct": 6.1336
     },
     {
       "date": "2026-05-08",
-      "returnPct": 7.7493
+      "returnPct": 6.406
     },
     {
       "date": "2026-05-09",
-      "returnPct": 7.7493
+      "returnPct": 6.406
     },
     {
       "date": "2026-05-10",
-      "returnPct": 7.7493
+      "returnPct": 6.406
     },
     {
       "date": "2026-05-11",
-      "returnPct": 8.2265
+      "returnPct": 7.1653
     },
     {
       "date": "2026-05-12",
-      "returnPct": 7.429
+      "returnPct": 5.6951
     },
     {
       "date": "2026-05-13",
-      "returnPct": 7.429
+      "returnPct": 7.1378
     }
   ],
   "failedTickers": []
