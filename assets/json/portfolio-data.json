@@ -1,13 +1,13 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-05-22",
+  "asOfDate": "2026-05-23",
   "firstInvestmentDate": "2026-02-02",
-  "latestTradingDate": "2026-05-21",
-  "generatedAt": "2026-05-22T00:17:41.951Z",
+  "latestTradingDate": "2026-05-22",
+  "generatedAt": "2026-05-23T00:17:09.833Z",
   "summary": {
-    "currentReturnPct": 6.29,
-    "latestTradingDayChangePct": 0.71,
+    "currentReturnPct": 6.97,
+    "latestTradingDayChangePct": 0.64,
     "maxDrawdownPct": -9.95,
     "holdingsCount": 24
   },
@@ -15,146 +15,146 @@
     {
       "ticker": "VTI",
       "name": "Vanguard Total Stock Market ETF",
-      "weightPct": 14.54,
-      "currentReturnPct": 10.04
+      "weightPct": 14.52,
+      "currentReturnPct": 10.55
     },
     {
       "ticker": "BOXX",
       "name": "Alpha Architect 1-3 Month Box ETF",
-      "weightPct": 9.54,
-      "currentReturnPct": 0.51
+      "weightPct": 9.49,
+      "currentReturnPct": 0.58
     },
     {
       "ticker": "MSFT",
       "name": "Microsoft",
-      "weightPct": 7.71,
-      "currentReturnPct": 4.85
+      "weightPct": 7.65,
+      "currentReturnPct": 4.72
     },
     {
       "ticker": "AAPL",
       "name": "Apple",
-      "weightPct": 6.71,
-      "currentReturnPct": 12.81
+      "weightPct": 6.75,
+      "currentReturnPct": 14.22
     },
     {
       "ticker": "GRID",
       "name": "First Trust NASDAQ Clean Edge Smart Grid Infrastructure ETF",
-      "weightPct": 6.09,
-      "currentReturnPct": -2.65
+      "weightPct": 6.1,
+      "currentReturnPct": -1.88
     },
     {
       "ticker": "SCHD",
       "name": "Schwab US Dividend Equity ETF",
-      "weightPct": 5.68,
-      "currentReturnPct": 5.93
+      "weightPct": 5.75,
+      "currentReturnPct": 7.84
     },
     {
       "ticker": "VXUS",
       "name": "Vanguard Total International Stock ETF",
-      "weightPct": 4.86,
-      "currentReturnPct": 2.51
+      "weightPct": 4.82,
+      "currentReturnPct": 2.37
     },
     {
       "ticker": "LVHI",
       "name": "Franklin International Low Volatility High Dividend Index ETF",
-      "weightPct": 4.86,
-      "currentReturnPct": 2.46
-    },
-    {
-      "ticker": "TSM",
-      "name": "Taiwan Semiconductor Manufacturing",
-      "weightPct": 4.35,
-      "currentReturnPct": 8.02
+      "weightPct": 4.82,
+      "currentReturnPct": 2.16
     },
     {
       "ticker": "SCHG",
       "name": "Schwab US Large-Cap Growth ETF",
-      "weightPct": 4.33,
-      "currentReturnPct": 1.32
+      "weightPct": 4.31,
+      "currentReturnPct": 1.53
+    },
+    {
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufacturing",
+      "weightPct": 4.3,
+      "currentReturnPct": 7.32
     },
     {
       "ticker": "GPIQ",
       "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
-      "weightPct": 3.96,
-      "currentReturnPct": 3.89
+      "weightPct": 3.95,
+      "currentReturnPct": 4.32
     },
     {
       "ticker": "NVDA",
       "name": "NVIDIA",
-      "weightPct": 3.7,
-      "currentReturnPct": 23.53
-    },
-    {
-      "ticker": "GOOGL",
-      "name": "Alphabet Class A",
-      "weightPct": 3.5,
-      "currentReturnPct": 34.71
+      "weightPct": 3.6,
+      "currentReturnPct": 21.18
     },
     {
       "ticker": "VYM",
       "name": "Vanguard High Dividend Yield ETF",
+      "weightPct": 3.44,
+      "currentReturnPct": 2.85
+    },
+    {
+      "ticker": "GOOGL",
+      "name": "Alphabet Class A",
       "weightPct": 3.43,
-      "currentReturnPct": 1.91
+      "currentReturnPct": 33.08
     },
     {
       "ticker": "AAOI",
       "name": "Applied Optoelectronics",
-      "weightPct": 3.16,
-      "currentReturnPct": 11.08
+      "weightPct": 3.22,
+      "currentReturnPct": 14.02
     },
     {
       "ticker": "QQQ",
       "name": "Invesco QQQ",
-      "weightPct": 2.46,
-      "currentReturnPct": 15
+      "weightPct": 2.45,
+      "currentReturnPct": 15.49
     },
     {
       "ticker": "NOK",
       "name": "Nokia",
-      "weightPct": 2.04,
-      "currentReturnPct": 7.66
+      "weightPct": 2.21,
+      "currentReturnPct": 17.45
     },
     {
       "ticker": "GEV",
       "name": "GE Vernova",
-      "weightPct": 1.89,
-      "currentReturnPct": -0.61
+      "weightPct": 1.86,
+      "currentReturnPct": -1.1
     },
     {
       "ticker": "NASA",
       "name": "Tema Space Innovators ETF",
-      "weightPct": 1.72,
-      "currentReturnPct": 21.09
+      "weightPct": 1.82,
+      "currentReturnPct": 28.51
     },
     {
       "ticker": "CRCL",
       "name": "Circle Internet Group",
-      "weightPct": 1.63,
-      "currentReturnPct": -3.83
+      "weightPct": 1.6,
+      "currentReturnPct": -5.31
     },
     {
       "ticker": "CEG",
       "name": "Constellation Energy",
-      "weightPct": 1.04,
-      "currentReturnPct": -8.89
+      "weightPct": 1.06,
+      "currentReturnPct": -6.26
     },
     {
       "ticker": "XTL",
       "name": "State Street SPDR S&P Telecom ETF",
-      "weightPct": 0.95,
-      "currentReturnPct": 0.37
+      "weightPct": 0.97,
+      "currentReturnPct": 2.68
     },
     {
       "ticker": "TLN",
       "name": "Talen Energy",
-      "weightPct": 0.94,
-      "currentReturnPct": -0.65
+      "weightPct": 0.97,
+      "currentReturnPct": 2.65
     },
     {
       "ticker": "SMR",
       "name": "NuScale Power",
       "weightPct": 0.89,
-      "currentReturnPct": -6.17
+      "currentReturnPct": -5.59
     }
   ],
   "performance": [
@@ -596,7 +596,11 @@
     },
     {
       "date": "2026-05-22",
-      "returnPct": 6.2929
+      "returnPct": 6.9686
+    },
+    {
+      "date": "2026-05-23",
+      "returnPct": 6.9686
     }
   ],
   "failedTickers": []
