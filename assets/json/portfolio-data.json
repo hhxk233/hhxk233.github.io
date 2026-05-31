@@ -1,10 +1,10 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-05-30",
+  "asOfDate": "2026-05-31",
   "firstInvestmentDate": "2026-02-02",
   "latestTradingDate": "2026-05-29",
-  "generatedAt": "2026-05-30T01:23:10.907Z",
+  "generatedAt": "2026-05-31T00:17:07.858Z",
   "summary": {
     "currentReturnPct": 7.78,
     "latestTradingDayChangePct": -0.03,
@@ -628,6 +628,10 @@
     },
     {
       "date": "2026-05-30",
+      "returnPct": 7.7794
+    },
+    {
+      "date": "2026-05-31",
       "returnPct": 7.7794
     }
   ],
