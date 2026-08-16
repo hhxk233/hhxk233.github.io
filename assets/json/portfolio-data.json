@@ -1,14 +1,14 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-08-15",
+  "asOfDate": "2026-08-16",
   "firstInvestmentDate": "2026-02-02",
   "latestTradingDate": "2026-08-14",
-  "generatedAt": "2026-08-15T23:37:33.820Z",
+  "generatedAt": "2026-08-16T23:36:58.171Z",
   "summary": {
     "currentReturnPct": 7.38,
     "latestTradingDayChangePct": 0.23,
-    "maxDrawdownPct": -12.12,
+    "maxDrawdownPct": -21.54,
     "holdingsCount": 24
   },
   "holdings": [
@@ -836,11 +836,11 @@
     },
     {
       "date": "2026-07-21",
-      "returnPct": -3.3232
+      "returnPct": -14.239
     },
     {
       "date": "2026-07-22",
-      "returnPct": -3.9373
+      "returnPct": -11.1921
     },
     {
       "date": "2026-07-23",
@@ -876,15 +876,15 @@
     },
     {
       "date": "2026-07-31",
-      "returnPct": -3.9476
+      "returnPct": -11.0998
     },
     {
       "date": "2026-08-01",
-      "returnPct": -3.9476
+      "returnPct": -11.0998
     },
     {
       "date": "2026-08-02",
-      "returnPct": -3.9476
+      "returnPct": -11.0998
     },
     {
       "date": "2026-08-03",
@@ -936,6 +936,10 @@
     },
     {
       "date": "2026-08-15",
+      "returnPct": 7.3848
+    },
+    {
+      "date": "2026-08-16",
       "returnPct": 7.3848
     }
   ],
