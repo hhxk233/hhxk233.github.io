@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { gzipSync } from "node:zlib";
 
 import {
   applyTradeToOpenPositions,
@@ -7,6 +8,7 @@ import {
   buildPortfolioPerformanceSeries,
   buildPortfolioPriceLookups,
   buildSanitizedPortfolioPayload,
+  decodePortfolioCsvBase64,
   parsePortfolioTradeRows,
 } from "./portfolio-lib.mjs";
 
@@ -17,6 +19,15 @@ function history(points) {
 function round6(value) {
   return Number(value.toFixed(6));
 }
+
+test("decodePortfolioCsvBase64 accepts plain and gzip-compressed CSV", () => {
+  const csv = '"Activity Date","Instrument"\n"8/26/2026","VOO"\n';
+  const plain = Buffer.from(csv, "utf8").toString("base64");
+  const compressed = gzipSync(Buffer.from(csv, "utf8")).toString("base64");
+
+  assert.equal(decodePortfolioCsvBase64(plain), csv);
+  assert.equal(decodePortfolioCsvBase64(compressed), csv);
+});
 
 test("parsePortfolioTradeRows ignores non-trade cash flows and footer rows", () => {
   const csv = `"Activity Date","Process Date","Settle Date","Instrument","Description","Trans Code","Quantity","Price","Amount"
@@ -36,6 +47,21 @@ Dividend Reinvestment","Buy","0.2000","$25.00","($5.00)"
     ["AAA", "CCC"]
   );
   assert.equal(trades[1].displayName, "Core Corp");
+});
+
+test("parsePortfolioTradeRows restores chronological order for same-day reverse exports", () => {
+  const csv = `"Activity Date","Process Date","Settle Date","Instrument","Description","Trans Code","Quantity","Price","Amount"
+"7/13/2026","7/13/2026","7/14/2026","SOXX","iShares Semiconductor ETF","Sell","0.180807","$551.09","$99.64"
+"7/13/2026","7/13/2026","7/14/2026","SOXX","iShares Semiconductor ETF","Buy","0.180807","$553.07","($100.00)"
+`;
+
+  const trades = parsePortfolioTradeRows(csv);
+
+  assert.deepEqual(
+    trades.map((trade) => trade.transCode),
+    ["Buy", "Sell"]
+  );
+  assert.equal(buildOpenPositionsByTicker(trades, "2026-07-13").has("SOXX"), false);
 });
 
 test("FIFO lot accounting handles multiple buys, partial sells, and full sells", () => {

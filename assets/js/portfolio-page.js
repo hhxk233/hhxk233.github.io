@@ -599,16 +599,21 @@
     if (!isoDate) {
       return "Date unavailable";
     }
-    return DATE_FORMATTER.format(new Date(`${isoDate}T00:00:00Z`));
+    return DATE_FORMATTER.format(parseIsoCalendarDate(isoDate));
   }
 
   function formatAxisDate(isoDate, rangeKey) {
-    const date = new Date(`${isoDate}T00:00:00Z`);
+    const date = parseIsoCalendarDate(isoDate);
     const shortFormatter =
       rangeKey === "ALL"
         ? new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" })
         : new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
     return shortFormatter.format(date);
+  }
+
+  function parseIsoCalendarDate(isoDate) {
+    const [year, month, day] = String(isoDate).split("-").map(Number);
+    return new Date(year, month - 1, day);
   }
 
   function escapeHtml(value) {

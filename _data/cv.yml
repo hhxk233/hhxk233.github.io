@@ -4,30 +4,35 @@
     - name: Full Name
       value: Yuheng Wang
     - name: Affiliation
-      value: College of Engineering, University of Michigan
+      value: Applied Physics, Rice University
     - name: Email
-      value: yuhengwa@umich.edu
+      value: yw281@rice.edu
+    - name: Location
+      value: Houston, TX
     - name: GitHub
       value: hhxk233
 
 - title: Research Interests
   type: list
   contents:
-    - "I am broadly interested in the intersection of physics and computation. My primary focus lies in quantum physics and non-Hermitian photonics, with an emphasis on understanding fundamental physical principles through simulation and modeling. Leveraging my dual background in Engineering Physics and Electrical & Computer Engineering, I am also interested in developing and applying artificial intelligence and machine learning methods to accelerate scientific discovery, such as enhancing physical simulations, analyzing complex experimental data, and bridging theoretical models with experimental observables."
+    - "I am broadly interested in the intersection of physics and computation. My primary focus lies in quantum physics, cavity QED, and photonics, with an emphasis on understanding fundamental physical principles through simulation and modeling. Leveraging my background in Engineering Physics and Electrical & Computer Engineering, I am also interested in developing and applying artificial intelligence and machine learning methods to accelerate scientific discovery, such as enhancing physical simulations, analyzing complex experimental data, and bridging theoretical models with experimental observables."
 
 - title: Education
   type: time_table
   contents:
-    - title: Undergraduate in Engineering Physics, minor in Computer Science
+    - title: Ph.D. in Applied Physics
+      institution: Rice University, Houston, USA
+      year: Aug. 2026 - Present
+    - title: Engineering Physics, minor in Computer Science
       institution: University of Michigan, Ann Arbor, USA
-      year: Sep. 2024 - Current (Expected to graduate in May 2026)
+      year: Sep. 2024 - May 2026
       description:
-        - "GPA: 3.96/4.00"
-    - title: Undergraduate in Electrical and Computer Engineering (Dual Degree)
+        - "GPA: 3.96/4.00; Summa Cum Laude"
+    - title: Electrical and Computer Engineering
       institution: Shanghai Jiao Tong University, Shanghai, China
-      year: Sep. 2022 - Current (Expected to graduate in July 2026)
+      year: Sep. 2022 - Aug. 2026
       description:
-        - "GPA: 3.77/4.00"
+        - "GPA: 3.77/4.00; Outstanding Graduate"
 
 - title: Research Experience
   type: time_table
@@ -129,12 +134,15 @@
 - title: Technical Skills
   type: list
   contents:
-    - "Languages: C, C++, Python, Elm, Bash"
-    - "Miscellaneous: LaTeX, Scratch, Verilog, Russian"
+    - "Tools and methods: Lumerical, MATLAB, PyTorch, HPC, scientific computing"
+    - "Miscellaneous: LaTeX, Cadence, Verilog, Russian"
 
 - title: Achievements
   type: time_table
   contents:
+    - year: 2026
+      items:
+        - James B. Angell Scholar, University of Michigan
     - year: 2025
       items:
         - Michigan Engineering Continuing Student Scholarship (Roger King Scholarship)
