@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { gunzipSync } from "node:zlib";
 
 export const PORTFOLIO_EPSILON = 1e-8;
 
@@ -7,6 +8,12 @@ const REQUIRED_COLUMNS = ["Activity Date", "Instrument", "Description", "Trans C
 const OPTIONAL_COLUMNS = ["Price", "Amount"];
 const BUY_CODE = "Buy";
 const SELL_CODE = "Sell";
+
+export function decodePortfolioCsvBase64(encoded) {
+  const decoded = Buffer.from(encoded, "base64");
+  const isGzip = decoded.length >= 2 && decoded[0] === 0x1f && decoded[1] === 0x8b;
+  return (isGzip ? gunzipSync(decoded) : decoded).toString("utf8");
+}
 
 export function createErrorPayload(stage, message, { baselineDate, asOfDate, generatedAt = new Date().toISOString() } = {}) {
   return {
@@ -526,7 +533,9 @@ function compareTradeRows(left, right) {
     return left.activityDate.localeCompare(right.activityDate);
   }
 
-  return left.sourceOrder - right.sourceOrder;
+  // Robinhood exports newest rows first, including transactions that share a date.
+  // Reverse the source order so FIFO accounting replays same-day trades chronologically.
+  return right.sourceOrder - left.sourceOrder;
 }
 
 function extractDisplayName(description) {

@@ -4,6 +4,7 @@ import {
   buildSanitizedPortfolioPayload,
   createEmptyPayload,
   createErrorPayload,
+  decodePortfolioCsvBase64,
   loadMarketHistoriesForTickers,
   parsePortfolioTradeRows,
   shiftIsoDate,
@@ -104,7 +105,7 @@ async function loadCsvText() {
   }
 
   if (INPUT_CSV_B64) {
-    return Buffer.from(INPUT_CSV_B64, "base64").toString("utf8");
+    return decodePortfolioCsvBase64(INPUT_CSV_B64);
   }
 
   return fs.readFile(INPUT_CSV, "utf8");
