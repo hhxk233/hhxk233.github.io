@@ -1,14 +1,14 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-09-03",
+  "asOfDate": "2026-09-04",
   "firstInvestmentDate": "2026-02-02",
-  "latestTradingDate": "2026-09-02",
-  "generatedAt": "2026-09-03T01:10:17.722Z",
+  "latestTradingDate": "2026-09-03",
+  "generatedAt": "2026-09-04T01:03:07.837Z",
   "summary": {
-    "currentReturnPct": -98.66,
-    "latestTradingDayChangePct": -98.73,
-    "maxDrawdownPct": -98.79,
+    "currentReturnPct": -98.62,
+    "latestTradingDayChangePct": -98.7,
+    "maxDrawdownPct": -98.75,
     "holdingsCount": 20
   },
   "holdings": [
@@ -16,7 +16,7 @@
       "ticker": "RVII",
       "name": "Robinhood Ventures Fund II",
       "weightPct": 100,
-      "currentReturnPct": -6.61
+      "currentReturnPct": -3.53
     },
     {
       "ticker": "VTI",
@@ -964,15 +964,15 @@
     },
     {
       "date": "2026-08-28",
-      "returnPct": -39.6663
+      "returnPct": 6.2898
     },
     {
       "date": "2026-08-29",
-      "returnPct": -39.6663
+      "returnPct": 6.2898
     },
     {
       "date": "2026-08-30",
-      "returnPct": -39.6663
+      "returnPct": 6.2898
     },
     {
       "date": "2026-08-31",
@@ -984,11 +984,15 @@
     },
     {
       "date": "2026-09-02",
-      "returnPct": -98.6637
+      "returnPct": 5.9788
     },
     {
       "date": "2026-09-03",
-      "returnPct": -98.6637
+      "returnPct": -98.6196
+    },
+    {
+      "date": "2026-09-04",
+      "returnPct": -98.6196
     }
   ],
   "failedTickers": []
