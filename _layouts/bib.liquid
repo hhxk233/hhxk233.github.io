@@ -266,7 +266,11 @@
       {% endif %}
 
       {% assign entry_has_google_scholar_badge = false %}
-      {% if entry.google_scholar_id %}
+      {% if entry.google_scholar_id
+        and entry.google_scholar_id != ''
+        and site.data.socials.scholar_userid
+        and site.data.socials.scholar_userid != ''
+      %}
         {% assign entry_has_google_scholar_badge = true %}
       {% endif %}
 

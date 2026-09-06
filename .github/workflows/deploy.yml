@@ -72,6 +72,12 @@ on:
 permissions:
   contents: write
 
+# All publishing triggers share one queue because they write to gh-pages.
+# PR builds have separate groups and cannot interrupt a production deployment.
+concurrency:
+  group: deploy-site-${{ github.event_name == 'pull_request' && github.ref || 'gh-pages' }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   deploy:
     if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
