@@ -7,14 +7,14 @@ first_name: Yuheng
 middle_name:
 last_name: Wang
 contact_note: >
-  Undergraduate in Engineering Physics at the University of Michigan; dual-degree ECE at SJTU.
+  Ph.D. student in Applied Physics at Rice University.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Yuheng Wang — Engineering Physics and ECE undergraduate. Research in quantum physics,
-  non-Hermitian photonics, and AI/ML for scientific discovery.
+  Yuheng Wang - Applied Physics Ph.D. student at Rice University. Research in quantum physics,
+  cavity QED, photonics, and AI/ML for scientific discovery.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+keywords: Yuheng Wang, applied physics, Rice University, quantum physics, cavity QED, photonics, machine learning
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️ # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 

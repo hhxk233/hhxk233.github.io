@@ -1,18 +1,18 @@
 {
   "basics": {
     "name": "Yuheng Wang",
-    "label": "Engineering Physics Undergraduate; CS Minor; ECE Dual Degree",
+    "label": "Ph.D. Student in Applied Physics",
     "image": "",
-    "email": "yuhengwa@umich.edu",
+    "email": "yw281@rice.edu",
     "phone": "",
     "url": "https://hhxk233.github.io",
-    "summary": "Engineering Physics undergraduate at the University of Michigan with a Computer Science minor and dual-degree training in Electrical and Computer Engineering at Shanghai Jiao Tong University. Interests: quantum physics, non-Hermitian photonics, and AI/ML for scientific discovery.",
+    "summary": "Applied Physics Ph.D. student at Rice University with undergraduate training in Engineering Physics, Computer Science, and Electrical and Computer Engineering. Interests: quantum physics, cavity QED, photonics, and AI/ML for scientific discovery.",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Ann Arbor",
+      "city": "Houston",
       "countryCode": "US",
-      "region": "Michigan"
+      "region": "Texas"
     },
     "profiles": [
       {
@@ -73,14 +73,25 @@
   "volunteer": [],
   "education": [
     {
+      "institution": "Rice University, Houston, USA",
+      "location": "Houston, TX",
+      "url": "https://www.rice.edu/",
+      "area": "Applied Physics",
+      "studyType": "Ph.D.",
+      "startDate": "2026-08-01",
+      "endDate": "",
+      "score": "",
+      "courses": []
+    },
+    {
       "institution": "University of Michigan, Ann Arbor, USA",
       "location": "Ann Arbor, MI",
       "url": "https://umich.edu",
       "area": "Engineering Physics (Minor in Computer Science)",
-      "studyType": "BSE (expected)",
+      "studyType": "B.S.E.",
       "startDate": "2024-09-01",
       "endDate": "2026-05-01",
-      "score": "GPA 3.96/4.00",
+      "score": "GPA 3.96/4.00; Summa Cum Laude",
       "courses": []
     },
     {
@@ -88,14 +99,21 @@
       "location": "Shanghai, China",
       "url": "https://en.sjtu.edu.cn/",
       "area": "Electrical and Computer Engineering (Dual Degree)",
-      "studyType": "BEng (expected)",
+      "studyType": "B.Eng.",
       "startDate": "2022-09-01",
-      "endDate": "2026-07-01",
-      "score": "GPA 3.77/4.00",
+      "endDate": "2026-08-01",
+      "score": "GPA 3.77/4.00; Outstanding Graduate",
       "courses": []
     }
   ],
   "awards": [
+    {
+      "title": "James B. Angell Scholar",
+      "date": "2026-01-01",
+      "awarder": "University of Michigan",
+      "url": "",
+      "summary": ""
+    },
     {
       "title": "Michigan Engineering Continuing Student Scholarship (Roger King Scholarship)",
       "date": "2025-01-01",
@@ -158,22 +176,22 @@
   ],
   "skills": [
     {
-      "name": "Programming",
+      "name": "Tools and Methods",
       "level": "",
       "icon": "",
-      "keywords": ["C", "C++", "Python", "Elm", "Bash"]
+      "keywords": ["Lumerical", "MATLAB", "PyTorch", "HPC", "Scientific computing"]
     },
     {
-      "name": "Tools",
+      "name": "Miscellaneous",
       "level": "",
       "icon": "",
-      "keywords": ["LaTeX", "Scratch", "Verilog"]
+      "keywords": ["LaTeX", "Cadence", "Verilog", "Russian"]
     },
     {
       "name": "Domains",
       "level": "",
       "icon": "",
-      "keywords": ["Quantum physics", "Non-Hermitian photonics", "AI/ML for science"]
+      "keywords": ["Quantum physics", "Cavity QED", "Photonics", "AI/ML for science"]
     }
   ],
   "languages": [
@@ -187,7 +205,7 @@
     {
       "name": "Physics and Computation",
       "icon": "",
-      "keywords": ["Quantum physics", "Non-Hermitian photonics", "AI/ML for scientific discovery"]
+      "keywords": ["Quantum physics", "Cavity QED", "Photonics", "AI/ML for scientific discovery"]
     }
   ],
   "references": [],
