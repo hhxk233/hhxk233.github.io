@@ -1,94 +1,70 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-09-17",
+  "asOfDate": "2026-09-18",
   "firstInvestmentDate": "2026-02-02",
-  "latestTradingDate": "2026-09-16",
-  "generatedAt": "2026-09-17T01:30:12.465Z",
+  "latestTradingDate": "2026-09-17",
+  "generatedAt": "2026-09-18T01:18:48.551Z",
   "summary": {
-    "currentReturnPct": -23.67,
-    "latestTradingDayChangePct": -27.36,
-    "maxDrawdownPct": -73.09,
+    "currentReturnPct": -98.67,
+    "latestTradingDayChangePct": -98.73,
+    "maxDrawdownPct": -99.53,
     "holdingsCount": 20
   },
   "holdings": [
     {
+      "ticker": "RVII",
+      "name": "Robinhood Ventures Fund II",
+      "weightPct": 100,
+      "currentReturnPct": -6.73
+    },
+    {
       "ticker": "VTI",
       "name": "Vanguard Morningstar Total Stock Market ETF",
-      "weightPct": 30.03,
-      "currentReturnPct": 7.93
-    },
-    {
-      "ticker": "VXUS",
-      "name": "Vanguard Total International Stock ETF",
-      "weightPct": 10.19,
-      "currentReturnPct": 2.21
-    },
-    {
-      "ticker": "AAPL",
-      "name": "Apple",
-      "weightPct": 9.9,
-      "currentReturnPct": 22.96
+      "weightPct": 0,
+      "currentReturnPct": -100
     },
     {
       "ticker": "SCHD",
       "name": "Schwab US Dividend Equity ETF",
-      "weightPct": 8.44,
-      "currentReturnPct": 10.5
-    },
-    {
-      "ticker": "GRID",
-      "name": "First Trust NASDAQ Clean Edge Smart Grid Infrastructure ETF",
-      "weightPct": 7.55,
-      "currentReturnPct": -11.17
-    },
-    {
-      "ticker": "TSM",
-      "name": "Taiwan Semiconductor Manufacturing",
-      "weightPct": 7.3,
-      "currentReturnPct": 8.18
-    },
-    {
-      "ticker": "NVDA",
-      "name": "NVIDIA",
-      "weightPct": 6.44,
-      "currentReturnPct": 15.27
-    },
-    {
-      "ticker": "SCHG",
-      "name": "Schwab US Large-Cap Growth ETF",
-      "weightPct": 5.97,
-      "currentReturnPct": 3.24
+      "weightPct": 0,
+      "currentReturnPct": -100
     },
     {
       "ticker": "GOOGL",
       "name": "Alphabet Class A",
-      "weightPct": 4.89,
-      "currentReturnPct": 15.82
+      "weightPct": 0,
+      "currentReturnPct": -100
+    },
+    {
+      "ticker": "AAPL",
+      "name": "Apple",
+      "weightPct": 0,
+      "currentReturnPct": -100
     },
     {
       "ticker": "VYM",
       "name": "Vanguard High Dividend Yield ETF",
-      "weightPct": 4.75,
-      "currentReturnPct": 3.53
+      "weightPct": 0,
+      "currentReturnPct": -100
     },
     {
-      "ticker": "VOO",
-      "name": "Vanguard S&P 500 ETF",
-      "weightPct": 1.95,
-      "currentReturnPct": 1.35
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "weightPct": 0,
+      "currentReturnPct": -100
     },
     {
-      "ticker": "RVII",
-      "name": "Robinhood Ventures Fund II",
-      "weightPct": 1.76,
-      "currentReturnPct": -6.08
+      "ticker": "VXUS",
+      "name": "Vanguard Total International Stock ETF",
+      "weightPct": 0,
+      "currentReturnPct": -100
     },
     {
-      "ticker": "CNC",
-      "name": "Centene",
-      "weightPct": 0.85,
-      "currentReturnPct": -2.03
+      "ticker": "TSM",
+      "name": "Taiwan Semiconductor Manufacturing",
+      "weightPct": 0,
+      "currentReturnPct": -100
     },
     {
       "ticker": "LVHI",
@@ -103,6 +79,18 @@
       "currentReturnPct": -100
     },
     {
+      "ticker": "SCHG",
+      "name": "Schwab US Large-Cap Growth ETF",
+      "weightPct": 0,
+      "currentReturnPct": -100
+    },
+    {
+      "ticker": "GRID",
+      "name": "First Trust NASDAQ Clean Edge Smart Grid Infrastructure ETF",
+      "weightPct": 0,
+      "currentReturnPct": -100
+    },
+    {
       "ticker": "QQQM",
       "name": "Invesco Exchange-Traded Fund Trust II Invesco NASDAQ 100 ETF",
       "weightPct": 0,
@@ -111,6 +99,12 @@
     {
       "ticker": "SPCX",
       "name": "SpaceX",
+      "weightPct": 0,
+      "currentReturnPct": -100
+    },
+    {
+      "ticker": "VOO",
+      "name": "Vanguard S&P 500 ETF",
       "weightPct": 0,
       "currentReturnPct": -100
     },
@@ -129,6 +123,12 @@
     {
       "ticker": "BTSG",
       "name": "BrightSpring Health Service",
+      "weightPct": 0,
+      "currentReturnPct": -100
+    },
+    {
+      "ticker": "CNC",
+      "name": "Centene",
       "weightPct": 0,
       "currentReturnPct": -100
     }
@@ -1040,11 +1040,15 @@
     },
     {
       "date": "2026-09-16",
-      "returnPct": -23.6735
+      "returnPct": 5.0405
     },
     {
       "date": "2026-09-17",
-      "returnPct": -23.6735
+      "returnPct": -98.6654
+    },
+    {
+      "date": "2026-09-18",
+      "returnPct": -98.6654
     }
   ],
   "failedTickers": []
