@@ -1,13 +1,13 @@
 {
   "status": "ready",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-09-28",
+  "asOfDate": "2026-09-29",
   "firstInvestmentDate": "2026-02-02",
-  "latestTradingDate": "2026-09-25",
-  "generatedAt": "2026-09-28T01:44:25.598Z",
+  "latestTradingDate": "2026-09-28",
+  "generatedAt": "2026-09-29T02:36:04.469Z",
   "summary": {
-    "currentReturnPct": 7.3,
-    "latestTradingDayChangePct": 0.47,
+    "currentReturnPct": 6.68,
+    "latestTradingDayChangePct": -0.57,
     "maxDrawdownPct": -66.17,
     "holdingsCount": 20
   },
@@ -15,122 +15,122 @@
     {
       "ticker": "VTI",
       "name": "Vanguard Morningstar Total Stock Market ETF",
-      "weightPct": 21.85,
-      "currentReturnPct": 10.4
+      "weightPct": 21.75,
+      "currentReturnPct": 9.26
     },
     {
       "ticker": "BOXX",
       "name": "Alpha Architect 1-3 Month Box ETF",
-      "weightPct": 8.27,
-      "currentReturnPct": 0.7
+      "weightPct": 8.32,
+      "currentReturnPct": 0.68
     },
     {
       "ticker": "VXUS",
       "name": "Vanguard Total International Stock ETF",
-      "weightPct": 7.33,
-      "currentReturnPct": 3.34
+      "weightPct": 7.32,
+      "currentReturnPct": 2.62
     },
     {
       "ticker": "AAPL",
       "name": "Apple",
-      "weightPct": 7.22,
-      "currentReturnPct": 26.17
+      "weightPct": 7.21,
+      "currentReturnPct": 25.18
     },
     {
       "ticker": "QQQM",
       "name": "Invesco Exchange-Traded Fund Trust II Invesco NASDAQ 100 ETF",
-      "weightPct": 6.35,
-      "currentReturnPct": 5.36
+      "weightPct": 6.32,
+      "currentReturnPct": 4.24
     },
     {
       "ticker": "SCHD",
       "name": "Schwab US Dividend Equity ETF",
       "weightPct": 5.89,
-      "currentReturnPct": 8.44
+      "currentReturnPct": 7.79
     },
     {
       "ticker": "TSM",
       "name": "Taiwan Semiconductor Manufacturing",
-      "weightPct": 5.6,
-      "currentReturnPct": 16.7
+      "weightPct": 5.66,
+      "currentReturnPct": 17.29
     },
     {
       "ticker": "GRID",
       "name": "First Trust NASDAQ Clean Edge Smart Grid Infrastructure ETF",
-      "weightPct": 5.53,
-      "currentReturnPct": -8.46
-    },
-    {
-      "ticker": "LVHI",
-      "name": "Franklin International Low Volatility High Dividend Index ETF",
-      "weightPct": 4.83,
-      "currentReturnPct": 4.29
+      "weightPct": 5.5,
+      "currentReturnPct": -9.5
     },
     {
       "ticker": "NVDA",
       "name": "NVIDIA",
-      "weightPct": 4.82,
-      "currentReturnPct": 21.29
+      "weightPct": 4.93,
+      "currentReturnPct": 23.33
+    },
+    {
+      "ticker": "LVHI",
+      "name": "Franklin International Low Volatility High Dividend Index ETF",
+      "weightPct": 4.85,
+      "currentReturnPct": 4.07
     },
     {
       "ticker": "SCHG",
       "name": "Schwab US Large-Cap Growth ETF",
-      "weightPct": 4.4,
-      "currentReturnPct": 7.11
+      "weightPct": 4.39,
+      "currentReturnPct": 6.2
     },
     {
       "ticker": "GPIQ",
       "name": "Goldman Sachs Nasdaq-100 Premium Income ETF",
-      "weightPct": 3.9,
-      "currentReturnPct": 4.44
+      "weightPct": 3.89,
+      "currentReturnPct": 3.61
     },
     {
       "ticker": "GOOGL",
       "name": "Alphabet Class A",
-      "weightPct": 3.49,
-      "currentReturnPct": 16.18
+      "weightPct": 3.5,
+      "currentReturnPct": 15.78
     },
     {
       "ticker": "VYM",
       "name": "Vanguard High Dividend Yield ETF",
       "weightPct": 3.33,
-      "currentReturnPct": 2.17
+      "currentReturnPct": 1.57
     },
     {
       "ticker": "NASA",
       "name": "Tema Space Innovators ETF",
-      "weightPct": 1.99,
-      "currentReturnPct": -1.75
+      "weightPct": 1.98,
+      "currentReturnPct": -2.99
     },
     {
       "ticker": "VOO",
       "name": "Vanguard S&P 500 ETF",
       "weightPct": 1.42,
-      "currentReturnPct": 3.92
+      "currentReturnPct": 2.87
     },
     {
       "ticker": "SPCX",
       "name": "SpaceX",
-      "weightPct": 1.36,
-      "currentReturnPct": 10.13
+      "weightPct": 1.33,
+      "currentReturnPct": 7.76
     },
     {
       "ticker": "RVII",
       "name": "Robinhood Ventures Fund II",
       "weightPct": 1.21,
-      "currentReturnPct": -9.24
+      "currentReturnPct": -9.98
     },
     {
       "ticker": "BTSG",
       "name": "BrightSpring Health Service",
       "weightPct": 0.64,
-      "currentReturnPct": -18.79
+      "currentReturnPct": -18.87
     },
     {
       "ticker": "CNC",
       "name": "Centene",
-      "weightPct": 0.56,
-      "currentReturnPct": -8.25
+      "weightPct": 0.57,
+      "currentReturnPct": -7.2
     }
   ],
   "performance": [
@@ -1088,7 +1088,11 @@
     },
     {
       "date": "2026-09-28",
-      "returnPct": 7.3
+      "returnPct": 6.6836
+    },
+    {
+      "date": "2026-09-29",
+      "returnPct": 6.6836
     }
   ],
   "failedTickers": []
