@@ -8,7 +8,15 @@ category: ML
 giscus_comments: false
 ---
 
-> **Bachelor's capstone thesis, Shanghai Jiao Tong University, August 2026.**<br> > _Multimodal-Large-Language-Model-Driven Wearable Manufacturing Safety Inspection System_<br> > **Team:** Yutong Wu, Mengru Wang, Yiyang Wang, Lidi Wang, and **Yuheng Wang**.<br> > **Supervisor:** Prof. Qianli Chen, Global College (formerly UM-SJTU Joint Institute).<br> > **Sponsor:** Prof. Yifei Zhu.
+<blockquote>
+  <p>
+    <strong>Bachelor's capstone thesis, Shanghai Jiao Tong University, August 2026.</strong><br>
+    <em>Multimodal-Large-Language-Model-Driven Wearable Manufacturing Safety Inspection System</em><br>
+    <strong>Team:</strong> Yutong Wu, Mengru Wang, Yiyang Wang, Lidi Wang, and <strong>Yuheng Wang</strong>.<br>
+    <strong>Supervisor:</strong> Prof. Qianli Chen, Global College (formerly UM-SJTU Joint Institute).<br>
+    <strong>Sponsor:</strong> Prof. Yifei Zhu.
+  </p>
+</blockquote>
 
 Our team built a wearable inspection prototype that captures first-person images, identifies potential hazards, and returns the violated rules with a short explanation. The project covers construction sites, oil-and-gas pipelines, and chemical laboratories, combining compact vision-language models with an AR interface.
 
