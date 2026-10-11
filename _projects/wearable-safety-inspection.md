@@ -8,11 +8,7 @@ category: ML
 giscus_comments: false
 ---
 
-> **Bachelor's capstone thesis, Shanghai Jiao Tong University, August 2026.**<br>
-> _Multimodal-Large-Language-Model-Driven Wearable Manufacturing Safety Inspection System_<br>
-> **Team:** Yutong Wu, Mengru Wang, Yiyang Wang, Lidi Wang, and **Yuheng Wang**.<br>
-> **Supervisor:** Prof. Qianli Chen, Global College (formerly UM-SJTU Joint Institute).<br>
-> **Sponsor:** Prof. Yifei Zhu.
+> **Bachelor's capstone thesis, Shanghai Jiao Tong University, August 2026.**<br> > _Multimodal-Large-Language-Model-Driven Wearable Manufacturing Safety Inspection System_<br> > **Team:** Yutong Wu, Mengru Wang, Yiyang Wang, Lidi Wang, and **Yuheng Wang**.<br> > **Supervisor:** Prof. Qianli Chen, Global College (formerly UM-SJTU Joint Institute).<br> > **Sponsor:** Prof. Yifei Zhu.
 
 Our team built a wearable inspection prototype that captures first-person images, identifies potential hazards, and returns the violated rules with a short explanation. The project covers construction sites, oil-and-gas pipelines, and chemical laboratories, combining compact vision-language models with an AR interface.
 
@@ -36,11 +32,11 @@ The thesis reports the following held-out results. These are separate task metri
 
 <div class="table-responsive" markdown="1">
 
-| Task | Fine-tuned model | Evaluation set | Result |
-| --- | --- | --- | --- |
-| Construction-rule violations | Gemma3-4B, v2 | 3,004 real images | **55.9% micro-F1** |
-| Pipeline safety-level classification | Qwen2.5-VL-3B | 245 real images | **92.1% micro-F1** |
-| Laboratory hazard detection | Qwen2.5-VL-3B | 164 synthetic images | **96.8% hazardous-class F1** |
+| Task                                 | Fine-tuned model | Evaluation set       | Result                       |
+| ------------------------------------ | ---------------- | -------------------- | ---------------------------- |
+| Construction-rule violations         | Gemma3-4B, v2    | 3,004 real images    | **55.9% micro-F1**           |
+| Pipeline safety-level classification | Qwen2.5-VL-3B    | 245 real images      | **92.1% micro-F1**           |
+| Laboratory hazard detection          | Qwen2.5-VL-3B    | 164 synthetic images | **96.8% hazardous-class F1** |
 
 </div>
 <div class="caption">Reported benchmark results from thesis Tables 6-1 to 6-3. Laboratory results measure performance on the synthetic LabSafety-v1 distribution.</div>
