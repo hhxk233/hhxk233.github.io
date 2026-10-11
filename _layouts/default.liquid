@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang }}">
+<html lang="en" data-theme="light">
   <!-- Head -->
   <head>
     {% if page.redirect %}
@@ -12,16 +12,35 @@
       {% endif %}
       <meta http-equiv="refresh" content="3; url={{ redirect }}">
     {% endif %}
+    <script>
+      // Start with the light interface; keep a returning visitor's preference.
+      try {
+        if (!['light', 'dark', 'system'].includes(localStorage.getItem('theme'))) {
+          localStorage.setItem('theme', 'light');
+        }
+      } catch (error) {
+        // The page remains readable when browser storage is unavailable.
+      }
+    </script>
     {% include head.liquid %}
   </head>
 
   <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+  <body class="field-site {% if page.layout == 'about' %}field-home{% endif %} {% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <!-- Header -->
     {% include header.liquid %}
 
     <!-- Content -->
-    <div class="container mt-5" role="main">
+    <main id="main-content" class="container mt-5 site-main">
+      <div class="page-coordinate" aria-hidden="true">
+        <span
+          >YW <span class="coordinate-divider">/</span>
+          {% if page.permalink == '/' %}PROFILE{% else %}{{ page.title | upcase }}{% endif -%}
+        </span>
+        <span class="coordinate-rule"></span>
+        <span class="coordinate-end">PHYSICS &amp; COMPUTATION</span>
+      </div>
       {% if page.toc and page.toc.sidebar %}
         {% if page.toc.sidebar == 'right' %}
           <div class="row">
@@ -45,12 +64,17 @@
       {% else %}
         {{ content }}
       {% endif %}
-    </div>
+    </main>
 
     <!-- Footer -->
     {% include footer.liquid %}
 
     <!-- JavaScripts -->
     {% include scripts.liquid %}
+    <script
+      defer
+      src="{{ '/assets/js/site-language.js' | relative_url }}"
+      data-translations-url="{{ '/assets/json/site-translations.json' | relative_url }}"
+    ></script>
   </body>
 </html>

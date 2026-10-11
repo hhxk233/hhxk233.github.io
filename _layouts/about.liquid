@@ -1,83 +1,104 @@
 ---
 layout: default
 ---
-<div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-        {% if site.chinese_name %}
-          <span class="chinese-name" lang="zh-Hans">（{{ site.chinese_name }}）</span>
-        {% endif %}
-      {% else %}
-        {{ site.title }}
+<div class="ak-home">
+  <section class="ak-intro" aria-label="Personal homepage">
+    <header class="ak-identity">
+      {% if page.profile.image %}
+        {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+        <div class="ak-portrait">
+          {% include figure.liquid loading="eager" path=profile_image_path class="img-fluid" sizes="(min-width: 900px) 340px, 80vw" alt="Portrait of Yuheng Wang" cache_bust=true %}
+        </div>
       {% endif %}
-    </h1>
-    <p class="desc">{{ page.subtitle }}</p>
-  </header>
-
-  <article>
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
+      <div class="ak-nameplate">
+        <span class="ak-eyebrow" data-i18n="home.profile">Researcher profile</span>
+        <h1>
+          {{ site.first_name }}
+          {{ site.last_name }}
+          <span lang="zh-Hans">{{ site.chinese_name }}</span>
+        </h1>
+        <p>{{ page.subtitle }}</p>
+        <div class="ak-contact">
+          <a href="mailto:yw281@rice.edu">Email <span aria-hidden="true">↗</span></a
+          ><a href="https://github.com/hhxk233">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
-    {% endif %}
-
-    <div class="clearfix">{{ content }}</div>
-
-    <!-- News -->
-    {% if page.announcements and page.announcements.enabled %}
-      <h2>
-        <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
-      </h2>
-      {% include news.liquid limit=true %}
-    {% endif %}
-
-    <!-- Latest posts -->
-    {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
-
-    <!-- Selected papers -->
+    </header>
+    <div class="ak-overview">
+      <div class="ak-overview-heading">
+        <span class="ak-eyebrow">Rice University <span aria-hidden="true">/</span> Houston, TX</span>
+        <h2>
+          <span>Physics &amp;</span><br>
+          <span>computation.</span>
+        </h2>
+        <p>Exploring quantum physics, cavity QED, and photonics through modeling, simulation, and experiment.</p>
+      </div>
+      <nav class="ak-directory" aria-label="Explore my website">
+        <a class="ak-directory-item ak-directory-primary" href="{{ '/projects/' | relative_url }}"
+          ><span class="ak-directory-number">01</span><span data-i18n="home.projects">Projects</span
+          ><span class="ak-directory-arrow" aria-hidden="true">↗</span></a
+        >
+        <a class="ak-directory-item" href="{{ '/publications/' | relative_url }}"
+          ><span class="ak-directory-number">02</span><span>Publications</span><span class="ak-directory-arrow" aria-hidden="true">↗</span></a
+        >
+        <a class="ak-directory-item" href="{{ '/cv/' | relative_url }}"
+          ><span class="ak-directory-number">03</span><span data-i18n="home.cv">Curriculum vitae</span
+          ><span class="ak-directory-arrow" aria-hidden="true">↗</span></a
+        >
+        <a class="ak-directory-item" href="{{ '/courses/' | relative_url }}"
+          ><span class="ak-directory-number">04</span><span data-i18n="home.coursework">Coursework</span
+          ><span class="ak-directory-arrow" aria-hidden="true">↗</span></a
+        >
+        <a class="ak-directory-item" href="{{ '/blog/' | relative_url }}"
+          ><span class="ak-directory-number">05</span><span data-i18n="home.notes">Notes &amp; blog</span
+          ><span class="ak-directory-arrow" aria-hidden="true">↗</span></a
+        >
+        <a class="ak-directory-item" href="{{ '/portfolio/' | relative_url }}"
+          ><span class="ak-directory-number">06</span><span data-i18n="home.portfolio">Portfolio</span
+          ><span class="ak-directory-arrow" aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </div>
+  </section>
+  <a class="ak-featured" href="{{ '/projects/wearable-safety-inspection/' | relative_url }}">
+    <span class="ak-eyebrow" data-i18n="home.featured">Featured project</span>
+    <span class="ak-featured-title">Multimodal AI for wearable safety inspection <small>SJTU team capstone · Sponsor: Prof. Yifei Zhu</small></span>
+    <span class="ak-featured-arrow" aria-hidden="true">↗</span>
+  </a>
+  <article class="ak-reading" id="about-profile">
+    <div class="ak-section-heading">
+      <span class="ak-section-number" aria-hidden="true">01 /</span>
+      <h2 data-i18n="home.about">About me</h2>
+    </div>
+    <div class="ak-bio">{{ content }}</div>
+    <div class="ak-activity">
+      {% if page.announcements and page.announcements.enabled %}
+        <section aria-labelledby="ak-news">
+          <div class="ak-section-heading">
+            <h2 id="ak-news" data-i18n="home.news">News</h2>
+            <a href="{{ '/news/' | relative_url }}">View all <span aria-hidden="true">↗</span></a>
+          </div>
+          {% include news.liquid limit=true %}
+        </section>
+      {% endif %}
+      {% if page.latest_posts and page.latest_posts.enabled %}
+        <section aria-labelledby="ak-posts">
+          <div class="ak-section-heading">
+            <h2 id="ak-posts" data-i18n="home.latestPosts">Latest posts</h2>
+            <a href="{{ '/blog/' | relative_url }}">View all <span aria-hidden="true">↗</span></a>
+          </div>
+          {% include latest_posts.liquid %}
+        </section>
+      {% endif %}
+    </div>
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
+      <section>{% include selected_papers.liquid %}</section>
     {% endif %}
-
-    <!-- Social -->
     {% if page.social %}
       <div class="social">
         <div class="contact-icons">{% include social.liquid %}</div>
-
         <div class="contact-note">{{ site.contact_note }}</div>
       </div>
-    {% endif %}
-
-    {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
-      {% include newsletter.liquid center=true %}
     {% endif %}
   </article>
 </div>

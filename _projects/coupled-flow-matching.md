@@ -3,13 +3,17 @@ layout: page
 title: Coupled Flow Matching (CPFM)
 description: Controllable dimensionality reduction with generalized Gromov–Wasserstein OT and Dual Conditional Flow Matching (DCFM) for bidirectional sampling p(y|x) and p(x|y).
 img: assets/img/grid_AFHQ.png
-importance: 3
+importance: 2
 category: ML
 giscus_comments: true
 related_publications: true
 ---
 
-> **Paper:** _Coupled Flow Matching_ — Wenxi Cai, **Yuheng Wang**, Naichen Shi ([arXiv:2510.23015](https://arxiv.org/abs/2510.23015), v1, Oct 27, 2025).
+> **Preprint:** _Coupled Flow Matching_ — Wenxi Cai, **Yuheng Wang**, and Naichen Shi ([arXiv:2510.23015](https://arxiv.org/abs/2510.23015), v1, October 27, 2025). {% cite cai2025cpfm %}
+
+## My contribution
+
+I worked on the kernelized Gromov–Wasserstein optimal transport objective and its alternating solver, using entropic Sinkhorn updates and an epsilon schedule for stability. The project ran from May to October 2025.
 
 ## TL;DR
 
@@ -121,8 +125,8 @@ _Metric shown: Distance to Gaussian (mean ± std over 5 independent generations;
 
 ## Resources
 
-- **arXiv:** [https://arxiv.org/abs/2510.23015](https://arxiv.org/abs/2510.23015) (v1).
-- **Code:** add repo link when available (paper references an anonymous artifact; replace with public repo upon release).
+- **Preprint:** [Coupled Flow Matching, arXiv:2510.23015](https://arxiv.org/abs/2510.23015) (v1).
+- **Full text:** [Read the paper on arXiv](https://arxiv.org/html/2510.23015v1).
 
 ## BibTeX
 

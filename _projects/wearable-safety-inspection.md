@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Wearable Safety Inspection with Multimodal LLMs
-description: SJTU bachelor's capstone combining Rokid AR glasses, compact vision-language models, and domain adaptation for context-aware industrial safety inspection.
+description: SJTU team capstone combining Rokid AR glasses and compact vision-language models for industrial safety inspection, sponsored by Prof. Yifei Zhu.
 img: assets/img/wearable-safety-architecture.png
-importance: 3
+importance: 1
 category: ML
 giscus_comments: false
 ---

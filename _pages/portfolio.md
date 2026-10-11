@@ -2,7 +2,7 @@
 layout: page
 title: Portfolio Overview
 permalink: /portfolio/
-description: Transaction-aware percentage performance from 2026-02-02 onward using open-lot FIFO cost basis. This page intentionally omits dollar balances, share counts, cost basis, and raw brokerage exports.
+description: A private-by-default investing snapshot with percentage-only account history and clearly scoped holdings data.
 nav: false
 chart:
   chartjs: true
@@ -21,6 +21,12 @@ _styles: |
   .portfolio-shell {
     display: grid;
     gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portfolio-shell > *,
+  .portfolio-allocation-grid > * {
+    min-width: 0;
   }
 
   .portfolio-state-card,
@@ -188,10 +194,13 @@ _styles: |
   .portfolio-chart-wrap {
     position: relative;
     min-height: 340px;
+    width: 100%;
+    min-width: 0;
   }
 
   .portfolio-chart-canvas {
     width: 100%;
+    max-width: 100%;
     height: 340px;
   }
 

@@ -30,7 +30,9 @@ latest_posts:
 I am a Ph.D. student in Applied Physics at Rice University. Before Rice, I studied Engineering Physics with a minor in
 Computer Science at the University of Michigan and Electrical and Computer Engineering at Shanghai Jiao Tong University.
 
-I am broadly interested in the intersection of physics and computation. My primary focus lies in quantum physics
-and photonics, particularly cavity QED, with an emphasis on understanding physical principles through simulation and
-modeling. I am also interested in developing and applying AI/ML methods for scientific discovery, especially to improve
-physical simulations, analyze experimental data, and bridge theoretical models with observables.
+I am broadly interested in the intersection of physics and computation, particularly quantum physics, cavity QED,
+and photonics. I want to understand physical systems through simulation and modeling, and to develop hands-on
+experimental skills by helping design, build, and characterize them.
+
+I am also interested in developing and applying AI/ML methods to accelerate physical simulations, analyze experimental
+data, and connect theoretical models with experimental observables.

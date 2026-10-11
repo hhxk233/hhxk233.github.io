@@ -1,12 +1,14 @@
 ---
 layout: page
 title: Epidemic Dynamics as Phase Transitions
-description: Modeling discontinuous outbreak transitions under finite testing/isolation and validating with cellular automata & ODE analysis.
+description: Epidemic evolution and phase-transition analogies studied with cellular automata and ODE models at SJTU.
 img: assets/img/epidamic_schemetic.png
 importance: 3
 category: ML
 giscus_comments: false
 ---
+
+This project ran from September 2022 to May 2024 under the 26th Shanghai Jiao Tong University Student Innovation and Practice Programme. I developed Python and MATLAB cellular-automaton simulations and studied links between phase transitions and epidemic outbreaks. The finite-capacity model below examines how saturation of testing and isolation can change outbreak dynamics.
 
 - **Extended SEIRQ model with finite isolation capacity.**
   Formulated an ODE system with compartments S, E, I, Q, R and a hard cap on isolation throughput via `min(κ, δI)` to capture **testing/quarantine saturation**. Derived equilibria and the basic reproduction number using the next-generation matrix, then proved the **outbreak onset at \(R_0=1\)** and located the **discontinuous jump** when \(I\) hits κ.

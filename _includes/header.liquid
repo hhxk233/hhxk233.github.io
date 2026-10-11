@@ -1,29 +1,34 @@
 <header>
   <!-- Nav Bar -->
-  <nav id="navbar" class="navbar navbar-light navbar-expand-sm {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
+  <nav id="navbar" class="navbar navbar-light navbar-expand-lg {% if site.navbar_fixed %}fixed-top{% else %}sticky-top{% endif %}" role="navigation">
     <div class="container">
-      {% if page.permalink != '/' %}
-        <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
+      <a class="navbar-brand title field-brand" href="{{ '/' | relative_url }}" aria-label="Yuheng Wang home">
+        <span class="field-monogram" aria-hidden="true">YW<span></span></span>
+        <span class="field-brand-name">
           {% if site.title == 'blank' %}
-            {% if site.first_name %}
-              <span class="font-weight-bold">
-                {{- site.first_name -}}
-              </span>
-            {% endif %}
-            {% if site.middle_name %}
-              {{- site.middle_name -}}
-            {% endif %}
-            {% if site.last_name %}
-              {{- site.last_name -}}
-            {% endif %}
+            {{ site.first_name }}
+            {% if site.middle_name %}{{ site.middle_name }} {% endif -%}
+            {{- site.last_name }}
           {% else %}
-            {{- site.title -}}
+            {{ site.title }}
           {% endif %}
-        </a>
-      {% elsif site.enable_navbar_social %}
+        </span>
+      </a>
+      {% if site.enable_navbar_social %}
         <!-- Social Icons -->
         <div class="navbar-brand social">{% include social.liquid %}</div>
       {% endif %}
+      <button
+        id="site-language-toggle"
+        class="site-language-toggle"
+        type="button"
+        aria-label="Switch to Chinese"
+        aria-pressed="false"
+        title="Switch to Chinese"
+      >
+        <span lang="en" data-language-choice="en">English</span><span aria-hidden="true"> / </span
+        ><span lang="zh-Hans" data-language-choice="zh">中文</span>
+      </button>
       <!-- Navbar Toggle -->
       <button
         class="navbar-toggler collapsed ml-auto"
@@ -120,15 +125,15 @@
           {% if site.search_enabled %}
             <!-- Search -->
             <li class="nav-item">
-              <button id="search-toggle" title="Search" onclick="openSearchModal()">
-                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              <button id="search-toggle" title="Search (Ctrl K)" aria-label="Search site" onclick="openSearchModal()">
+                <span class="nav-link"><i class="ti ti-search" aria-hidden="true"></i></span>
               </button>
             </li>
           {% endif %}
           {% if site.enable_darkmode %}
             <!-- Toogle theme mode -->
             <li class="toggle-container">
-              <button id="light-toggle" title="Change theme">
+              <button id="light-toggle" title="Change theme" aria-label="Change color theme">
                 <i class="ti ti-sun-moon" id="light-toggle-system"></i>
                 <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
                 <i class="ti ti-sun-filled" id="light-toggle-light"></i>

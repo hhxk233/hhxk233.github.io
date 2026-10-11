@@ -2,7 +2,7 @@
   type: map
   contents:
     - name: Full Name
-      value: Yuheng Wang
+      value: Yuheng Wang（王禹珩）
     - name: Affiliation
       value: Applied Physics, Rice University
     - name: Email
@@ -15,7 +15,7 @@
 - title: Research Interests
   type: list
   contents:
-    - "I am broadly interested in the intersection of physics and computation. My primary focus lies in quantum physics, cavity QED, and photonics, with an emphasis on understanding fundamental physical principles through simulation and modeling. Leveraging my background in Engineering Physics and Electrical & Computer Engineering, I am also interested in developing and applying artificial intelligence and machine learning methods to accelerate scientific discovery, such as enhancing physical simulations, analyzing complex experimental data, and bridging theoretical models with experimental observables."
+    - "I am broadly interested in the intersection of physics and computation, particularly quantum physics, cavity QED, and photonics. I want to understand physical systems through simulation and modeling, and to develop hands-on experimental skills by helping design, build, and characterize them. I am also interested in developing and applying AI/ML methods to accelerate physical simulations, analyze experimental data, and connect theoretical models with experimental observables."
 
 - title: Education
   type: time_table
@@ -42,15 +42,10 @@
       year: May. 2025 - May. 2026
       description:
         - "Advisor: Lise Wei"
-        - title: "Equating the Biologically Effective Dose of SBRT and 90Y SIRT: A Unified Voxel-Level Liver Function Dose-Response"
+        - title: "Equating the Biologically Effective Dose of SBRT and 90Y SIRT"
           contents:
-            - Built a voxel-level pipeline aligning DGAE-MRI k1(x) maps to CT-based dosimetry; defined parenchyma masks and dose binning to quantify the percent change in k1 post-therapy.
-            - Harmonized modalities onto a common biological scale using LQ-based EQD2 for SBRT and protraction-aware BED (Lea-Catcheside kernel) for SIRT.
-            - Modeled subvoxel SIRT nonuniformity via EUD and fit mixed-effects 4-parameter logistic dose-response with covariates; calibrated repair rate mu and micro-dose CV c by aligning SBRT/SIRT curves with bootstrap uncertainty.
-        - title: "ReMasker-Cox: Survival-Guided Masked Autoencoder for Missing Data Imputation"
-          contents:
-            - Extended a masked autoencoder (ReMasker) to jointly optimize imputation and survival consistency by adding a CoxPH loss (PyCox) to the reconstruction objective.
-            - Implemented a training workflow with random masking, joint loss weighting, and evaluation focused on preserving risk structure for clinical tabular data.
+            - Modeled subvoxel SIRT nonuniformity via EUD and fit mixed-effects logistic dose-response with covariates; calibrated repair rate and micro-dose CV by aligning SBRT/SIRT curves with bootstrap uncertainty.
+            - Co-authored the ASTRO 2026 conference abstract on a common biological dose scale for SBRT and SIRT; presented by Lise Wei in a Quick Pitch session.
 
     - title: Undergraduate Research Assistant
       institution: University of Michigan, Deng Research Lab, Ann Arbor, USA
@@ -84,16 +79,6 @@
             - Implemented the VMD-HHT algorithm to better filter noise and reconstruct the received signal.
             - Learned the underlying principles of microcontroller systems and how signals are sent and received between microcontrollers.
 
-- title: Internship
-  type: time_table
-  contents:
-    - title: Internship, Department of Software
-      institution: K-free Technology Co., LTD., Shenzhen, China
-      year: Aug. 2023 - Oct. 2023
-      description:
-        - Responsible for implementing new features in single-chip microcomputers and other system coding tasks in C.
-        - Became familiar with the company's code specifications and professional development environment.
-
 - title: Teaching and Mentoring Experience
   type: time_table
   contents:
@@ -106,24 +91,44 @@
         - Led laboratory sessions for ECE311 students.
         - Contributed scripts that automated teaching-team workflows.
 
+- title: Publications and Manuscripts
+  type: time_table
+  contents:
+    - title: Toward a Common Biological Dose Scale for SBRT and SIRT Using Imaging-Derived Liver Functional Toxicity Response
+      institution: International Journal of Radiation Oncology, Biology, Physics, 126(1), S227
+      year: 2026
+      description:
+        - "Conference abstract 1106, ASTRO 2026 Quick Pitch; presented by Lise Wei on September 28, 2026."
+        - "DOI: https://doi.org/10.1016/j.ijrobp.2026.06.483"
+    - title: Coupled Flow Matching
+      institution: arXiv:2510.23015
+      year: 2025
+      description:
+        - "Preprint by Wenxi Cai, Yuheng Wang, and Naichen Shi. Version 1, October 27, 2025."
+        - "Paper: https://arxiv.org/abs/2510.23015"
+    - title: Harnessing nanophotonic edgemodes by engineering PT symmetry
+      institution: Submitted manuscript
+      year: ""
+      description:
+        - "C. Lee, J. H. Lee, K. Zhang, Y. Wang, Y. Wang, N. Lydick, J. Miao, X. Xin, Y. Liu, K. Sun, and H. Deng."
+
 - title: Projects
   type: time_table
   contents:
+    - title: Wearable Safety Inspection with Multimodal LLMs
+      institution: Shanghai Jiao Tong University
+      year: Aug. 2026
+      description:
+        - "Bachelor's team capstone: a wearable industrial-safety inspection prototype using Rokid AR glasses and compact vision-language models."
+        - "Team: Yutong Wu, Mengru Wang, Yiyang Wang, Lidi Wang, and Yuheng Wang. Sponsor: Prof. Yifei Zhu. Supervisor: Prof. Qianli Chen."
+        - Compared domain adaptation and image-case retrieval across construction, pipeline, and laboratory safety tasks; evaluated the integrated glasses-to-server prototype on the bench.
     - title: "Coupled Flow Matching (CPFM): Controllable Dimensionality Reduction & Reconstruction"
       institution: Ann Arbor, USA
       year: May. 2025 - Oct. 2025
       description:
         - "Paper: https://arxiv.org/abs/2510.23015"
         - CPFM learns coupled continuous flows for data x and low-dimensional embeddings y to enable both p(y|x) sampling and p(x|y) reconstruction.
-        - Extended Gromov-Wasserstein OT with a kernelized quadratic objective to encode semantic priors; derived an alternating minimization with entropic Sinkhorn and O(n^2) per-iteration complexity.
-        - Implemented Dual Conditional Flow Matching (DCFM) with a shared drift network, role flagging, and mute-masking to jointly learn bidirectional flows with 2D embeddings and high-fidelity reconstructions.
-        - Evaluated on MNIST, CIFAR-10, TinyImageNet, AFHQ, and QM9; obtained semantically rich 2D embeddings and stronger reconstructions than VAE/DiffAE/Info-Diffusion under extreme compression.
-    - title: "Curie: Automate Rigorous Scientific Experimentation"
-      institution: Ann Arbor, USA
-      year: Mar. 2025 - Aug. 2025
-      description:
-        - "Repo: https://github.com/Just-Curieous/Curie"
-        - Tested and developed new features.
+        - Extended Gromov-Wasserstein OT with a kernelized quadratic objective to encode semantic priors; derived an alternating minimization with entropic Sinkhorn and O(n^2) per-iteration complexity, with an epsilon-scheduling scheme for stability.
     - title: Analogical Analyses of Epidemic Evolution from the Fluid Mechanics View
       institution: The 26th Shanghai Jiaotong University Student Innovation and Practice Programme Project, Shanghai, China
       year: Sep. 2022 - May. 2024
@@ -157,4 +162,4 @@
         - SJTU Undergraduate Excellent Scholarship for the Academic Year 2022-2023
     - year: 2020
       items:
-        - First Prize, Chinese Physics Olympic (CPhO) of Guangdong province
+        - First Prize, Chinese Physics Olympiad (CPhO), Guangdong Province

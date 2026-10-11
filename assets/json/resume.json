@@ -1,12 +1,12 @@
 {
   "basics": {
-    "name": "Yuheng Wang",
+    "name": "Yuheng Wang（王禹珩）",
     "label": "Ph.D. Student in Applied Physics",
     "image": "",
     "email": "yw281@rice.edu",
     "phone": "",
     "url": "https://hhxk233.github.io",
-    "summary": "Applied Physics Ph.D. student at Rice University with undergraduate training in Engineering Physics, Computer Science, and Electrical and Computer Engineering. Interests: quantum physics, cavity QED, photonics, and AI/ML for scientific discovery.",
+    "summary": "Applied Physics Ph.D. student at Rice University with undergraduate training in Engineering Physics, Computer Science, and Electrical and Computer Engineering. Interested in quantum physics, cavity QED, and photonics through simulation, modeling, and hands-on experimental work, as well as AI/ML methods for scientific discovery.",
     "location": {
       "address": "",
       "postalCode": "",
@@ -29,12 +29,10 @@
       "url": "",
       "startDate": "2025-05-01",
       "endDate": "2026-05-01",
-      "summary": "Equating the biologically effective dose of SBRT and 90Y SIRT; ReMasker-Cox for survival-guided imputation.",
+      "summary": "Equating the biologically effective dose of SBRT and 90Y SIRT.",
       "highlights": [
-        "Built a voxel-level pipeline aligning DGAE-MRI k1(x) maps to CT-based dosimetry with parenchyma masks and dose binning.",
-        "Harmonized modalities with LQ-based EQD2 for SBRT and protraction-aware BED for SIRT.",
-        "Modeled subvoxel SIRT nonuniformity via EUD and fit mixed-effects logistic dose-response with bootstrap uncertainty.",
-        "Extended ReMasker with a CoxPH loss and joint reconstruction-survival training for clinical tabular data."
+        "Modeled subvoxel SIRT nonuniformity via EUD and fit mixed-effects logistic dose-response with covariates; calibrated repair rate and micro-dose CV by aligning SBRT/SIRT curves with bootstrap uncertainty.",
+        "Co-authored the ASTRO 2026 conference abstract on a common biological dose scale for SBRT and SIRT; presented by Lise Wei in a Quick Pitch session."
       ]
     },
     {
@@ -61,13 +59,16 @@
       "highlights": ["Kuramoto/Adler oscillator array design", "Cadence analog workflows", "VMD-HHT denoising and reconstruction"]
     },
     {
-      "name": "K-free Technology Co., LTD.",
-      "position": "Intern, Department of Software",
+      "name": "Shanghai Jiao Tong University, JI Center for Learning and Teaching",
+      "position": "Teaching Assistant",
       "url": "",
-      "startDate": "2023-08-01",
-      "endDate": "2023-10-01",
-      "summary": "Implemented MCU features in C; adhered to company code standards.",
-      "highlights": []
+      "startDate": "2023-09-01",
+      "endDate": "2024-08-01",
+      "summary": "ENGR151 Accelerated Introduction to Programming and ECE311 Analog Circuits.",
+      "highlights": [
+        "Led recitation sessions for ENGR151 and laboratory sessions for ECE311.",
+        "Contributed scripts to automate teaching-team workflows."
+      ]
     }
   ],
   "volunteer": [],
@@ -167,10 +168,24 @@
   "certificates": [],
   "publications": [
     {
+      "name": "Toward a Common Biological Dose Scale for SBRT and SIRT Using Imaging-Derived Liver Functional Toxicity Response",
+      "publisher": "International Journal of Radiation Oncology, Biology, Physics, 126(1), S227",
+      "releaseDate": "2026-09-27",
+      "url": "https://doi.org/10.1016/j.ijrobp.2026.06.483",
+      "summary": "Conference abstract 1106, ASTRO 2026 Quick Pitch; presented by Lise Wei on September 28, 2026."
+    },
+    {
+      "name": "Coupled Flow Matching",
+      "publisher": "arXiv:2510.23015",
+      "releaseDate": "2025-10-27",
+      "url": "https://arxiv.org/abs/2510.23015",
+      "summary": "Preprint by Wenxi Cai, Yuheng Wang, and Naichen Shi. Version 1; controllable dimensionality reduction and reconstruction with coupled flows."
+    },
+    {
       "name": "Harnessing nanophotonic edgemodes by engineering PT symmetry",
       "publisher": "",
       "releaseDate": "",
-      "url": "",
+      "url": "/projects/non-hermitian-exciton-polariton-transport/",
       "summary": "Submitted manuscript."
     }
   ],
@@ -211,28 +226,25 @@
   "references": [],
   "projects": [
     {
+      "name": "Wearable Safety Inspection with Multimodal LLMs",
+      "summary": "SJTU bachelor's team capstone, August 2026: a wearable industrial-safety inspection prototype using Rokid AR glasses and compact vision-language models.",
+      "highlights": [
+        "Team project with Yutong Wu, Mengru Wang, Yiyang Wang, and Lidi Wang; sponsored by Prof. Yifei Zhu and supervised by Prof. Qianli Chen.",
+        "Compared domain adaptation and image-case retrieval across construction, pipeline, and laboratory safety tasks; evaluated the integrated glasses-to-server prototype on the bench."
+      ],
+      "endDate": "2026-08-01",
+      "url": "/projects/wearable-safety-inspection/"
+    },
+    {
       "name": "Coupled Flow Matching (CPFM): Controllable Dimensionality Reduction & Reconstruction",
       "summary": "CPFM learns coupled continuous flows for data x and low-dimensional embeddings y to enable both p(y|x) sampling and p(x|y) reconstruction.",
       "highlights": [
         "Extended Gromov-Wasserstein OT with a kernelized quadratic objective to encode semantic priors.",
-        "Derived an alternating minimization with entropic Sinkhorn and O(n^2) per-iteration complexity.",
-        "Implemented Dual Conditional Flow Matching with a shared drift network, role flagging, and mute-masking.",
-        "Evaluated on MNIST, CIFAR-10, TinyImageNet, AFHQ, and QM9 with semantically rich 2D embeddings and strong reconstructions."
+        "Derived an alternating minimization with entropic Sinkhorn and O(n^2) per-iteration complexity, with an epsilon-scheduling scheme for stability."
       ],
       "startDate": "2025-05-01",
       "endDate": "2025-10-01",
       "url": "/projects/coupled-flow-matching/"
-    },
-    {
-      "name": "Curie: Automate Rigorous Scientific Experimentation",
-      "summary": "Tested and developed new features.",
-      "highlights": [
-        "Contributed to the Curie scientific experimentation platform.",
-        "Worked on feature development and testing during the project period."
-      ],
-      "startDate": "2025-03-01",
-      "endDate": "2025-08-01",
-      "url": "/projects/curie/"
     },
     {
       "name": "Analogical Analyses of Epidemic Evolution from the Fluid Mechanics View",

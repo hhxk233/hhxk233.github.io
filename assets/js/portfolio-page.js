@@ -1,5 +1,5 @@
 (() => {
-  const RANGE_OPTIONS = ["1W", "1M", "ALL"];
+  const RANGE_OPTIONS = ["1W", "1M", "3M", "YTD", "ALL"];
   const PERFORMANCE_DECIMALS = 2;
   const DATE_FORMATTER = new Intl.DateTimeFormat("en-US", {
     month: "short",
@@ -61,133 +61,132 @@
       return;
     }
 
-    if (payload.status === "empty" || !Array.isArray(payload.holdings) || payload.holdings.length === 0) {
-      renderEmptyState(app, payload.message || "No active holdings were found in the sanitized dataset.");
+    if (payload.schemaVersion !== 2) {
+      renderErrorState(
+        app,
+        "Account return history is being updated.",
+        "The previous holdings-only chart has been removed because it did not represent total account performance."
+      );
       return;
     }
 
     const failedTickers = Array.isArray(payload.failedTickers) ? payload.failedTickers : [];
-    const latestPoint = payload.performance.at(-1);
-    const seriesStartDate = payload.firstInvestmentDate || payload.baselineDate;
+    const excludedTickers = Array.isArray(payload.excludedTickers) ? payload.excludedTickers : [];
+    const hasHistory =
+      payload.performanceStatus === "ready" && payload.performanceSource === "broker-return-history" && payload.performance?.length >= 2;
+    const holdings = Array.isArray(payload.holdings) ? payload.holdings : [];
+    const latestPoint = hasHistory ? payload.performance.at(-1) : null;
+    const seriesStartDate = hasHistory ? payload.performance[0].date : null;
+    const isPartial = failedTickers.length + excludedTickers.length > 0;
 
     app.innerHTML = `
       <div class="portfolio-shell">
-        ${
-          payload.status === "partial"
-            ? `
-              <section class="portfolio-banner" aria-live="polite">
-                <div aria-hidden="true">!</div>
-                <div>
-                  <strong>Partial market data</strong>
-                  <p>
-                    ${failedTickers.length} holding${failedTickers.length === 1 ? "" : "s"} could not be priced and
-                    were excluded from the transaction-aware allocation and performance calculations.
-                  </p>
-                </div>
-              </section>
-            `
-            : `
-              <section class="portfolio-banner" aria-live="polite">
-                <div aria-hidden="true">%</div>
-                <div>
-                  <strong>Privacy-first portfolio view</strong>
-                  <p>
-                    This page shows only normalized returns, dates, tickers, and allocation percentages. Public market prices refresh daily.
-                  </p>
-                </div>
-              </section>
-            `
-        }
-        <section class="portfolio-summary-grid">
-          ${renderSummaryCard(
-            "Current Total Return",
-            formatPercent(payload.summary.currentReturnPct, PERFORMANCE_DECIMALS),
-            "Current holdings vs remaining FIFO cost basis",
-            classForSignedValue(payload.summary.currentReturnPct)
-          )}
-          ${renderSummaryCard(
-            "Latest Trading Day Change",
-            formatPercent(payload.summary.latestTradingDayChangePct, PERFORMANCE_DECIMALS),
-            payload.latestTradingDate ? `Latest close: ${formatDate(payload.latestTradingDate)}` : "Daily move",
-            classForSignedValue(payload.summary.latestTradingDayChangePct)
-          )}
-          ${renderSummaryCard(
-            "Maximum Drawdown",
-            formatPercent(payload.summary.maxDrawdownPct, PERFORMANCE_DECIMALS),
-            "Peak-to-trough over the full range",
-            classForSignedValue(payload.summary.maxDrawdownPct)
-          )}
-          ${renderSummaryCard("Number of Holdings", `${payload.summary.holdingsCount}`, "Active holdings included", "")}
-        </section>
         <section class="portfolio-panel">
           <div class="portfolio-panel-header">
             <div>
-              <h2>Portfolio Performance</h2>
-              <p class="portfolio-chart-meta">
-                Transaction-aware return for open holdings from ${formatDate(seriesStartDate)} onward. Holdings begin on their actual trade dates.
-              </p>
+              <h2>Account return</h2>
+              <p class="portfolio-chart-meta">Percentages only. Account balances remain private.</p>
             </div>
-            <div class="portfolio-range-tabs" role="tablist" aria-label="Portfolio chart range">
+            ${
+              hasHistory
+                ? `<div class="portfolio-range-tabs" role="group" aria-label="Dates shown in account return chart">
               ${RANGE_OPTIONS.map(
                 (range) => `
-                  <button
-                    type="button"
-                    class="portfolio-range-tab"
-                    data-range="${range}"
-                    role="tab"
-                    aria-selected="false"
-                  >
-                    ${range}
-                  </button>
-                `
+                <button type="button" class="portfolio-range-tab" data-range="${range}" aria-pressed="false">${range}</button>
+              `
               ).join("")}
+            </div>`
+                : ""
+            }
+          </div>
+          ${
+            hasHistory
+              ? `
+            <div class="portfolio-chart-focus">
+              <strong id="portfolio-selected-return">${formatPercent(latestPoint.returnPct, PERFORMANCE_DECIMALS)}</strong>
+              <span id="portfolio-selected-date">${formatDate(latestPoint.date)}</span>
             </div>
-          </div>
-          <div class="portfolio-chart-focus">
-            <strong id="portfolio-selected-return">${formatPercent(latestPoint?.returnPct ?? 0, PERFORMANCE_DECIMALS)}</strong>
-            <span id="portfolio-selected-date">${formatDate(latestPoint?.date ?? payload.latestTradingDate ?? payload.asOfDate)}</span>
-          </div>
-          <div class="portfolio-chart-wrap">
-            <canvas id="portfolio-performance-chart" class="portfolio-chart-canvas" aria-label="Portfolio performance chart"></canvas>
-          </div>
+            <div class="portfolio-chart-wrap">
+              <canvas id="portfolio-performance-chart" class="portfolio-chart-canvas" aria-label="Broker account cumulative return in percent"></canvas>
+            </div>
+            <p class="portfolio-chart-meta">Broker-reported cumulative return; observations from ${formatDate(
+              seriesStartDate
+            )}. Range controls change the dates shown, keeping the same return baseline.</p>
+          `
+              : `
+            <div class="portfolio-banner" role="status">
+              <div aria-hidden="true">—</div>
+              <div>
+                <strong>Return history unavailable</strong>
+                <p>The activity export does not include the broker's account return history. A complete account curve will appear when that history is available.</p>
+              </div>
+            </div>
+          `
+          }
+        </section>
+        <section class="portfolio-summary-grid">
+          ${renderSummaryCard(
+            "Account return",
+            formatPercent(payload.summary.accountReturnPct, PERFORMANCE_DECIMALS),
+            hasHistory ? `Broker history through ${formatDate(latestPoint.date)}` : "Awaiting account return history",
+            classForSignedValue(payload.summary.accountReturnPct)
+          )}
+          ${renderSummaryCard(
+            "Open holdings unrealized",
+            formatPercent(payload.summary.unrealizedReturnPct, PERFORMANCE_DECIMALS),
+            "Included positions vs remaining FIFO cost basis",
+            classForSignedValue(payload.summary.unrealizedReturnPct)
+          )}
+          ${renderSummaryCard(
+            "Holdings daily move",
+            formatPercent(payload.summary.holdingsDayChangePct, PERFORMANCE_DECIMALS),
+            `Prices through ${formatDate(payload.latestTradingDate)}`,
+            classForSignedValue(payload.summary.holdingsDayChangePct)
+          )}
+          ${renderSummaryCard(
+            "Holdings shown",
+            `${holdings.length}`,
+            isPartial ? "Partial security snapshot" : "Reconstructed from recorded trades",
+            ""
+          )}
         </section>
         <section class="portfolio-panel">
           <div class="portfolio-panel-header">
             <div>
-              <h2>Holdings Allocation</h2>
-              <p>
-                Current allocation uses live market-value weights. Only percentages are shown, never shares, balances, or cost basis.
-              </p>
+              <h2>${isPartial ? "Partial holdings snapshot" : "Holdings snapshot"}</h2>
+              <p>Activity through ${formatDate(payload.transactionAsOfDate)}; closing prices through ${formatDate(
+                payload.latestTradingDate
+              )}. Weights cover only the securities shown and exclude cash. Unrealized returns exclude realized trades, dividends, and fees.</p>
             </div>
           </div>
-          <div class="portfolio-allocation-grid">
-            <div class="portfolio-allocation-chart">
-              <canvas id="portfolio-allocation-chart" aria-label="Portfolio allocation chart"></canvas>
-            </div>
+          ${
+            holdings.length
+              ? `<div class="portfolio-allocation-grid">
+            <div class="portfolio-allocation-chart"><canvas id="portfolio-allocation-chart" aria-label="Allocation within included securities only"></canvas></div>
             <div class="portfolio-holdings-table-wrap">
               <table class="portfolio-holdings-table">
-                <thead>
-                  <tr>
-                    <th>Holding</th>
-                    <th>Weight</th>
-                    <th>Current Return</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${payload.holdings.map((holding) => renderHoldingRow(holding)).join("")}
-                </tbody>
+                <thead><tr><th>Holding</th><th>Weight within subset</th><th>Unrealized return</th></tr></thead>
+                <tbody>${holdings.map((holding) => renderHoldingRow(holding)).join("")}</tbody>
               </table>
-              ${
-                payload.status === "partial" && failedTickers.length
-                  ? `<div class="portfolio-empty-list">Unavailable tickers: ${failedTickers.map((item) => escapeHtml(item.ticker)).join(", ")}</div>`
-                  : ""
-              }
             </div>
-          </div>
+          </div>`
+              : `<p>No reconciled holdings are available for this snapshot.</p>`
+          }
+          ${
+            excludedTickers.length
+              ? `<p class="portfolio-empty-list">Excluded pending share-transfer reconciliation: ${excludedTickers
+                  .map((item) => escapeHtml(item.ticker))
+                  .join(", ")}.</p>`
+              : ""
+          }
+          ${
+            failedTickers.length
+              ? `<p class="portfolio-empty-list">Market prices unavailable: ${failedTickers.map((item) => escapeHtml(item.ticker)).join(", ")}.</p>`
+              : ""
+          }
         </section>
       </div>
     `;
-
     const state = {
       activeRange: "ALL",
       payload,
@@ -204,7 +203,7 @@
         <section class="portfolio-state-card" aria-live="polite">
           <div class="portfolio-spinner" aria-hidden="true"></div>
           <h2>Preparing sanitized portfolio data</h2>
-          <p>Loading transaction-aware performance without exposing any raw account values.</p>
+          <p>Loading the public percentage-only snapshot.</p>
         </section>
       </div>
     `;
@@ -279,14 +278,14 @@
   }
 
   function renderCharts(app, state) {
-    renderPerformanceChart(app, state);
-    renderAllocationChart(app, state.payload);
+    if (app.querySelector("#portfolio-performance-chart")) renderPerformanceChart(app, state);
+    if (app.querySelector("#portfolio-allocation-chart")) renderAllocationChart(app, state.payload);
   }
 
   function renderPerformanceChart(app, state) {
     const theme = readThemeTokens();
     const selectedRange = filterPerformanceByRange(state.payload.performance, state.activeRange);
-    const chartData = downsampleIfNeeded(selectedRange, 240);
+    const chartData = selectedRange;
     const latestPoint = chartData.at(-1);
     const yBounds = computeYBounds(chartData.map((point) => point.returnPct));
     const selectedReturn = app.querySelector("#portfolio-selected-return");
@@ -308,12 +307,12 @@
         labels: chartData.map((point) => point.date),
         datasets: [
           {
-            label: "Portfolio return",
+            label: "Cumulative account return",
             data: chartData.map((point) => point.returnPct),
             borderColor: theme.lineColor,
             borderWidth: 2,
             backgroundColor: gradient,
-            fill: true,
+            fill: false,
             tension: 0,
             pointRadius: 0,
             pointHoverRadius: 5,
@@ -493,27 +492,18 @@
     let startDate = latestDate;
     if (rangeKey === "1W") {
       startDate = shiftIsoDate(latestDate, -6);
-    } else if (rangeKey === "1M") {
+    } else if (rangeKey === "1M" || rangeKey === "3M") {
       const date = new Date(`${latestDate}T00:00:00Z`);
-      date.setUTCMonth(date.getUTCMonth() - 1);
+      date.setUTCDate(1);
+      date.setUTCMonth(date.getUTCMonth() - (rangeKey === "3M" ? 3 : 1));
+      const lastDay = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0)).getUTCDate();
+      date.setUTCDate(Math.min(Number(latestDate.slice(8, 10)), lastDay));
       startDate = toIsoDate(date);
+    } else if (rangeKey === "YTD") {
+      startDate = `${latestDate.slice(0, 4)}-01-01`;
     }
 
     return points.filter((point) => point.date >= startDate);
-  }
-
-  function downsampleIfNeeded(points, maxPoints) {
-    if (points.length <= maxPoints) {
-      return points;
-    }
-
-    const stride = Math.ceil(points.length / maxPoints);
-    const reduced = points.filter((_, index) => index % stride === 0);
-    const lastPoint = points.at(-1);
-    if (reduced.at(-1)?.date !== lastPoint?.date) {
-      reduced.push(lastPoint);
-    }
-    return reduced;
   }
 
   function computeYBounds(values) {
@@ -531,7 +521,7 @@
     for (const button of app.querySelectorAll("[data-range]")) {
       const isActive = button.dataset.range === activeRange;
       button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-selected", isActive ? "true" : "false");
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
     }
   }
 
@@ -576,17 +566,19 @@
       textColor,
       textMuted,
       gridColor: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(15, 23, 42, 0.08)",
-      lineColor: accent,
+      lineColor: "#39c56f",
       areaTop: isDark ? "rgba(38, 152, 186, 0.35)" : "rgba(91, 124, 250, 0.24)",
       areaBottom: isDark ? "rgba(38, 152, 186, 0.02)" : "rgba(91, 124, 250, 0.01)",
     };
   }
 
   function classForSignedValue(value) {
+    if (!Number.isFinite(value)) return "";
     return value < 0 ? "portfolio-negative" : "portfolio-positive";
   }
 
   function formatPercent(value, digits) {
+    if (!Number.isFinite(value)) return "—";
     const prefix = value > 0 ? "+" : value < 0 ? "-" : "";
     return `${prefix}${Math.abs(value).toFixed(digits)}%`;
   }

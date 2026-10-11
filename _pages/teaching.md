@@ -2,12 +2,23 @@
 layout: page
 permalink: /courses/
 title: courses
-description: A list of courses I have taken.
+description: Current and completed coursework.
 nav: true
 nav_order: 6
 ---
 
-Below is a list of courses I have taken. Organized by institution and term.
+Selected coursework, organized by institution and term. Numbers in parentheses indicate credits.
+
+## Rice University
+
+### Fall 2026 — In progress
+
+- APPL 500 — Introduction to Applied Physics (3)
+- JAPA 141 — First Year Japanese I (3)
+- PHYS 563 — Introduction to Solid State Physics I (3)
+- PHYS 572 — Fundamentals of Quantum Optics and Cavity QED (3)
+
+---
 
 ## University of Michigan (UMich)
 
@@ -51,7 +62,17 @@ Below is a list of courses I have taken. Organized by institution and term.
 
 > SJTU uses three semesters per academic year: **Fall (Sem 1)**, **Spring (Sem 2)**, **Summer (Sem 3)**.
 
-### 2023–2024 (Sem 3 — Summer) — _1 credit overload_
+### 2025–2026 (Sem 3 — Summer)
+
+- ECE4500J — Major Design Experience (MDE) (4)
+
+  Team capstone: [Multimodal-Large-Language-Model-Driven Wearable Manufacturing Safety Inspection System]({{ '/projects/wearable-safety-inspection/' | relative_url }}), sponsored by Prof. Yifei Zhu.
+
+### 2024–2025 (Sem 3 — Summer)
+
+- TC4960J — Advanced Technical Communication (2)
+
+### 2023–2024 (Sem 3 — Summer)
 
 - ECE3200J — Intro to Semiconductor Devices (4)
 - ECE2700J — Introduction to Logic Design (4)
@@ -68,7 +89,7 @@ Below is a list of courses I have taken. Organized by institution and term.
 - MATH2030J — Discrete Mathematics (4)
 - VR281 — Introduction to China Studies (3)
 
-### 2023–2024 (Sem 1 — Fall) — _1 credit overload_
+### 2023–2024 (Sem 1 — Fall)
 
 - ECE2150J — Intro to Circuits (4)
 - ENGR4903J — Undergraduate Research (3)
