@@ -5,9 +5,13 @@ import { gunzipSync } from "node:zlib";
 export const PORTFOLIO_EPSILON = 1e-8;
 
 const REQUIRED_COLUMNS = ["Activity Date", "Instrument", "Description", "Trans Code", "Quantity"];
-const OPTIONAL_COLUMNS = ["Price", "Amount"];
 const BUY_CODE = "Buy";
 const SELL_CODE = "Sell";
+
+// A transaction export is not an account-return history. In particular, selling
+// an open FIFO lot must not erase its realized profit from an account chart.
+export const ACCOUNT_HISTORY_UNAVAILABLE =
+  "Account return history is not available. The activity export does not contain the broker's account-value or return series.";
 
 export function decodePortfolioCsvBase64(encoded) {
   const decoded = Buffer.from(encoded, "base64");
@@ -102,6 +106,69 @@ export function parsePortfolioTradeRows(csvText) {
     .sort(compareTradeRows);
 }
 
+export function inspectPortfolioActivityCoverage(csvText) {
+  const rows = parseCsv(csvText);
+  const header = rows[0]?.map((column) => trimCell(column)) ?? [];
+  const indexes = Object.fromEntries(header.map((column, index) => [column, index]));
+  const dates = [];
+  const excluded = new Set();
+  for (const row of rows.slice(1)) {
+    const date = normalizeUsDate(readColumn(row, indexes, "Activity Date"));
+    if (!date) continue;
+    dates.push(date);
+    const ticker = trimCell(readColumn(row, indexes, "Instrument"));
+    const code = trimCell(readColumn(row, indexes, "Trans Code"));
+    const quantity = trimCell(readColumn(row, indexes, "Quantity"));
+    // Receipts, transfers, splits, and other share movements cannot be silently
+    // discarded. Their direction/cost basis must be reconciled before inclusion.
+    if (ticker && quantity && !isSecurityTradeCode(code)) excluded.add(ticker);
+  }
+  dates.sort();
+  return {
+    firstActivityDate: dates[0] ?? null,
+    lastActivityDate: dates.at(-1) ?? null,
+    excludedTickers: [...excluded].sort().map((ticker) => ({
+      ticker,
+      reason: "Non-trade share movements require reconciliation.",
+    })),
+  };
+}
+
+// Owner-only input. ReturnPct is the broker's cumulative account-return percent
+// for one consistent baseline, not dollars, NAV, a daily return, or a fraction.
+// Strict columns prevent accidentally publishing values from an activity export.
+export function parseBrokerReturnHistory(csvText) {
+  const rows = parseCsv(csvText);
+  const header = rows[0]?.map((column) => trimCell(column)) ?? [];
+  if (header.length !== 2 || !header.includes("Date") || !header.includes("ReturnPct")) {
+    throw new Error("Broker return CSV must contain exactly Date and ReturnPct columns.");
+  }
+  const dateIndex = header.indexOf("Date");
+  const returnIndex = header.indexOf("ReturnPct");
+  const seen = new Set();
+  const points = rows.slice(1).map((row) => {
+    const date = trimCell(row[dateIndex]);
+    const rawReturn = trimCell(row[returnIndex]);
+    if (row.length !== 2 || !isValidIsoDate(date) || !/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(rawReturn)) {
+      throw new Error("Broker return rows require a valid YYYY-MM-DD date and numeric percent.");
+    }
+    const returnPct = Number(rawReturn);
+    if (!Number.isFinite(returnPct) || seen.has(date)) {
+      throw new Error("Broker return history contains an invalid return or duplicate date.");
+    }
+    seen.add(date);
+    return { date, returnPct };
+  }).sort((left, right) => left.date.localeCompare(right.date));
+  if (points.length < 2) throw new Error("Broker return history requires at least two observations.");
+  return points;
+}
+
+export function isValidIsoDate(value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(`${value}T00:00:00Z`);
+  return Number.isFinite(date.getTime()) && toIsoDate(date) === value;
+}
+
 export async function loadMarketHistoriesForTickers(
   tickers,
   {
@@ -136,61 +203,47 @@ export function buildSanitizedPortfolioPayload({
   generatedAt = new Date().toISOString(),
   historiesByTicker,
   trades,
+  brokerReturns = [],
+  excludedTickers = [],
+  transactionAsOfDate = null,
 }) {
+  const excludedSymbols = new Set(excludedTickers.map((item) => item.ticker));
   const filteredTrades = trades
-    .filter((trade) => trade.activityDate <= asOfDate && historiesByTicker.has(trade.ticker))
+    .filter((trade) => trade.activityDate <= asOfDate && historiesByTicker.has(trade.ticker) && !excludedSymbols.has(trade.ticker))
     .sort(compareTradeRows);
 
-  if (!filteredTrades.length) {
-    return createEmptyPayload("No trade rows with usable market data were found.", {
-      asOfDate,
-      baselineDate,
-      failedTickers,
-      generatedAt,
-    });
-  }
-
   const priceLookupsByTicker = buildPortfolioPriceLookups(historiesByTicker, baselineDate, asOfDate);
-  const performanceSeries = buildPortfolioPerformanceSeries(filteredTrades, priceLookupsByTicker, baselineDate, asOfDate);
   const currentPositions = buildOpenPositionsByTicker(filteredTrades, asOfDate);
   const currentSnapshot = summarizeOpenPositions(currentPositions, priceLookupsByTicker, asOfDate);
-
-  if (!currentSnapshot.holdings.length) {
-    return createEmptyPayload("No active holdings were reconstructed from the provided trade history.", {
-      asOfDate,
-      baselineDate,
-      failedTickers,
-      generatedAt,
-    });
-  }
 
   const currentHoldings = currentSnapshot.holdings.sort((left, right) => right.marketValue - left.marketValue);
   const latestTradingDate = resolveLatestTradingDate(currentHoldings);
   const previousTradingDate = resolvePreviousTradingDate(currentHoldings, priceLookupsByTicker, latestTradingDate);
-  const currentReturnFraction =
+  const holdingsDayChange = calculateCurrentPortfolioDayChange(currentHoldings, priceLookupsByTicker, latestTradingDate, previousTradingDate);
+  const unrealizedReturnFraction =
     currentSnapshot.totalCostBasis > PORTFOLIO_EPSILON
       ? currentSnapshot.totalMarketValue / currentSnapshot.totalCostBasis - 1
-      : 0;
+      : null;
+  // Never synthesize the account curve from an open-position cost-basis ratio.
+  // Copy only the two public fields even if a caller passes extra private data.
+  const performance = brokerReturns.map(({ date, returnPct }) => ({ date, returnPct }));
+  const hasAccountHistory = performance.length >= 2;
 
   return {
-    status: failedTickers.length ? "partial" : "ready",
+    schemaVersion: 2,
+    status: failedTickers.length || excludedTickers.length ? "partial" : "ready",
     baselineDate,
     asOfDate,
-    firstInvestmentDate: performanceSeries[0]?.date ?? null,
+    transactionAsOfDate,
     latestTradingDate,
     generatedAt,
+    performanceStatus: hasAccountHistory ? "ready" : "unavailable",
+    performanceSource: hasAccountHistory ? "broker-return-history" : null,
+    performanceMessage: hasAccountHistory ? null : ACCOUNT_HISTORY_UNAVAILABLE,
     summary: {
-      currentReturnPct: round(currentReturnFraction * 100, 2),
-      latestTradingDayChangePct: round(
-        calculateCurrentPortfolioDayChange(
-          currentHoldings,
-          priceLookupsByTicker,
-          latestTradingDate,
-          previousTradingDate
-        ) * 100,
-        2
-      ),
-      maxDrawdownPct: round(calculateMaxDrawdown(performanceSeries) * 100, 2),
+      accountReturnPct: hasAccountHistory ? performance.at(-1).returnPct : null,
+      unrealizedReturnPct: unrealizedReturnFraction === null ? null : round(unrealizedReturnFraction * 100, 2),
+      holdingsDayChangePct: holdingsDayChange === null ? null : round(holdingsDayChange * 100, 2),
       holdingsCount: currentHoldings.length,
     },
     holdings: currentHoldings.map((holding) => ({
@@ -199,43 +252,10 @@ export function buildSanitizedPortfolioPayload({
       weightPct: round((holding.marketValue / currentSnapshot.totalMarketValue) * 100, 2),
       currentReturnPct: round(holding.returnFraction * 100, 2),
     })),
-    performance: performanceSeries.map((point) => ({
-      date: point.date,
-      returnPct: round(point.returnFraction * 100, 4),
-    })),
+    performance: hasAccountHistory ? performance : [],
     failedTickers,
+    excludedTickers: excludedTickers.map(({ ticker, reason }) => ({ ticker, reason })),
   };
-}
-
-export function buildPortfolioPerformanceSeries(trades, priceLookupsByTicker, startDate, endDate) {
-  const positionsByTicker = new Map();
-  const calendarDates = listCalendarDates(startDate, endDate);
-  const sortedTrades = [...trades].sort(compareTradeRows);
-  const performanceSeries = [];
-  let tradeIndex = 0;
-
-  for (const date of calendarDates) {
-    while (
-      tradeIndex < sortedTrades.length &&
-      sortedTrades[tradeIndex].activityDate <= date
-    ) {
-      applyTradeToOpenPositions(positionsByTicker, sortedTrades[tradeIndex]);
-      tradeIndex += 1;
-    }
-
-    const snapshot = summarizeOpenPositions(positionsByTicker, priceLookupsByTicker, date);
-
-    if (snapshot.totalCostBasis <= PORTFOLIO_EPSILON) {
-      continue;
-    }
-
-    performanceSeries.push({
-      date,
-      returnFraction: snapshot.totalMarketValue / snapshot.totalCostBasis - 1,
-    });
-  }
-
-  return performanceSeries;
 }
 
 export function buildOpenPositionsByTicker(trades, cutoffDate) {
@@ -361,7 +381,7 @@ export function buildPortfolioPriceLookups(historiesByTicker, startDate, endDate
 
   for (const [ticker, history] of historiesByTicker.entries()) {
     const sortedHistory = [...history]
-      .filter((point) => point.date <= endDate && Number.isFinite(point.close))
+      .filter((point) => point.date <= endDate && Number.isFinite(point.close) && point.close > 0)
       .sort((left, right) => left.date.localeCompare(right.date));
 
     const actualTradingDates = sortedHistory
@@ -420,7 +440,7 @@ function ensurePosition(positionsByTicker, ticker, displayName) {
 
 function calculateCurrentPortfolioDayChange(holdings, priceLookupsByTicker, latestTradingDate, previousTradingDate) {
   if (!latestTradingDate || !previousTradingDate) {
-    return 0;
+    return null;
   }
 
   let latestMarketValue = 0;
@@ -440,23 +460,10 @@ function calculateCurrentPortfolioDayChange(holdings, priceLookupsByTicker, late
   }
 
   if (previousMarketValue <= PORTFOLIO_EPSILON) {
-    return 0;
+    return null;
   }
 
   return latestMarketValue / previousMarketValue - 1;
-}
-
-function calculateMaxDrawdown(performanceSeries) {
-  let peakEquity = 1;
-  let maxDrawdown = 0;
-
-  for (const point of performanceSeries) {
-    const equity = 1 + point.returnFraction;
-    peakEquity = Math.max(peakEquity, equity);
-    maxDrawdown = Math.min(maxDrawdown, equity / peakEquity - 1);
-  }
-
-  return maxDrawdown;
 }
 
 function resolveLatestTradingDate(holdings) {
@@ -673,7 +680,8 @@ function normalizeUsDate(rawValue) {
     return null;
   }
 
-  return `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  const result = `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+  return isValidIsoDate(result) ? result : null;
 }
 
 function round(value, digits) {
@@ -713,17 +721,7 @@ async function loadMarketHistory(
   }
 
   const payload = await response.json();
-  const result = payload?.chart?.result?.[0];
-  const timestamps = result?.timestamp ?? [];
-  const closes = result?.indicators?.quote?.[0]?.close ?? [];
-
-  const history = timestamps
-    .map((timestamp, index) => ({
-      close: Number(closes[index]),
-      date: toIsoDate(new Date(timestamp * 1000)),
-    }))
-    .filter((point) => Number.isFinite(point.close))
-    .sort((left, right) => left.date.localeCompare(right.date));
+  const history = parseMarketHistoryResponse(payload);
 
   if (!history.length) {
     throw new Error(`No price history returned for ${ticker}.`);
@@ -739,6 +737,21 @@ async function loadMarketHistory(
   }
 
   return history;
+}
+
+export function parseMarketHistoryResponse(payload) {
+  const result = payload?.chart?.result?.[0];
+  const timestamps = result?.timestamp ?? [];
+  const closes = result?.indicators?.quote?.[0]?.close ?? [];
+
+  return timestamps
+    .map((timestamp, index) => ({
+      close: closes[index],
+      date: toIsoDate(new Date(timestamp * 1000)),
+    }))
+    .filter((point) => Number.isFinite(point.close) && point.close > 0)
+    .sort((left, right) => left.date.localeCompare(right.date));
+
 }
 
 async function readCache(cachePath, cacheTtlMs) {

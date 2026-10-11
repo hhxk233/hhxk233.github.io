@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
+        },{id: "nav-publications",
+          title: "publications",
+          description: "Conference abstracts, preprints, and submitted manuscripts.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/publications/";
+          },
         },{id: "nav-projects",
           title: "projects",
           description: "Research and personal projects.",
@@ -32,7 +39,7 @@ ninja.data = [{
           },
         },{id: "nav-courses",
           title: "courses",
-          description: "A list of courses I have taken.",
+          description: "Current and completed coursework.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/courses/";
@@ -83,17 +90,12 @@ ninja.data = [{
             window.location.href = "/blog/2026/umich-physics-course-notes/";
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "news-i-will-join-the-applied-physics-department-at-rice-university-for-my-phd-in-fall-2026",
+      },{id: "news-i-will-join-the-applied-physics-department-at-rice-university-for-my-phd-in-fall-2026",
           title: 'I will join the Applied Physics Department at Rice University for my PhD...',
           description: "",
-          section: "News",},{id: "projects-unified-bed-for-sbrt-vs-90y-sirt",
-          title: 'Unified BED for SBRT vs 90Y SIRT',
-          description: "Voxel-level liver function dose–response aligning SBRT EQD2 with protraction-aware SIRT BED and subvoxel EUD.",
+          section: "News",},{id: "projects-a-common-biological-dose-scale-for-sbrt-and-sirt",
+          title: 'A Common Biological Dose Scale for SBRT and SIRT',
+          description: "Imaging-derived liver response and biological dose modeling; conference abstract at ASTRO 2026.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/bed-sbrt-sirt/";
             },},{id: "projects-coupled-flow-matching-cpfm",
@@ -118,7 +120,7 @@ ninja.data = [{
               window.location.href = "/projects/email_digest_bot/";
             },},{id: "projects-epidemic-dynamics-as-phase-transitions",
           title: 'Epidemic Dynamics as Phase Transitions',
-          description: "Modeling discontinuous outbreak transitions under finite testing/isolation and validating with cellular automata &amp; ODE analysis.",
+          description: "Epidemic evolution and phase-transition analogies studied with cellular automata and ODE models at SJTU.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/epidemic-fluid-analogies/";
             },},{id: "projects-loss-induced-synthetic-magnetic-field",
@@ -148,7 +150,7 @@ ninja.data = [{
               window.location.href = "/projects/remasker-cox/";
             },},{id: "projects-wearable-safety-inspection-with-multimodal-llms",
           title: 'Wearable Safety Inspection with Multimodal LLMs',
-          description: "SJTU bachelor&#39;s capstone combining Rokid AR glasses, compact vision-language models, and domain adaptation for context-aware industrial safety inspection.",
+          description: "SJTU team capstone combining Rokid AR glasses and compact vision-language models for industrial safety inspection, sponsored by Prof. Yifei Zhu.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/wearable-safety-inspection/";
             },},{

@@ -2,10 +2,10 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import {
   buildSanitizedPortfolioPayload,
-  createEmptyPayload,
-  createErrorPayload,
   decodePortfolioCsvBase64,
+  inspectPortfolioActivityCoverage,
   loadMarketHistoriesForTickers,
+  parseBrokerReturnHistory,
   parsePortfolioTradeRows,
   shiftIsoDate,
   toIsoDate,
@@ -16,6 +16,7 @@ const AS_OF_DATE = process.env.PORTFOLIO_AS_OF_DATE ?? toIsoDate(new Date());
 const INPUT_CSV = process.env.PORTFOLIO_TRADES_CSV;
 const INPUT_CSV_TEXT = process.env.PORTFOLIO_TRADES_CSV_TEXT;
 const INPUT_CSV_B64 = process.env.PORTFOLIO_TRADES_CSV_B64 ?? process.env.PORTFOLIO_TRADES_CSV_BASE64;
+const INPUT_RETURNS_CSV = process.env.PORTFOLIO_RETURNS_CSV;
 const OUTPUT_JSON = process.env.PORTFOLIO_OUTPUT_JSON ?? path.join("assets", "json", "portfolio-data.json");
 const CACHE_DIR = process.env.PORTFOLIO_MARKET_DATA_CACHE_DIR ?? path.join(".cache", "portfolio-market-data");
 const CACHE_TTL_MS = Number(process.env.PORTFOLIO_MARKET_DATA_CACHE_TTL_HOURS ?? 12) * 60 * 60 * 1000;
@@ -23,57 +24,45 @@ const GENERATED_AT = new Date().toISOString();
 
 async function main() {
   if (!INPUT_CSV && !INPUT_CSV_TEXT && !INPUT_CSV_B64) {
-    await writePayload(
-      createErrorPayload(
-        "holdings",
-        "Set PORTFOLIO_TRADES_CSV, PORTFOLIO_TRADES_CSV_TEXT, or PORTFOLIO_TRADES_CSV_B64 before generating portfolio data.",
-        { asOfDate: AS_OF_DATE, baselineDate: BASELINE_DATE, generatedAt: GENERATED_AT }
-      )
-    );
     throw new Error("A private Robinhood trade history input is required.");
   }
 
   try {
     const csvText = await loadCsvText();
     const trades = parsePortfolioTradeRows(csvText);
-
-    if (!trades.length) {
-      await writePayload(
-        createEmptyPayload("No buy or sell transactions were reconstructed from the provided trade history.", {
-          asOfDate: AS_OF_DATE,
-          baselineDate: BASELINE_DATE,
-          generatedAt: GENERATED_AT,
-        })
-      );
+    const coverage = inspectPortfolioActivityCoverage(csvText);
+    if (!coverage.lastActivityDate) throw new Error("No dated activity was found in the private input.");
+    const existing = await readExistingPayload();
+    // Scheduled jobs may still hold an older private export. Do not let that
+    // stale input replace a newer locally reviewed, sanitized snapshot.
+    if (existing?.schemaVersion === 2 && existing.transactionAsOfDate > coverage.lastActivityDate) {
+      if (INPUT_RETURNS_CSV) {
+        throw new Error("Return-history import requires an activity export at least as recent as the existing snapshot. Existing data was preserved.");
+      }
+      console.log("Skipped older activity input; retained the newer sanitized portfolio snapshot.");
       return;
     }
-
-    const tickers = [...new Set(trades.map((trade) => trade.ticker))];
+    const brokerReturns = await loadBrokerReturns(existing);
+    const valuationDate = [AS_OF_DATE, coverage.lastActivityDate].sort()[0];
+    const excludedSymbols = new Set(coverage.excludedTickers.map((item) => item.ticker));
+    const tickers = [...new Set(trades.filter((trade) => !excludedSymbols.has(trade.ticker)).map((trade) => trade.ticker))];
     const { failedTickers, historiesByTicker } = await loadMarketHistoriesForTickers(tickers, {
       cacheDir: CACHE_DIR,
       cacheTtlMs: CACHE_TTL_MS,
-      endDate: AS_OF_DATE,
+      endDate: valuationDate,
       startDate: shiftIsoDate(BASELINE_DATE, -7),
     });
 
-    if (!historiesByTicker.size) {
-      await writePayload(
-        createErrorPayload(
-          "market",
-          "Historical market data could not be loaded for the reconstructed holdings.",
-          { asOfDate: AS_OF_DATE, baselineDate: BASELINE_DATE, generatedAt: GENERATED_AT }
-        )
-      );
-      return;
-    }
-
     const payload = buildSanitizedPortfolioPayload({
-      asOfDate: AS_OF_DATE,
+      asOfDate: valuationDate,
       baselineDate: BASELINE_DATE,
       failedTickers,
       generatedAt: GENERATED_AT,
       historiesByTicker,
       trades,
+      brokerReturns,
+      excludedTickers: coverage.excludedTickers,
+      transactionAsOfDate: coverage.lastActivityDate,
     });
     await writePayload(payload);
 
@@ -82,15 +71,29 @@ async function main() {
       `Generated sanitized portfolio data (${payload.status}) for ${holdingsCount} holdings at ${OUTPUT_JSON}.`
     );
   } catch (error) {
-    await writePayload(
-      createErrorPayload(
-        "holdings",
-        "The holdings file could not be parsed into a sanitized portfolio dataset.",
-        { asOfDate: AS_OF_DATE, baselineDate: BASELINE_DATE, generatedAt: GENERATED_AT }
-      )
-    );
+    // Preserve the last reviewed snapshot on parse/accounting failures.
     throw error;
   }
+}
+
+async function readExistingPayload() {
+  try {
+    return JSON.parse(await fs.readFile(OUTPUT_JSON, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+async function loadBrokerReturns(existing) {
+  if (INPUT_RETURNS_CSV) return parseBrokerReturnHistory(await fs.readFile(INPUT_RETURNS_CSV, "utf8"));
+  // Version 1 performance is the erroneous unrealized-position ratio. It must
+  // never be promoted to broker account history during a routine refresh.
+  if (existing?.schemaVersion === 2 && existing.performanceSource === "broker-return-history" && existing.performanceStatus === "ready") {
+    return parseBrokerReturnHistory(
+      ["Date,ReturnPct", ...existing.performance.map((point) => `${point.date},${point.returnPct}`)].join("\n")
+    );
+  }
+  return [];
 }
 
 async function writePayload(payload) {
