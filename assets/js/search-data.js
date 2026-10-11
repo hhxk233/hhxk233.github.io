@@ -146,6 +146,11 @@ ninja.data = [{
           description: "Survival-guided masked autoencoder that couples imputation with a CoxPH risk signal for clinical tabular data.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/remasker-cox/";
+            },},{id: "projects-wearable-safety-inspection-with-multimodal-llms",
+          title: 'Wearable Safety Inspection with Multimodal LLMs',
+          description: "SJTU bachelor&#39;s capstone combining Rokid AR glasses, compact vision-language models, and domain adaptation for context-aware industrial safety inspection.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/wearable-safety-inspection/";
             },},{
         id: 'social-email',
         title: 'email',
