@@ -9,11 +9,11 @@ import {
   parseBrokerReturnHistory,
   parsePortfolioTradeRows,
   shiftIsoDate,
-  toIsoDate,
+  toUsMarketDate,
 } from "./portfolio-lib.mjs";
 
 const BASELINE_DATE = process.env.PORTFOLIO_BASELINE_DATE ?? "2026-02-02";
-const AS_OF_DATE = process.env.PORTFOLIO_AS_OF_DATE ?? toIsoDate(new Date());
+const AS_OF_DATE = process.env.PORTFOLIO_AS_OF_DATE ?? toUsMarketDate(new Date());
 const INPUT_CSV = process.env.PORTFOLIO_TRADES_CSV;
 const INPUT_CSV_TEXT = process.env.PORTFOLIO_TRADES_CSV_TEXT;
 const INPUT_CSV_B64 = process.env.PORTFOLIO_TRADES_CSV_B64 ?? process.env.PORTFOLIO_TRADES_CSV_BASE64;

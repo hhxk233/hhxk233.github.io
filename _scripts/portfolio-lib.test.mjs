@@ -16,11 +16,18 @@ import {
   parseBrokerReturnHistory,
   parseMarketHistoryResponse,
   parsePortfolioTradeRows,
+  toUsMarketDate,
 } from "./portfolio-lib.mjs";
 
 function history(points) {
   return points.map(([date, close]) => ({ date, close }));
 }
+
+test("default market date uses New York's calendar day across daylight-saving and winter offsets", () => {
+  assert.equal(toUsMarketDate(new Date("2026-10-12T00:30:00.000Z")), "2026-10-11");
+  assert.equal(toUsMarketDate(new Date("2026-01-03T04:30:00.000Z")), "2026-01-02");
+  assert.equal(toUsMarketDate(new Date("2026-10-12T14:00:00.000Z")), "2026-10-12");
+});
 
 test("decodePortfolioCsvBase64 accepts plain and gzip-compressed CSV", () => {
   const csv = '"Activity Date","Instrument"\n"8/26/2026","VOO"\n';
