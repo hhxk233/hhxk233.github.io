@@ -180,12 +180,26 @@ export async function loadMarketHistoriesForTickers(
 ) {
   const historiesByTicker = new Map();
   const failedTickers = [];
-
-  for (const ticker of [...new Set(tickers)].sort()) {
-    try {
-      const history = await loadMarketHistory(ticker, { cacheDir, cacheTtlMs, endDate, startDate });
-      historiesByTicker.set(ticker, history);
-    } catch {
+  const sortedTickers = [...new Set(tickers)].sort();
+  const results = new Array(sortedTickers.length);
+  let nextIndex = 0;
+  const workers = Array.from({ length: Math.min(4, sortedTickers.length) }, async () => {
+    while (nextIndex < sortedTickers.length) {
+      const index = nextIndex++;
+      try {
+        results[index] = await loadMarketHistory(sortedTickers[index], { cacheDir, cacheTtlMs, endDate, startDate });
+      } catch {
+        results[index] = null;
+      }
+    }
+  });
+  await Promise.all(workers);
+  // Fetches can finish out of order; public output and accounting inputs retain
+  // deterministic symbol order regardless of network timing.
+  for (const [index, ticker] of sortedTickers.entries()) {
+    if (results[index]) {
+      historiesByTicker.set(ticker, results[index]);
+    } else {
       failedTickers.push({
         ticker,
         reason: "Historical market data was unavailable.",
@@ -204,6 +218,7 @@ export function buildSanitizedPortfolioPayload({
   historiesByTicker,
   trades,
   brokerReturns = [],
+  reconstructedHistory = null,
   excludedTickers = [],
   transactionAsOfDate = null,
 }) {
@@ -213,7 +228,7 @@ export function buildSanitizedPortfolioPayload({
     .sort(compareTradeRows);
 
   const priceLookupsByTicker = buildPortfolioPriceLookups(historiesByTicker, baselineDate, asOfDate);
-  const currentPositions = buildOpenPositionsByTicker(filteredTrades, asOfDate);
+  const currentPositions = buildOpenPositionsByTicker(filteredTrades, asOfDate, historiesByTicker);
   const currentSnapshot = summarizeOpenPositions(currentPositions, priceLookupsByTicker, asOfDate);
 
   const currentHoldings = currentSnapshot.holdings.sort((left, right) => right.marketValue - left.marketValue);
@@ -226,7 +241,9 @@ export function buildSanitizedPortfolioPayload({
       : null;
   // Never synthesize the account curve from an open-position cost-basis ratio.
   // Copy only the two public fields even if a caller passes extra private data.
-  const performance = brokerReturns.map(({ date, returnPct }) => ({ date, returnPct }));
+  const hasBrokerHistory = brokerReturns.length >= 2;
+  const history = hasBrokerHistory ? brokerReturns : reconstructedHistory?.performance ?? [];
+  const performance = history.map(({ date, returnPct }) => ({ date, returnPct }));
   const hasAccountHistory = performance.length >= 2;
 
   return {
@@ -238,8 +255,9 @@ export function buildSanitizedPortfolioPayload({
     latestTradingDate,
     generatedAt,
     performanceStatus: hasAccountHistory ? "ready" : "unavailable",
-    performanceSource: hasAccountHistory ? "broker-return-history" : null,
-    performanceMessage: hasAccountHistory ? null : ACCOUNT_HISTORY_UNAVAILABLE,
+    performanceSource: hasAccountHistory ? (hasBrokerHistory ? "broker-return-history" : "reconstructed-activity") : null,
+    performanceMethod: hasAccountHistory && !hasBrokerHistory ? reconstructedHistory.performanceMethod : null,
+    performanceMessage: hasAccountHistory ? (hasBrokerHistory ? null : reconstructedHistory.performanceMessage) : ACCOUNT_HISTORY_UNAVAILABLE,
     summary: {
       accountReturnPct: hasAccountHistory ? performance.at(-1).returnPct : null,
       unrealizedReturnPct: unrealizedReturnFraction === null ? null : round(unrealizedReturnFraction * 100, 2),
@@ -258,16 +276,31 @@ export function buildSanitizedPortfolioPayload({
   };
 }
 
-export function buildOpenPositionsByTicker(trades, cutoffDate) {
+export function buildOpenPositionsByTicker(trades, cutoffDate, historiesByTicker = new Map()) {
   const positionsByTicker = new Map();
+  const splitEvents = [...historiesByTicker].flatMap(([ticker, history]) =>
+    history.filter((point) => point.splitRatio !== undefined && point.date <= cutoffDate)
+      .map(({ date, splitRatio }) => ({ ticker, date, splitRatio }))
+  ).sort((left, right) => left.date.localeCompare(right.date) || left.ticker.localeCompare(right.ticker));
+  let splitIndex = 0;
+  const applySplitsThrough = (date) => {
+    while (splitIndex < splitEvents.length && splitEvents[splitIndex].date <= date) {
+      const { ticker, splitRatio } = splitEvents[splitIndex++];
+      if (!Number.isFinite(splitRatio) || splitRatio <= 0) throw new Error("Market history contains an invalid split ratio.");
+      // A split changes shares, not the money invested in each FIFO lot.
+      for (const lot of positionsByTicker.get(ticker)?.lots ?? []) lot.quantity *= splitRatio;
+    }
+  };
 
   for (const trade of [...trades].sort(compareTradeRows)) {
     if (trade.activityDate > cutoffDate) {
       break;
     }
 
+    applySplitsThrough(trade.activityDate);
     applyTradeToOpenPositions(positionsByTicker, trade);
   }
+  applySplitsThrough(cutoffDate);
 
   return positionsByTicker;
 }
@@ -392,6 +425,8 @@ export function buildPortfolioPriceLookups(historiesByTicker, startDate, endDate
       byDate: buildForwardFilledCloseMap(sortedHistory, startDate, endDate),
       latestTradingDate: actualTradingDates.at(-1) ?? null,
       tradingDates: actualTradingDates,
+      splitEvents: sortedHistory.filter((point) => point.splitRatio !== undefined)
+        .map(({ date, splitRatio }) => ({ date, splitRatio })),
     });
   }
 
@@ -455,8 +490,16 @@ function calculateCurrentPortfolioDayChange(holdings, priceLookupsByTicker, late
       continue;
     }
 
+    let splitRatio = 1;
+    for (const event of lookup.splitEvents ?? []) {
+      if (event.date > previousTradingDate && event.date <= latestTradingDate) {
+        if (!Number.isFinite(event.splitRatio) || event.splitRatio <= 0) throw new Error("Market history contains an invalid split ratio.");
+        splitRatio *= event.splitRatio;
+      }
+    }
     latestMarketValue += holding.quantity * latestClose;
-    previousMarketValue += holding.quantity * previousClose;
+    // Compare both dates per current share, so a split cannot create a price loss.
+    previousMarketValue += holding.quantity * (previousClose / splitRatio);
   }
 
   if (previousMarketValue <= PORTFOLIO_EPSILON) {
@@ -567,7 +610,7 @@ function extractDisplayName(description) {
   return firstLine;
 }
 
-function parseCsv(text) {
+export function parseCsv(text) {
   const rows = [];
   let currentRow = [];
   let field = "";
@@ -641,7 +684,7 @@ function parseQuantity(rawValue) {
   return Number.isFinite(quantity) ? quantity : null;
 }
 
-function parseSignedMoney(rawValue) {
+export function parseSignedMoney(rawValue) {
   if (!rawValue) {
     return null;
   }
@@ -665,7 +708,7 @@ function parseSignedMoney(rawValue) {
   return isParenthesized ? -Math.abs(numericValue) : numericValue;
 }
 
-function normalizeUsDate(rawValue) {
+export function normalizeUsDate(rawValue) {
   if (!rawValue) {
     return null;
   }
@@ -699,7 +742,7 @@ async function loadMarketHistory(
   } = {}
 ) {
   const cachePath = cacheDir ? path.join(cacheDir, `${ticker}.json`) : null;
-  const cached = cachePath ? await readCache(cachePath, cacheTtlMs) : null;
+  const cached = cachePath ? await readCache(cachePath, cacheTtlMs, { startDate, endDate }) : null;
   if (cached) {
     return cached;
   }
@@ -711,6 +754,7 @@ async function loadMarketHistory(
     `?period1=${period1}&period2=${period2}&interval=1d&includePrePost=false&events=div%2Csplits`;
 
   const response = await fetch(url, {
+    signal: AbortSignal.timeout(20000),
     headers: {
       "user-agent": "Mozilla/5.0",
     },
@@ -731,7 +775,7 @@ async function loadMarketHistory(
     await fs.mkdir(path.dirname(cachePath), { recursive: true });
     await fs.writeFile(
       cachePath,
-      `${JSON.stringify({ fetchedAt: Date.now(), history }, null, 2)}\n`,
+      `${JSON.stringify({ version: "raw-share-prices-v1", fetchedAt: Date.now(), startDate, endDate, history }, null, 2)}\n`,
       "utf8"
     );
   }
@@ -743,25 +787,70 @@ export function parseMarketHistoryResponse(payload) {
   const result = payload?.chart?.result?.[0];
   const timestamps = result?.timestamp ?? [];
   const closes = result?.indicators?.quote?.[0]?.close ?? [];
+  const splitEvents = Object.values(result?.events?.splits ?? {}).map((event) => {
+    const numerator = Number(event.numerator);
+    const denominator = Number(event.denominator);
+    const splitRatio = numerator / denominator;
+    const timestamp = Number(event.date);
+    if (!Number.isFinite(timestamp) || !Number.isFinite(numerator) || !Number.isFinite(denominator) ||
+        numerator <= 0 || denominator <= 0 || !Number.isFinite(splitRatio) || splitRatio <= 0) {
+      throw new Error("Historical market data contained an invalid stock split.");
+    }
+    return { date: toIsoDate(new Date(timestamp * 1000)), splitRatio };
+  });
 
-  return timestamps
-    .map((timestamp, index) => ({
-      close: closes[index],
-      date: toIsoDate(new Date(timestamp * 1000)),
-    }))
-    .filter((point) => Number.isFinite(point.close) && point.close > 0)
+  const history = timestamps
+    .flatMap((timestamp, index) => {
+      const close = closes[index];
+      if (!Number.isFinite(timestamp) || !Number.isFinite(close) || close <= 0) return [];
+      const date = toIsoDate(new Date(timestamp * 1000));
+      // Yahoo's quote.close is split-adjusted. Reconstruct the price per share
+      // that actually existed on this date, including splits after the report
+      // cutoff. Dividends are deliberately not adjusted here: the cash ledger
+      // already records them.
+      const laterSplits = splitEvents.filter((event) => event.date > date);
+      const factor = laterSplits.reduce((product, event) => product * event.splitRatio, 1);
+      const rawClose = close * factor;
+      if (!Number.isFinite(rawClose) || rawClose <= 0) {
+        throw new Error("Stock-split normalization produced an invalid historical price.");
+      }
+      const sameDaySplits = splitEvents.filter((event) => event.date === date);
+      const point = { date, close: rawClose };
+      if (sameDaySplits.length) {
+        point.splitRatio = sameDaySplits.reduce((product, event) => product * event.splitRatio, 1);
+        if (!Number.isFinite(point.splitRatio) || point.splitRatio <= 0) {
+          throw new Error("Historical market data contained an invalid combined stock split.");
+        }
+      }
+      return [point];
+    })
     .sort((left, right) => left.date.localeCompare(right.date));
-
+  // Do not silently lose a share-quantity adjustment when a split-day quote is
+  // missing from an otherwise covered history.
+  const dates = new Set(history.map((point) => point.date));
+  for (const event of splitEvents) {
+    if (history.length && event.date >= history[0].date && event.date <= history.at(-1).date && !dates.has(event.date)) {
+      throw new Error("A stock-split date is missing its historical market price.");
+    }
+  }
+  return history;
 }
 
-async function readCache(cachePath, cacheTtlMs) {
+async function readCache(cachePath, cacheTtlMs, { startDate, endDate }) {
   try {
     const cacheText = await fs.readFile(cachePath, "utf8");
     const cache = JSON.parse(cacheText);
-    if (Date.now() - cache.fetchedAt > cacheTtlMs) {
+    if (cache.version !== "raw-share-prices-v1" || !Number.isFinite(cache.fetchedAt) ||
+        Date.now() - cache.fetchedAt > cacheTtlMs || cache.fetchedAt > Date.now() ||
+        !isValidIsoDate(cache.startDate) || !isValidIsoDate(cache.endDate) ||
+        cache.startDate > startDate || cache.endDate < endDate) {
       return null;
     }
-    return Array.isArray(cache.history) ? cache.history : null;
+    if (!Array.isArray(cache.history) || !cache.history.length || cache.history.some((point) =>
+      !isValidIsoDate(point.date) || !Number.isFinite(point.close) || point.close <= 0 ||
+      (point.splitRatio !== undefined && (!Number.isFinite(point.splitRatio) || point.splitRatio <= 0))
+    )) return null;
+    return cache.history;
   } catch {
     return null;
   }

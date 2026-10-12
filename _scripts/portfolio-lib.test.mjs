@@ -124,6 +124,71 @@ test("FIFO lot accounting handles multiple buys, partial sells, and full sells",
   assert.equal(positions.has("BBB"), false);
 });
 
+test("snapshot FIFO applies a split before same-day sales and buys while preserving lot basis", () => {
+  const trades = [
+    { activityDate: "2026-02-02", amount: -200, quantity: 2, transCode: "Buy", ticker: "AAA", sourceOrder: 3 },
+    { activityDate: "2026-02-03", amount: -120, quantity: 1, transCode: "Buy", ticker: "AAA", sourceOrder: 2 },
+    { activityDate: "2026-02-04", amount: 275, quantity: 5, transCode: "Sell", ticker: "AAA", sourceOrder: 1 },
+    { activityDate: "2026-02-04", amount: -55, quantity: 1, transCode: "Buy", ticker: "AAA", sourceOrder: 0 },
+  ];
+  const histories = new Map([["AAA", [
+    { date: "2026-02-02", close: 100 }, { date: "2026-02-03", close: 120 },
+    { date: "2026-02-04", close: 55, splitRatio: 2 },
+  ]]]);
+  const before = buildOpenPositionsByTicker(trades, "2026-02-03", histories).get("AAA").lots;
+  assert.deepEqual(before.map(({ quantity, costBasis }) => ({ quantity, costBasis })), [
+    { quantity: 2, costBasis: 200 }, { quantity: 1, costBasis: 120 },
+  ]);
+  const after = buildOpenPositionsByTicker(trades, "2026-02-04", histories).get("AAA").lots;
+  assert.deepEqual(after.map(({ quantity, costBasis, acquiredDate }) => ({ quantity, costBasis, acquiredDate })), [
+    { quantity: 1, costBasis: 60, acquiredDate: "2026-02-03" },
+    { quantity: 1, costBasis: 55, acquiredDate: "2026-02-04" },
+  ]);
+  assert.equal(trades[0].quantity, 2, "Applying a split must not mutate the source trades");
+});
+
+test("post-report splits preserve snapshot value, weights, and the daily price return", async (t) => {
+  for (const ratio of [2, 0.1]) {
+    await t.test(ratio > 1 ? "forward split" : "reverse split", () => {
+      const trades = [
+        { activityDate: "2026-02-02", amount: -100, quantity: 1, transCode: "Buy", ticker: "AAA", sourceOrder: 1 },
+        { activityDate: "2026-02-02", amount: -100, quantity: 1, transCode: "Buy", ticker: "BBB", sourceOrder: 0 },
+      ];
+      const historiesByTicker = new Map([
+        ["AAA", [
+          { date: "2026-02-02", close: 100 }, { date: "2026-02-04", close: 100 / ratio, splitRatio: ratio },
+          { date: "2026-02-05", close: 110 / ratio },
+        ]],
+        ["BBB", history([["2026-02-02", 100], ["2026-02-04", 100], ["2026-02-05", 100]])],
+      ]);
+      const options = { baselineDate: "2026-02-02", transactionAsOfDate: "2026-02-02", trades, historiesByTicker };
+      const splitDay = buildSanitizedPortfolioPayload({ ...options, asOfDate: "2026-02-04" });
+      assert.equal(splitDay.summary.unrealizedReturnPct, 0);
+      assert.equal(splitDay.summary.holdingsDayChangePct, 0);
+      assert.ok(splitDay.holdings.every((holding) => holding.weightPct === 50 && holding.currentReturnPct === 0));
+      const lots = buildOpenPositionsByTicker(trades, "2026-02-04", historiesByTicker).get("AAA").lots;
+      assert.equal(lots[0].quantity, ratio);
+      assert.equal(lots[0].costBasis, 100);
+
+      const nextDay = buildSanitizedPortfolioPayload({ ...options, asOfDate: "2026-02-05" });
+      assert.equal(nextDay.summary.unrealizedReturnPct, 5);
+      assert.equal(nextDay.summary.holdingsDayChangePct, 5);
+      assert.equal(nextDay.holdings.find((holding) => holding.ticker === "AAA").currentReturnPct, 10);
+      const weekend = buildSanitizedPortfolioPayload({ ...options, asOfDate: "2026-02-08" });
+      assert.equal(weekend.latestTradingDate, "2026-02-05");
+      assert.deepEqual(weekend.holdings, nextDay.holdings);
+      assert.deepEqual(weekend.summary, nextDay.summary);
+    });
+  }
+});
+
+test("snapshot split replay rejects an invalid ratio", () => {
+  const trades = [{ activityDate: "2026-02-02", amount: -100, quantity: 1, transCode: "Buy", ticker: "AAA", sourceOrder: 0 }];
+  assert.throws(() => buildOpenPositionsByTicker(trades, "2026-02-04", new Map([["AAA", [
+    { date: "2026-02-04", close: 100, splitRatio: 0 },
+  ]]])), /invalid split ratio/);
+});
+
 test("sanitized payload excludes sold-out holdings and keeps DRIP buy lots", () => {
   const trades = parsePortfolioTradeRows(`"Activity Date","Process Date","Settle Date","Instrument","Description","Trans Code","Quantity","Price","Amount"
 "2/2/2026","2/2/2026","2/3/2026","AAA","Alpha Co","Buy","1","$100.00","($100.00)"
@@ -229,12 +294,17 @@ test("routine generation preserves verified broker history and does not revive l
     execFileSync(process.execPath, ["_scripts/generate-portfolio-data.mjs"], { env });
     let result = JSON.parse(await fs.readFile(output, "utf8"));
     assert.deepEqual(result.performance, brokerPoints);
-    assert.equal(result.asOfDate, "2026-02-03");
+    assert.equal(result.asOfDate, "2026-02-10");
+    assert.equal(result.transactionAsOfDate, "2026-02-03");
+    assert.equal(result.performanceSource, "broker-return-history");
+    assert.equal(result.performance.at(-1).date, "2026-02-03", "Verified broker points must not be extended with an estimate");
     await fs.writeFile(output, JSON.stringify({ performance: brokerPoints, status: "ready" }));
     execFileSync(process.execPath, ["_scripts/generate-portfolio-data.mjs"], { env });
     result = JSON.parse(await fs.readFile(output, "utf8"));
-    assert.equal(result.performanceStatus, "unavailable");
-    assert.deepEqual(result.performance, []);
+    assert.equal(result.performanceStatus, "ready");
+    assert.equal(result.performanceSource, "reconstructed-activity");
+    assert.ok(result.performance.every((point) => point.returnPct === 0), "Reconstruction must not reuse the legacy proxy values");
+    assert.equal(result.performance.at(-1).date, "2026-02-10");
     const newer = { ...result, transactionAsOfDate: "2026-03-01" };
     await fs.writeFile(output, JSON.stringify(newer));
     execFileSync(process.execPath, ["_scripts/generate-portfolio-data.mjs"], { env });
@@ -250,6 +320,63 @@ test("routine generation preserves verified broker history and does not revive l
   } finally {
     assert.equal(path.dirname(path.resolve(dir)), path.resolve(os.tmpdir()));
     assert.ok(path.basename(dir).startsWith("portfolio-history-test-"));
+    await fs.rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("routine generation reprices unchanged reported holdings and cash through the valuation date", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "portfolio-daily-valuation-test-"));
+  try {
+    const output = path.join(dir, "public.json");
+    const cacheDir = path.join(dir, "market-cache");
+    await fs.mkdir(cacheDir);
+    await fs.writeFile(path.join(cacheDir, "AAA.json"), JSON.stringify({
+      version: "raw-share-prices-v1", fetchedAt: Date.now() - 1000,
+      startDate: "2026-01-26", endDate: "2026-02-10",
+      history: history([["2026-02-02", 100], ["2026-02-03", 100], ["2026-02-06", 120], ["2026-02-09", 110]]),
+    }));
+    const input = "Activity Date,Instrument,Description,Trans Code,Quantity,Price,Amount\n" +
+      "2/3/2026,,Interest,INT,,,$2\n" +
+      "2/2/2026,AAA,Alpha,Buy,1,$100,($100)\n" +
+      "2/2/2026,,Deposit,ACH,,,$200\n";
+    const env = {
+      ...process.env, PORTFOLIO_OUTPUT_JSON: output, PORTFOLIO_TRADES_CSV_TEXT: input,
+      PORTFOLIO_RETURNS_CSV: "", PORTFOLIO_MARKET_DATA_CACHE_DIR: cacheDir,
+      PORTFOLIO_MARKET_DATA_CACHE_TTL_HOURS: "12", PORTFOLIO_BASELINE_DATE: "2026-02-02",
+    };
+    const generate = async (asOfDate) => {
+      execFileSync(process.execPath, ["_scripts/generate-portfolio-data.mjs"], { env: { ...env, PORTFOLIO_AS_OF_DATE: asOfDate } });
+      return JSON.parse(await fs.readFile(output, "utf8"));
+    };
+    const atReport = await generate("2026-02-03");
+    assert.equal(atReport.summary.accountReturnPct, 1);
+    assert.equal(atReport.holdings[0].currentReturnPct, 0);
+    assert.doesNotMatch(atReport.performanceMessage, /valuations assume unchanged holdings and cash/);
+
+    const weekend = await generate("2026-02-08");
+    assert.equal(weekend.asOfDate, "2026-02-08");
+    assert.equal(weekend.transactionAsOfDate, "2026-02-03");
+    assert.equal(weekend.latestTradingDate, "2026-02-06");
+    assert.equal(weekend.summary.accountReturnPct, 11);
+    assert.equal(weekend.holdings[0].currentReturnPct, 20);
+    assert.equal(weekend.summary.holdingsCount, 1);
+    assert.deepEqual(weekend.performance.filter((point) => point.date >= "2026-02-06"), [
+      { date: "2026-02-06", returnPct: 11 }, { date: "2026-02-07", returnPct: 11 }, { date: "2026-02-08", returnPct: 11 },
+    ]);
+    assert.match(weekend.performanceMessage, /After 2026-02-03, valuations assume unchanged holdings and cash; only market prices are updated\./);
+    assert.deepEqual(weekend.failedTickers, []);
+
+    const monday = await generate("2026-02-09");
+    assert.equal(monday.asOfDate, "2026-02-09");
+    assert.equal(monday.transactionAsOfDate, "2026-02-03");
+    assert.equal(monday.latestTradingDate, "2026-02-09");
+    assert.equal(monday.summary.accountReturnPct, 6);
+    assert.equal(monday.holdings[0].currentReturnPct, 10);
+    assert.deepEqual(monday.performance.filter((point) => point.date <= "2026-02-08"), weekend.performance);
+    assert.equal(monday.performanceSource, "reconstructed-activity");
+  } finally {
+    assert.equal(path.dirname(path.resolve(dir)), path.resolve(os.tmpdir()));
+    assert.ok(path.basename(dir).startsWith("portfolio-daily-valuation-test-"));
     await fs.rm(dir, { recursive: true, force: true });
   }
 });

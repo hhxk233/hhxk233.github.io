@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { parseAccountActivity, reconstructAccountHistory } from "./account-history.mjs";
 import {
   buildSanitizedPortfolioPayload,
   decodePortfolioCsvBase64,
@@ -37,22 +38,31 @@ async function main() {
     // stale input replace a newer locally reviewed, sanitized snapshot.
     if (existing?.schemaVersion === 2 && existing.transactionAsOfDate > coverage.lastActivityDate) {
       if (INPUT_RETURNS_CSV) {
-        throw new Error("Return-history import requires an activity export at least as recent as the existing snapshot. Existing data was preserved.");
+        throw new Error(
+          "Return-history import requires an activity export at least as recent as the existing snapshot. Existing data was preserved."
+        );
       }
       console.log("Skipped older activity input; retained the newer sanitized portfolio snapshot.");
       return;
     }
     const brokerReturns = await loadBrokerReturns(existing);
-    const valuationDate = [AS_OF_DATE, coverage.lastActivityDate].sort()[0];
-    const excludedSymbols = new Set(coverage.excludedTickers.map((item) => item.ticker));
-    const tickers = [...new Set(trades.filter((trade) => !excludedSymbols.has(trade.ticker)).map((trade) => trade.ticker))];
+    // Keep valuing the latest reported positions each day. The activity cutoff
+    // remains separate, and reconstruction discloses the unchanged cash/holdings
+    // assumption for dates beyond that report.
+    const valuationDate = AS_OF_DATE;
+    const activities = parseAccountActivity(csvText);
+    const tickers = [...new Set(activities.filter((row) => row.quantity && row.ticker).map((row) => row.ticker))];
     const { failedTickers, historiesByTicker } = await loadMarketHistoriesForTickers(tickers, {
       cacheDir: CACHE_DIR,
       cacheTtlMs: CACHE_TTL_MS,
-      endDate: valuationDate,
-      startDate: shiftIsoDate(BASELINE_DATE, -7),
+      endDate: AS_OF_DATE,
+      startDate: shiftIsoDate([BASELINE_DATE, coverage.firstActivityDate].sort()[0], -7),
     });
 
+    let reconstructedHistory = null;
+    if (brokerReturns.length < 2) {
+      reconstructedHistory = reconstructAccountHistory({ activities, historiesByTicker, baselineDate: BASELINE_DATE, asOfDate: valuationDate });
+    }
     const payload = buildSanitizedPortfolioPayload({
       asOfDate: valuationDate,
       baselineDate: BASELINE_DATE,
@@ -61,15 +71,14 @@ async function main() {
       historiesByTicker,
       trades,
       brokerReturns,
+      reconstructedHistory,
       excludedTickers: coverage.excludedTickers,
       transactionAsOfDate: coverage.lastActivityDate,
     });
     await writePayload(payload);
 
     const holdingsCount = payload.summary?.holdingsCount ?? 0;
-    console.log(
-      `Generated sanitized portfolio data (${payload.status}) for ${holdingsCount} holdings at ${OUTPUT_JSON}.`
-    );
+    console.log(`Generated sanitized portfolio data (${payload.status}) for ${holdingsCount} holdings at ${OUTPUT_JSON}.`);
   } catch (error) {
     // Preserve the last reviewed snapshot on parse/accounting failures.
     throw error;
@@ -89,9 +98,7 @@ async function loadBrokerReturns(existing) {
   // Version 1 performance is the erroneous unrealized-position ratio. It must
   // never be promoted to broker account history during a routine refresh.
   if (existing?.schemaVersion === 2 && existing.performanceSource === "broker-return-history" && existing.performanceStatus === "ready") {
-    return parseBrokerReturnHistory(
-      ["Date,ReturnPct", ...existing.performance.map((point) => `${point.date},${point.returnPct}`)].join("\n")
-    );
+    return parseBrokerReturnHistory(["Date,ReturnPct", ...existing.performance.map((point) => `${point.date},${point.returnPct}`)].join("\n"));
   }
   return [];
 }
