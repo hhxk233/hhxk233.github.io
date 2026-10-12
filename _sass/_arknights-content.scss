@@ -210,7 +210,7 @@
   .publications {
     h2.bibliography {
       text-align: left;
-      color: var(--field-muted);
+      color: var(--field-ochre);
       font: 0.8rem/1.5 var(--field-mono);
       letter-spacing: 0.06em;
     }
@@ -218,9 +218,13 @@
       width: auto !important;
       border-radius: 0 !important;
       padding: 0.4rem 0.6rem;
-      background: var(--field-raised);
-      color: var(--field-ink) !important;
-      border-left: 2px solid var(--content-accent);
+      background: var(--field-blue-soft);
+      color: var(--field-blue) !important;
+      border-left: 2px solid var(--field-blue);
+      a,
+      div {
+        color: inherit;
+      }
     }
   }
   #bibsearch {
@@ -274,8 +278,8 @@
       .badge {
         padding: 0.4rem 0.5rem;
         border: 1px solid var(--content-rule);
-        background: var(--field-raised) !important;
-        color: var(--field-ink) !important;
+        background: var(--field-blue-soft) !important;
+        color: var(--field-blue) !important;
         font-size: 0.66rem;
         line-height: 1.5;
         white-space: normal;

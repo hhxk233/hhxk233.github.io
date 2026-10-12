@@ -1,0 +1,104 @@
+---
+layout: default
+---
+<div class="post cw-page">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | capitalize }}</h1>
+    <p class="post-description">{{ page.description }}</p>
+  </header>
+
+  <p class="cw-intro">Selected coursework, organized by institution and term. Credits are shown when listed.</p>
+
+  <nav class="cw-nav" aria-label="Coursework by institution">
+    {% for institution in site.data.coursework.institutions %}
+      <a href="#{{ institution.id }}">{{ institution.short_name }}</a>
+    {% endfor %}
+  </nav>
+
+  {% for institution in site.data.coursework.institutions %}
+    <section class="cw-section" id="{{ institution.id }}" aria-labelledby="{{ institution.id }}-heading">
+      <header class="cw-section-header">
+        <h2 id="{{ institution.id }}-heading">{{ institution.name }}</h2>
+        <span class="cw-section-kicker">
+          {% if institution.current %}Current semester{% else %}Completed coursework{% endif %}
+        </span>
+      </header>
+
+      {% if institution.note %}
+        <p class="cw-section-note">{{ institution.note }}</p>
+      {% endif %}
+
+      {% for term in institution.terms %}
+        {% if institution.current %}
+          <div class="cw-current">
+            <h3 class="cw-current-term">{{ term.label }}</h3>
+            <div class="cw-current-grid">
+              {% for course in term.courses %}
+                <article class="cw-course-card">
+                  <div class="cw-course-meta">
+                    <span class="cw-course-code">{{ course.code }}</span>
+                    {% if course.credits %}
+                      <span class="cw-course-credit">
+                        {{- course.credits }}
+                        {% if course.credits == 1 %}credit{% else %}credits{% endif -%}
+                      </span>
+                    {% endif %}
+                  </div>
+                  <h4
+                    class="cw-course-name"
+                    {% if course.translation_key %}
+                      data-i18n="{{ course.translation_key }}"
+                    {% endif %}
+                  >
+                    {{ course.name }}
+                  </h4>
+                </article>
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <details
+            class="cw-term"
+            {% if term.open %}
+              open
+            {% endif %}
+          >
+            <summary class="cw-term-heading">
+              <span>{{ term.label }}</span>
+            </summary>
+            <ul class="cw-course-list">
+              {% for course in term.courses %}
+                <li class="cw-course-row">
+                  <span class="cw-course-code">{{ course.code }}</span>
+                  <span
+                    class="cw-course-name"
+                    {% if course.translation_key %}
+                      data-i18n="{{ course.translation_key }}"
+                    {% endif %}
+                  >
+                    {{- course.name -}}
+                  </span>
+                  {% if course.credits %}
+                    <span class="cw-course-credit">
+                      {{- course.credits }}
+                      {% if course.credits == 1 %}credit{% else %}credits{% endif -%}
+                    </span>
+                  {% else %}
+                    <span class="cw-course-credit" aria-label="Credits not listed">—</span>
+                  {% endif %}
+                  {% if course.project %}
+                    <p class="cw-capstone">
+                      <span>Team capstone:</span>
+                      <a href="{{ course.project.url | relative_url }}">{{ course.project.title }}</a
+                      ><span>, sponsored by {{ course.project.sponsor }}.</span>
+                    </p>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </details>
+        {% endif %}
+      {% endfor %}
+    </section>
+  {% endfor %}
+</div>

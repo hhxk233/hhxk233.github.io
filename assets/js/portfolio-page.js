@@ -72,24 +72,45 @@
 
     const failedTickers = Array.isArray(payload.failedTickers) ? payload.failedTickers : [];
     const excludedTickers = Array.isArray(payload.excludedTickers) ? payload.excludedTickers : [];
+    const isReconstructed = payload.performanceSource === "reconstructed-activity";
     const hasHistory =
-      payload.performanceStatus === "ready" && payload.performanceSource === "broker-return-history" && payload.performance?.length >= 2;
+      payload.performanceStatus === "ready" &&
+      (payload.performanceSource === "broker-return-history" || isReconstructed) &&
+      Array.isArray(payload.performance) &&
+      payload.performance.length >= 2;
     const holdings = Array.isArray(payload.holdings) ? payload.holdings : [];
     const latestPoint = hasHistory ? payload.performance.at(-1) : null;
     const seriesStartDate = hasHistory ? payload.performance[0].date : null;
     const isPartial = failedTickers.length + excludedTickers.length > 0;
+    const performanceTitle = isReconstructed ? "Reconstructed account performance" : "Account return";
+    const performanceMethod =
+      typeof payload.performanceMethod === "string" && payload.performanceMethod.trim()
+        ? payload.performanceMethod.trim()
+        : isReconstructed
+          ? "Estimated from transaction activity and daily closing prices. Includes realized gains and losses, cash income, and fees, with external funding removed."
+          : "Broker-reported cumulative return.";
+    const performanceMessage = typeof payload.performanceMessage === "string" ? payload.performanceMessage.trim() : "";
 
     app.innerHTML = `
       <div class="portfolio-shell">
         <section class="portfolio-panel">
           <div class="portfolio-panel-header">
             <div>
-              <h2>Account return</h2>
+              <h2>${performanceTitle}</h2>
+              ${
+                isReconstructed
+                  ? `<p class="portfolio-chart-meta portfolio-chart-cutoff"><strong><span>Activity cutoff:</span> ${formatDate(
+                      payload.transactionAsOfDate
+                    )} <span aria-hidden="true">·</span> <span>Closing-price cutoff:</span> ${formatDate(payload.latestTradingDate)}</strong></p>`
+                  : ""
+              }
               <p class="portfolio-chart-meta">Percentages only. Account balances remain private.</p>
             </div>
             ${
               hasHistory
-                ? `<div class="portfolio-range-tabs" role="group" aria-label="Dates shown in account return chart">
+                ? `<div class="portfolio-range-tabs" role="group" aria-label="${
+                    isReconstructed ? "Dates shown in reconstructed account performance chart" : "Dates shown in account return chart"
+                  }">
               ${RANGE_OPTIONS.map(
                 (range) => `
                 <button type="button" class="portfolio-range-tab" data-range="${range}" aria-pressed="false">${range}</button>
@@ -107,18 +128,23 @@
               <span id="portfolio-selected-date">${formatDate(latestPoint.date)}</span>
             </div>
             <div class="portfolio-chart-wrap">
-              <canvas id="portfolio-performance-chart" class="portfolio-chart-canvas" aria-label="Broker account cumulative return in percent"></canvas>
+              <canvas id="portfolio-performance-chart" class="portfolio-chart-canvas" aria-label="${
+                isReconstructed ? "Reconstructed net investment profit and loss in percent" : "Broker account cumulative return in percent"
+              }"></canvas>
             </div>
-            <p class="portfolio-chart-meta">Broker-reported cumulative return; observations from ${formatDate(
+            <p class="portfolio-chart-meta"><span>${escapeHtml(performanceMethod)}</span> <span>Observations from</span> ${formatDate(
               seriesStartDate
-            )}. Range controls change the dates shown, keeping the same return baseline.</p>
+            )}. <span>Range controls change the dates shown, keeping the same return baseline.</span></p>
+            ${performanceMessage ? `<p class="portfolio-chart-meta">${escapeHtml(performanceMessage)}</p>` : ""}
           `
               : `
             <div class="portfolio-banner" role="status">
               <div aria-hidden="true">—</div>
               <div>
                 <strong>Return history unavailable</strong>
-                <p>The activity export does not include the broker's account return history. A complete account curve will appear when that history is available.</p>
+                <p>${escapeHtml(
+                  performanceMessage || "A return curve will appear when account history or a complete activity reconstruction is available."
+                )}</p>
               </div>
             </div>
           `
@@ -126,9 +152,13 @@
         </section>
         <section class="portfolio-summary-grid">
           ${renderSummaryCard(
-            "Account return",
+            isReconstructed ? "Net investment gain/loss" : performanceTitle,
             formatPercent(payload.summary.accountReturnPct, PERFORMANCE_DECIMALS),
-            hasHistory ? `Broker history through ${formatDate(latestPoint.date)}` : "Awaiting account return history",
+            hasHistory
+              ? isReconstructed
+                ? "Includes completed and open trades"
+                : `Broker history through ${formatDate(latestPoint.date)}`
+              : "Awaiting account return history",
             classForSignedValue(payload.summary.accountReturnPct)
           )}
           ${renderSummaryCard(
@@ -307,7 +337,7 @@
         labels: chartData.map((point) => point.date),
         datasets: [
           {
-            label: "Cumulative account return",
+            label: state.payload.performanceSource === "reconstructed-activity" ? "Net investment gain/loss" : "Cumulative account return",
             data: chartData.map((point) => point.returnPct),
             borderColor: theme.lineColor,
             borderWidth: 2,
@@ -566,7 +596,7 @@
       textColor,
       textMuted,
       gridColor: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(15, 23, 42, 0.08)",
-      lineColor: "#39c56f",
+      lineColor: isDark ? "#54ce83" : "#228a50",
       areaTop: isDark ? "rgba(38, 152, 186, 0.35)" : "rgba(91, 124, 250, 0.24)",
       areaBottom: isDark ? "rgba(38, 152, 186, 0.02)" : "rgba(91, 124, 250, 0.01)",
     };

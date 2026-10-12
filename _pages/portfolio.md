@@ -2,7 +2,7 @@
 layout: page
 title: Portfolio Overview
 permalink: /portfolio/
-description: A private-by-default investing snapshot with percentage-only account history and clearly scoped holdings data.
+description: Percentage-only account performance and holdings, with reconstructed returns identified as estimates.
 nav: false
 chart:
   chartjs: true

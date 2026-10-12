@@ -1,0 +1,280 @@
+// Course records: current study first, with a compact, readable term archive.
+.cw-page {
+  --cw-accent: var(--field-link);
+
+  .cw-intro {
+    max-width: 72ch;
+    color: var(--field-muted);
+    margin: 0 0 1.5rem;
+    font-size: 0.92rem;
+  }
+  .cw-nav {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin: 0 0 2rem;
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      border: 1px solid var(--field-line);
+      background: var(--field-panel);
+      color: var(--field-ink);
+      font-size: 0.85rem;
+      text-decoration: none;
+      &:hover {
+        border-color: var(--field-link);
+        color: var(--field-link);
+      }
+      &::after {
+        content: "↓";
+        color: var(--field-link);
+        font: 0.8rem var(--field-mono);
+      }
+    }
+  }
+  .cw-section {
+    margin: 0 0 3rem;
+    scroll-margin-top: 90px;
+    min-width: 0;
+  }
+  #michigan {
+    --cw-accent: var(--field-blue);
+  }
+  #sjtu {
+    --cw-accent: var(--field-ochre);
+  }
+  .cw-section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.65rem 1.5rem;
+    padding: 0 0 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--field-line);
+    h2 {
+      font-size: 1.65rem;
+      letter-spacing: -0.025em;
+      margin: 0;
+      color: var(--field-ink);
+    }
+  }
+  .cw-section-kicker {
+    color: var(--cw-accent);
+    font: 0.66rem/1.6 var(--field-mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .cw-current {
+    padding: 1.6rem;
+    border: 1px solid var(--field-line);
+    border-top: 3px solid var(--field-link);
+    background: var(--field-blue-soft);
+    .cw-current-term {
+      color: var(--field-muted);
+      margin: 0 0 1.2rem;
+      font: 0.78rem/1.6 var(--field-mono);
+    }
+  }
+  .cw-current-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cw-course-card {
+    min-width: 0;
+    padding: 1.25rem 1.35rem;
+    border: 1px solid var(--field-line);
+    background: var(--field-panel);
+    .cw-course-name {
+      margin: 0.9rem 0 0;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+  }
+  .cw-course-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .cw-course-code {
+    color: var(--cw-accent);
+    font: 0.72rem/1.6 var(--field-mono);
+    letter-spacing: 0.035em;
+    white-space: nowrap;
+  }
+  .cw-course-credit {
+    color: var(--field-muted);
+    font: 0.7rem/1.6 var(--field-mono);
+    white-space: nowrap;
+  }
+  .cw-course-name {
+    color: var(--field-ink);
+    overflow-wrap: break-word;
+  }
+  .cw-section-note {
+    margin: 0 0 1.3rem;
+    color: var(--field-muted);
+    font-size: 0.85rem;
+  }
+  .cw-term {
+    border: 1px solid var(--field-line);
+    background: var(--field-panel);
+    margin-bottom: 0.75rem;
+    scroll-margin-top: 90px;
+    &[open] {
+      border-left: 3px solid var(--cw-accent);
+    }
+    &[open] > .cw-term-heading {
+      border-bottom: 1px solid var(--field-line);
+    }
+  }
+  .cw-term-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.8rem;
+    cursor: pointer;
+    list-style: none;
+    padding: 1rem 1.25rem;
+    color: var(--field-ink);
+    font-size: 1rem;
+    font-weight: 500;
+    &::-webkit-details-marker {
+      display: none;
+    }
+    &:hover {
+      background: var(--field-raised);
+    }
+    &::after {
+      content: "+";
+      flex: 0 0 1rem;
+      color: var(--cw-accent);
+      text-align: center;
+      font: 1rem/1 var(--field-mono);
+    }
+    span {
+      color: inherit;
+    }
+  }
+  .cw-term[open] > .cw-term-heading::after {
+    content: "−";
+  }
+  .cw-course-list {
+    margin: 0;
+    padding: 0.2rem 1.25rem;
+    list-style: none;
+  }
+  .cw-course-row {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr) 70px;
+    align-items: baseline;
+    column-gap: 1.2rem;
+    row-gap: 0.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--field-line);
+    &:last-child {
+      border-bottom: 0;
+    }
+    .cw-course-name {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    .cw-course-credit {
+      text-align: right;
+    }
+  }
+  .cw-capstone {
+    grid-column: 1 / -1;
+    padding: 0.85rem 1rem;
+    margin: 0.2rem 0 0;
+    border-left: 2px solid var(--field-ochre);
+    background: var(--field-ochre-soft);
+    color: var(--field-ink);
+    font-size: 0.84rem;
+    line-height: 1.75;
+    a {
+      color: var(--field-ochre);
+      text-decoration: underline;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .cw-page {
+    .cw-nav {
+      gap: 0.5rem;
+      a {
+        padding: 0.75rem;
+        font-size: 0.75rem;
+      }
+    }
+    .cw-current {
+      padding: 1.1rem;
+    }
+    .cw-section-header h2 {
+      font-size: 1.4rem;
+    }
+    .cw-course-card {
+      padding: 1rem;
+    }
+    .cw-course-row {
+      grid-template-columns: 112px minmax(0, 1fr) 55px;
+      gap: 0.5rem 0.75rem;
+    }
+    .cw-course-list {
+      padding: 0.2rem 1rem;
+    }
+    .cw-term-heading {
+      padding: 0.9rem 1rem;
+      font-size: 0.95rem;
+    }
+  }
+}
+@media (max-width: 575px) {
+  .cw-page {
+    .cw-current-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .cw-section-header {
+      display: block;
+    }
+    .cw-section-kicker {
+      display: inline-block;
+      margin-top: 0.65rem;
+    }
+    .cw-nav a {
+      justify-content: center;
+      padding: 0.75rem 0.5rem;
+      &::after {
+        display: none;
+      }
+    }
+    .cw-course-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .cw-course-row .cw-course-code {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .cw-course-row .cw-course-credit {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .cw-course-row .cw-course-name {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+    .cw-capstone {
+      grid-column: 1 / -1;
+    }
+  }
+}

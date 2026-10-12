@@ -1,0 +1,234 @@
+institutions:
+  - id: rice
+    name: "Rice University"
+    short_name: "Rice"
+    current: true
+    terms:
+      - label: "Fall 2026 — In progress"
+        open: true
+        courses:
+          - code: "APPL 500"
+            name: "Introduction to Applied Physics"
+            credits: 3
+          - code: "JAPA 141"
+            name: "First Year Japanese I"
+            credits: 3
+          - code: "PHYS 563"
+            name: "Introduction to Solid State Physics I"
+            credits: 3
+          - code: "PHYS 572"
+            name: "Fundamentals of Quantum Optics and Cavity QED"
+            credits: 3
+  - id: michigan
+    name: "University of Michigan (UMich)"
+    short_name: "Michigan"
+    current: false
+    terms:
+      - label: "Winter 2026"
+        open: true
+        courses:
+          - code: "PHYSICS 441"
+            name: "Advanced Laboratory I"
+      - label: "Fall 2025"
+        open: true
+        courses:
+          - code: "ECE 598"
+            name: "Information Theory and Statistics"
+            credits: 3
+          - code: "EECS 496"
+            name: "Major Design/Professionalism"
+            credits: 2
+          - code: "EECS 498"
+            name: "Advanced Data Structures"
+            credits: 4
+          - code: "PHYSICS 401"
+            name: "Mechanics"
+            translation_key: "courses.mechanics"
+            credits: 3
+          - code: "PHYSICS 535"
+            name: "General Relativity"
+            credits: 3
+      - label: "Summer 2025"
+        open: false
+        courses:
+          - code: "PHYSICS 415"
+            name: "Undergraduate Research"
+            credits: 3
+      - label: "Winter 2025"
+        open: false
+        courses:
+          - code: "ALA 280"
+            name: "Undergraduate Research"
+            credits: 1
+          - code: "EECS 370"
+            name: "Intro to Computer Organization"
+            credits: 4
+          - code: "EECS 481"
+            name: "Software Engineering"
+            credits: 4
+          - code: "PHYSICS 405"
+            name: "Electricity & Magnetism"
+            credits: 3
+          - code: "PHYSICS 406"
+            name: "Statistical & Thermal Physics"
+            credits: 3
+          - code: "PHYSICS 453"
+            name: "Quantum Mechanics"
+            credits: 3
+      - label: "Fall 2024"
+        open: false
+        courses:
+          - code: "ALA 280"
+            name: "Undergraduate Research"
+            credits: 1
+          - code: "EECS 281"
+            name: "Data Structures & Algorithms"
+            credits: 4
+          - code: "MATSCIE 250"
+            name: "Principles of Engineering Materials"
+            credits: 4
+          - code: "PHYSICS 340"
+            name: "Waves & Light"
+            credits: 3
+          - code: "PHYSICS 391"
+            name: "Modern Physics Lab"
+            credits: 2
+          - code: "STATS 412"
+            name: "Intro to Probability & Statistics"
+            credits: 3
+  - id: sjtu
+    name: "Shanghai Jiao Tong University (SJTU)"
+    short_name: "SJTU"
+    current: false
+    note: "SJTU uses three semesters per academic year: Fall (Sem 1), Spring (Sem 2), Summer (Sem 3)."
+    terms:
+      - label: "2025–2026 (Sem 3 — Summer)"
+        open: true
+        courses:
+          - code: "ECE4500J"
+            name: "Major Design Experience (MDE)"
+            credits: 4
+            project:
+              title: "Multimodal-Large-Language-Model-Driven Wearable Manufacturing Safety Inspection System"
+              url: "/projects/wearable-safety-inspection/"
+              sponsor: "Prof. Yifei Zhu"
+      - label: "2024–2025 (Sem 3 — Summer)"
+        open: true
+        courses:
+          - code: "TC4960J"
+            name: "Advanced Technical Communication"
+            credits: 2
+      - label: "2023–2024 (Sem 3 — Summer)"
+        open: false
+        courses:
+          - code: "ECE3200J"
+            name: "Intro to Semiconductor Devices"
+            credits: 4
+          - code: "ECE2700J"
+            name: "Introduction to Logic Design"
+            credits: 4
+          - code: "ECE2160J"
+            name: "Intro to Signals and Systems"
+            credits: 4
+          - code: "PHYS3900J"
+            name: "Modern Physics"
+            credits: 3
+          - code: "HIS2030J"
+            name: "Food in Modern East Asian History"
+            credits: 4
+      - label: "2023–2024 (Sem 2 — Spring)"
+        open: false
+        courses:
+          - code: "ECE2800J"
+            name: "Programming and Elementary Data Structures"
+            credits: 4
+          - code: "ENGR4903J"
+            name: "Undergraduate Research"
+            credits: 3
+          - code: "HIS1010J"
+            name: "Field Study in Chinese History (Winter Program)"
+            credits: 2
+          - code: "IP044"
+            name: "National Undergraduate Innovation Program"
+            credits: 4
+          - code: "MATH2030J"
+            name: "Discrete Mathematics"
+            credits: 4
+          - code: "VR281"
+            name: "Introduction to China Studies"
+            credits: 3
+      - label: "2023–2024 (Sem 1 — Fall)"
+        open: false
+        courses:
+          - code: "ECE2150J"
+            name: "Intro to Circuits"
+            credits: 4
+          - code: "ENGR4903J"
+            name: "Undergraduate Research"
+            credits: 3
+          - code: "MATH2860J"
+            name: "Honors Mathematics IV"
+            credits: 4
+          - code: "MUSI1500J"
+            name: "Introduction to Chinese Music"
+            credits: 2
+          - code: "PHYS2410J"
+            name: "Physics Lab II"
+            credits: 1
+          - code: "PHYS2600J"
+            name: "Honors Physics II"
+            credits: 4
+          - code: "TC3000J"
+            name: "Technical Communication"
+            credits: 1
+      - label: "2022–2023 (Sem 3 — Summer)"
+        open: false
+        courses:
+          - code: "ECE3110J"
+            name: "Electronic Circuits"
+            credits: 4
+          - code: "ENGR0010J"
+            name: "Intro to Engineering Professions and Careers"
+            credits: 1
+          - code: "ENGR1000J"
+            name: "Intro to Engineering"
+            credits: 4
+          - code: "MATH2850J"
+            name: "Honors Mathematics III"
+            credits: 4
+          - code: "PHYS1410J"
+            name: "Physics Lab I"
+            credits: 1
+          - code: "PHYS1600J"
+            name: "Honors Physics I"
+            credits: 4
+      - label: "2022–2023 (Sem 2 — Spring)"
+        open: false
+        courses:
+          - code: "CHEM2110J"
+            name: "Chemistry Lab"
+            credits: 1
+          - code: "ENGL2000J"
+            name: "Academic Writing II"
+            credits: 4
+          - code: "MATH2140J"
+            name: "Linear Algebra"
+            credits: 4
+          - code: "PSY1201"
+            name: "University Students’ Mental Health"
+            credits: 1
+      - label: "2022–2023 (Sem 1 — Fall)"
+        open: false
+        courses:
+          - code: "CHEM2100J"
+            name: "Chemistry"
+            credits: 4
+          - code: "ENGL1000J"
+            name: "Academic Writing I"
+            credits: 4
+          - code: "ENGR1510J"
+            name: "Accelerated Intro to Computers & Programming"
+            credits: 4
+          - code: "MATH1860J"
+            name: "Honors Mathematics II"
+            credits: 4
