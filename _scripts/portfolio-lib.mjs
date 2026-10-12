@@ -455,6 +455,16 @@ export function toIsoDate(date) {
   return date.toISOString().slice(0, 10);
 }
 
+export function toUsMarketDate(date) {
+  const parts = Object.fromEntries(new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date).map(({ type, value }) => [type, value]));
+  return `${parts.year}-${parts.month}-${parts.day}`;
+}
+
 function ensurePosition(positionsByTicker, ticker, displayName) {
   const existing = positionsByTicker.get(ticker);
   if (existing) {

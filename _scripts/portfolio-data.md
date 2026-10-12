@@ -13,7 +13,7 @@ Run `node _scripts/generate-portfolio-data.mjs`. The generator replays the full
 report before cropping observations to `PORTFOLIO_BASELINE_DATE` (default
 2026-02-02). After the report's last recorded activity, it holds shares and cash
 constant and values those positions through `PORTFOLIO_AS_OF_DATE` (the current
-date by default), including split adjustments. No later trades, deposits,
+New York market date by default), including split adjustments. No later trades, deposits,
 withdrawals, dividends, or fees are invented. A newer report is needed to include
 those actual account events. The chart separately shows activity and price dates.
 
