@@ -2,86 +2,86 @@
   "schemaVersion": 2,
   "status": "partial",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-10-29",
+  "asOfDate": "2026-10-30",
   "transactionAsOfDate": "2026-10-09",
-  "latestTradingDate": "2026-10-29",
-  "generatedAt": "2026-10-30T02:40:07.409Z",
+  "latestTradingDate": "2026-10-30",
+  "generatedAt": "2026-10-31T02:29:36.548Z",
   "performanceStatus": "ready",
   "performanceSource": "reconstructed-activity",
   "performanceMethod": "Net investment profit/loss as a percentage of net funding at the report cutoff (fixed scale).",
   "performanceMessage": "Reconstructed daily at market close, assuming zero opening balances. Includes realized gains/losses, dividends, interest, taxes and fees; removes cash and security transfers. May differ from the broker's chart. Fractional receipts were reconciled within the report's displayed precision. After 2026-10-09, valuations assume unchanged holdings and cash; only market prices are updated.",
   "summary": {
-    "accountReturnPct": 0.591912,
-    "unrealizedReturnPct": 3.45,
-    "holdingsDayChangePct": -0.84,
+    "accountReturnPct": -1.269681,
+    "unrealizedReturnPct": 1.06,
+    "holdingsDayChangePct": -2.31,
     "holdingsCount": 11
   },
   "holdings": [
     {
       "ticker": "VTI",
       "name": "Vanguard Morningstar Total Stock Market ETF",
-      "weightPct": 29.54,
-      "currentReturnPct": 7.58
+      "weightPct": 29.7,
+      "currentReturnPct": 5.68
     },
     {
       "ticker": "JEPQ",
       "name": "J.P. Morgan Exchange-Traded Fund Trust JPMorgan Nasdaq Equity Premium Income ETF",
-      "weightPct": 18.52,
-      "currentReturnPct": -0.56
+      "weightPct": 18.38,
+      "currentReturnPct": -3.57
     },
     {
       "ticker": "SCHD",
       "name": "Schwab US Dividend Equity ETF",
-      "weightPct": 10.49,
-      "currentReturnPct": 12.77
+      "weightPct": 10.78,
+      "currentReturnPct": 13.31
     },
     {
       "ticker": "VXUS",
       "name": "Vanguard Total International Stock ETF",
-      "weightPct": 10.04,
-      "currentReturnPct": -0.59
+      "weightPct": 10.12,
+      "currentReturnPct": -2.11
     },
     {
       "ticker": "QQQM",
       "name": "Invesco Exchange-Traded Fund Trust II Invesco NASDAQ 100 ETF",
-      "weightPct": 8.07,
-      "currentReturnPct": 0.15
+      "weightPct": 7.98,
+      "currentReturnPct": -3.32
     },
     {
       "ticker": "VGT",
       "name": "Vanguard Information Technology ETF",
-      "weightPct": 6.46,
-      "currentReturnPct": -4.84
+      "weightPct": 6.32,
+      "currentReturnPct": -8.95
     },
     {
       "ticker": "TSM",
       "name": "Taiwan Semiconductor Manufacturing",
-      "weightPct": 5.74,
-      "currentReturnPct": 11.07
+      "weightPct": 5.52,
+      "currentReturnPct": 4.46
     },
     {
       "ticker": "LVHI",
       "name": "Franklin International Low Volatility High Dividend Index ETF",
-      "weightPct": 5.05,
-      "currentReturnPct": 6.28
+      "weightPct": 5.17,
+      "currentReturnPct": 6.31
     },
     {
       "ticker": "GOOGL",
       "name": "Alphabet Class A",
-      "weightPct": 2.95,
-      "currentReturnPct": -4.13
+      "weightPct": 2.98,
+      "currentReturnPct": -5.47
     },
     {
       "ticker": "NASA",
       "name": "Tema Space Innovators ETF",
-      "weightPct": 1.8,
-      "currentReturnPct": -13.48
+      "weightPct": 1.74,
+      "currentReturnPct": -18.25
     },
     {
       "ticker": "SPCX",
       "name": "SpaceX",
-      "weightPct": 1.35,
-      "currentReturnPct": 6.59
+      "weightPct": 1.29,
+      "currentReturnPct": -0.21
     }
   ],
   "performance": [
@@ -1164,6 +1164,10 @@
     {
       "date": "2026-10-29",
       "returnPct": 0.591912
+    },
+    {
+      "date": "2026-10-30",
+      "returnPct": -1.269681
     }
   ],
   "failedTickers": [],
