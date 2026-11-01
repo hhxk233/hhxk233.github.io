@@ -2,10 +2,10 @@
   "schemaVersion": 2,
   "status": "partial",
   "baselineDate": "2026-02-02",
-  "asOfDate": "2026-10-30",
+  "asOfDate": "2026-10-31",
   "transactionAsOfDate": "2026-10-09",
   "latestTradingDate": "2026-10-30",
-  "generatedAt": "2026-10-31T02:29:36.548Z",
+  "generatedAt": "2026-11-01T02:18:20.744Z",
   "performanceStatus": "ready",
   "performanceSource": "reconstructed-activity",
   "performanceMethod": "Net investment profit/loss as a percentage of net funding at the report cutoff (fixed scale).",
@@ -1167,6 +1167,10 @@
     },
     {
       "date": "2026-10-30",
+      "returnPct": -1.269681
+    },
+    {
+      "date": "2026-10-31",
       "returnPct": -1.269681
     }
   ],
