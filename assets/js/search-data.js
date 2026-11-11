@@ -93,9 +93,9 @@ ninja.data = [{
       },{id: "news-i-will-join-the-applied-physics-department-at-rice-university-for-my-phd-in-fall-2026",
           title: 'I will join the Applied Physics Department at Rice University for my PhD...',
           description: "",
-          section: "News",},{id: "projects-我与-ai-们",
-          title: '我与 AI 们',
-          description: "AI 角色漫画、创作日常与模拟交易成绩单。",
+          section: "News",},{id: "projects-my-life-with-ais",
+          title: 'My Life with AIs',
+          description: "A slice-of-life comic about AI companions, creative projects, and paper-trading scorecards.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/ai-comic/";
             },},{id: "projects-a-common-biological-dose-scale-for-sbrt-and-sirt",
