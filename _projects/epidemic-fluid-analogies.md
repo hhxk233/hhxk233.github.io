@@ -11,10 +11,10 @@ giscus_comments: false
 This project ran from September 2022 to May 2024 under the 26th Shanghai Jiao Tong University Student Innovation and Practice Programme. I developed Python and MATLAB cellular-automaton simulations and studied links between phase transitions and epidemic outbreaks. The finite-capacity model below examines how saturation of testing and isolation can change outbreak dynamics.
 
 - **Extended SEIRQ model with finite isolation capacity.**
-  Formulated an ODE system with compartments S, E, I, Q, R and a hard cap on isolation throughput via `min(κ, δI)` to capture **testing/quarantine saturation**. Derived equilibria and the basic reproduction number using the next-generation matrix, then proved the **outbreak onset at \(R_0=1\)** and located the **discontinuous jump** when \(I\) hits κ.
+  Formulated an ODE system with compartments S, E, I, Q, R and a hard cap on isolation throughput via `min(κ, δI)` to capture **testing/quarantine saturation**. Derived equilibria and the basic reproduction number using the next-generation matrix, then proved the **outbreak onset at $$R_0=1$$** and located the **discontinuous jump** when $$I$$ hits κ.
 
 - **Closed-form thresholds for “jump” outbreaks.**
-  Obtained a practical condition linking \(\beta\), κ, and re-susceptibility rates \(f_1, f_2\) to predict the **critical β where cases surge despite controls**; validated accuracy against simulation peaks.
+  Obtained a practical condition linking $$\beta$$, κ, and re-susceptibility rates $$f_1, f_2$$ to predict the **critical β where cases surge despite controls**; validated accuracy against simulation peaks.
 
 - **CA simulator with realism knobs.**
   Reproduced Nature Comms–style cellular-automaton results and added two levers often missing in baseline demos:
@@ -37,16 +37,16 @@ This project ran from September 2022 to May 2024 under the 26th Shanghai Jiao To
   </div>
 </div>
 
-- **Left:** Model schematic with two infection channels (to E and I), re-susceptibility \(f_1,f_2\), and isolation limited by κ.
+- **Left:** Model schematic with two infection channels (to E and I), re-susceptibility $$f_1,f_2$$, and isolation limited by κ.
 - **Right:** As κ decreases, curves exhibit a **sharp upturn** once β crosses the analytically predicted boundary—evidence of a **discontinuous transition** under limited testing/isolation.
 
 ## Why it matters
 
-- **Explains “it works… until it doesn’t.”** Even aggressive test-trace-isolate regimes can keep \(R_0\) near 1 yet still suffer a **sudden failure** after throughput is exceeded.
+- **Explains “it works… until it doesn’t.”** Even aggressive test-trace-isolate regimes can keep $$R_0$$ near 1 yet still suffer a **sudden failure** after throughput is exceeded.
 - **Gives actionable levers.** The thresholds quantify how much κ (or contact reduction) you need to **avoid the jump**, and how density/lockdown rules reshape risk windows.
 
 ## Repro/notes
 
-- ODE: SEIRQ with parameters \(\beta,\tau,\gamma,\gamma_1,\delta,f,f_1,f_2,\kappa\); jump predicted from the \(I=\kappa\) manifold and steady-state \(I^\*(\beta)\) equality.
-- CA: N×N grid, 4-neighborhood contact + random long-range trials scaled by density; community blocks of size \(N\_{\text{comm}}\) auto-isolate when positives exceed a set fraction.
+- ODE: SEIRQ with parameters $$\beta,\tau,\gamma,\gamma_1,\delta,f,f_1,f_2,\kappa$$; jump predicted from the $$I=\kappa$$ manifold and steady-state $$I^*(\beta)$$ equality.
+- CA: N×N grid, 4-neighborhood contact + random long-range trials scaled by density; community blocks of size $$N_{\text{comm}}$$ auto-isolate when positives exceed a set fraction.
 - Additional context and write-up structure are summarized in the final report and page draft.

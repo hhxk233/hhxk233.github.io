@@ -25,7 +25,7 @@ Our team studied whether imaging-derived liver functional response after **SBRT*
 
 - **Cohort:** 24 SBRT and 9 SIRT patients, with liver MRI before and one month after treatment.
 - **Method:** Convert dose to EQD2, account for SIRT dose protraction and subvoxel heterogeneity through an equivalent uniform dose (EUD) model, and jointly fit a shared four-parameter logistic response.
-- **Result:** The pooled fit reported \(R^2=0.72\) and \(D\_{50,\mathrm{EQD2}}=37.1\,\mathrm{Gy}\).
+- **Result:** The pooled fit reported $$R^2=0.72$$ and $$D_{50,\mathrm{EQD2}}=37.1\,\mathrm{Gy}$$.
 
 The work appears as a **conference abstract** in the _International Journal of Radiation Oncology, Biology, Physics_, 126(1), S227 ([DOI](https://doi.org/10.1016/j.ijrobp.2026.06.483)). The [ASTRO program](https://amportal.astro.org/sessions/qp-18-22910/toward-a-common-biological-dose-scale-for-sbrt-and-sirt-using-imaging-derived-liver-functiona-112486) provides the abstract and presentation details.
 

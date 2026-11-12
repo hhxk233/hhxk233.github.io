@@ -9,9 +9,11 @@ giscus_comments: false
 ---
 
 - **Cox-guided imputation objective.** Added a Cox proportional hazards head on the imputed features and optimized a **joint loss**
-  \[
-  \mathcal{L}=\mathcal{L}_{\text{recon}}+\lambda_{\text{cox}}\cdot \mathcal{L}\_{\text{CoxPH}}
-  \]
+
+  $$
+  \mathcal{L}=\mathcal{L}_{\text{recon}}+\lambda_{\text{cox}}\cdot \mathcal{L}_{\text{CoxPH}}
+  $$
+
   so the imputer preserves survival risk ordering rather than only minimizing reconstruction error. Implemented in PyCox with end-to-end backprop through the imputer.
 
 - **Training workflow & data path.** Split data into complete/missing subsets, trained the imputer with **random masks**, then computed Cox loss on both **imputed-complete** and **imputed-missing** pathways; wired gradients from the Cox head back into the imputer.

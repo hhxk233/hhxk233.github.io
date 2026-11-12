@@ -21,13 +21,13 @@ My work combined nanobeam–grating simulations in Ansys Lumerical with preparat
 ## What I built
 
 - **3D-FDTD stack for nanobeam + apodized grating**
-  Ported the prior 2D workflow to full **3D FDTD** on GreatLake, rebuilt monitors (out-coupled power, waveguide transmission), and automated sweeps over the **initial fill factor \(F_0\)** and **linear apodization \(R\)** for a Si₃N₄ nanobeam cavity. The simulated operating point was approximately \(R\_{\text{opt}}=0.034\) and \(F\_{0,\text{opt}}=0.62\), chosen to maximize collected power near the design wavelength.
+  Ported the prior 2D workflow to full **3D FDTD** on GreatLake, rebuilt monitors (out-coupled power, waveguide transmission), and automated sweeps over the **initial fill factor $$F_0$$** and **linear apodization $$R$$** for a Si₃N₄ nanobeam cavity. The simulated operating point was approximately $$R_{\text{opt}}=0.034$$ and $$F_{0,\text{opt}}=0.62$$, chosen to maximize collected power near the design wavelength.
 
 - **Design rules from effective-index apodization**
-  Implemented the index mixing model \(n\_{\mathrm{eff}}(z)=F(z)n_O+(1-F(z))n_E,\; F(z)=F_0+Rz\) to generate **segment lengths and duty cycles** from \(\Lambda_i=\lambda_c/n\_{\mathrm{eff},i}\), producing grating period and trench width tables for the design workflow.
+  Implemented the index mixing model $$n_{\mathrm{eff}}(z)=F(z)n_O+(1-F(z))n_E,\; F(z)=F_0+Rz$$ to generate **segment lengths and duty cycles** from $$\Lambda_i=\lambda_c/n_{\mathrm{eff},i}$$, producing grating period and trench width tables for the design workflow.
 
 - **Loss-engineered resonator chain for non-reciprocal transport**
-  Proposed and simulated a **C-site (aux) lossy ring** coupled to A/B rings to study **direction-selective dissipation**, synthetic magnetic bias, and **non-Hermitian skin accumulation**. Simulated single-ring optimization near \(\lambda_0\approx1554.7\,\mathrm{nm}\) with \(Q\sim1.19\times10^6\), extracted nearest-neighbor couplings \(J\_{AB},J\_{AC},J\_{BC}\), and built the non-Hermitian tight-binding model to diagnose net loop phase.
+  Proposed and simulated a **C-site (aux) lossy ring** coupled to A/B rings to study **direction-selective dissipation**, synthetic magnetic bias, and **non-Hermitian skin accumulation**. Simulated single-ring optimization near $$\lambda_0\approx1554.7\,\mathrm{nm}$$ with $$Q\sim1.19\times10^6$$, extracted nearest-neighbor couplings $$J_{AB},J_{AC},J_{BC}$$, and built the non-Hermitian tight-binding model to diagnose net loop phase.
 
 - **Integrated polariton device concept**
   Sketched a Si₃N₄ nanobeam cavity coupled to apodized gratings and over-layered **hBN/MoSe₂** to form exciton–photon hybrids; outlined the measurement layout and monitors for induced light and out-coupled emission as groundwork for **PT-symmetry tests of edge modes**.
@@ -51,5 +51,5 @@ My work combined nanobeam–grating simulations in Ansys Lumerical with preparat
 
 ## Notes for reviewers
 
-- Grating dimensions are generated from the \(n\_{\mathrm{eff}}\) model; simulation monitors report out-coupled far-field and in-plane power.
+- Grating dimensions are generated from the $$n_{\mathrm{eff}}$$ model; simulation monitors report out-coupled far-field and in-plane power.
 - For the non-Hermitian chain, eigen-analysis identified cancellation of net loop phase in the symmetric model. Phase/loss asymmetry and distance offsets were explored as remedies in simulation; see [Loss-Induced Synthetic Magnetic Field]({{ '/projects/loss-induced-synthetic-magnetic-field/' | relative_url }}).

@@ -24,10 +24,10 @@ This work was part of my undergraduate research in the Deng Research Lab at the 
 
 - **Inter-ring coupling extraction.** Extracted nearest-neighbor couplings from simulated two-ring spectra:
 
-  - **A–B:** \(J\_{AB} ≈ 4.20\times10^{-4}\)
-  - **A–C (two etch periods, 0.02 µm depth):** \(J\_{AC} ≈ 3.57\times10^{-3}\)
-  - **B–C (two etch periods, 0.02 µm depth):** \(J\_{BC} ≈ 1.51\times10^{-3}\)
-    These calibrated \(J\) values parameterize the tight-binding model and guide array spacing.
+  - **A–B:** $$J_{AB} ≈ 4.20\times10^{-4}$$
+  - **A–C (two etch periods, 0.02 µm depth):** $$J_{AC} ≈ 3.57\times10^{-3}$$
+  - **B–C (two etch periods, 0.02 µm depth):** $$J_{BC} ≈ 1.51\times10^{-3}$$
+    These calibrated $$J$$ values parameterize the tight-binding model and guide array spacing.
 
 - **Array simulations showing localization with engineered loss.**
   Established a **no-loss baseline** with uniform fields and **lossy C-site arrays** showing two-sided field localization in 3D FDTD. The tight-binding analysis helped test how phase and loss asymmetry affect the interpretation of these field patterns.

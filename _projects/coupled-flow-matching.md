@@ -17,7 +17,7 @@ I worked on the kernelized Gromov–Wasserstein optimal transport objective and 
 
 ## TL;DR
 
-**CPFM** is a two-stage framework that (1) builds a _controllable_ coupling between data \(x\) and a low-dimensional embedding \(y\) using a **kernelized generalized Gromov–Wasserstein OT**, and (2) learns **dual conditional flows** that sample \(p(y\!\mid\!x)\) and \(p(x\!\mid\!y)\) with a shared drift network. You choose which semantics live explicitly in \(y\); the rest stays recoverable through the data-space flow.
+**CPFM** is a two-stage framework that (1) builds a _controllable_ coupling between data $$x$$ and a low-dimensional embedding $$y$$ using a **kernelized generalized Gromov–Wasserstein OT**, and (2) learns **dual conditional flows** that sample $$p(y\!\mid\!x)$$ and $$p(x\!\mid\!y)$$ with a shared drift network. You choose which semantics live explicitly in $$y$$; the rest stays recoverable through the data-space flow.
 
 <div class="row">
   <div class="col-sm mt-3 mt-md-0">
@@ -36,18 +36,18 @@ Classical DR (PCA, t-SNE, UMAP) compresses data but sheds information that is ha
 ## Core ideas
 
 - **Kernelized generalized GWOT**
-  Encode priors—labels, graphs, or similarity kernels—directly in the transport cost to align \(x\)-space relations with \(y\)-space geometry. Alternating minimization with entropic regularization gives a scalable **\(O(n^2)\)** per-iteration solver.
+  Encode priors—labels, graphs, or similarity kernels—directly in the transport cost to align $$x$$-space relations with $$y$$-space geometry. Alternating minimization with entropic regularization gives a scalable **$$O(n^2)$$** per-iteration solver.
 - **Dual Conditional Flow Matching (DCFM)**
-  One shared drift network with a role flag \(r\) learns **both** directions: a latent-space flow for \(p(y|x)\) and a data-space flow for \(p(x|y)\). A mute-masking strategy keeps gradients from interfering between roles.
+  One shared drift network with a role flag $$r$$ learns **both** directions: a latent-space flow for $$p(y|x)$$ and a data-space flow for $$p(x|y)$$. A mute-masking strategy keeps gradients from interfering between roles.
 - **Controllability by design**
-  You pick which semantic factors populate \(y\); complementary information is preserved implicitly in the flow weights, staying recoverable during \(x\) reconstruction.
+  You pick which semantic factors populate $$y$$; complementary information is preserved implicitly in the flow weights, staying recoverable during $$x$$ reconstruction.
 
 ## Method at a glance
 
 1. **Stage A — Controllable coupling (GWOT).**
-   Build a coupling \(\pi\_{\text{OT}}\) between discrete samples of \(x\) and \(y\) using a kernel \(k(x,x')\) that encodes structure or labels. Optimize via entropic, alternating updates (Sinkhorn + closed-form auxiliary update).
+   Build a coupling $$\pi_{\text{OT}}$$ between discrete samples of $$x$$ and $$y$$ using a kernel $$k(x,x')$$ that encodes structure or labels. Optimize via entropic, alternating updates (Sinkhorn + closed-form auxiliary update).
 2. **Stage B — Extend to the full space (DCFM).**
-   Train a shared conditional flow to sample \(p(y|x)\) or \(p(x|y)\) by toggling a role flag \(r\in\{0,1\}\). Inference integrates the learned ODE in the chosen space from a simple base distribution.
+   Train a shared conditional flow to sample $$p(y|x)$$ or $$p(x|y)$$ by toggling a role flag $$r\in\{0,1\}$$. Inference integrates the learned ODE in the chosen space from a simple base distribution.
 
 {% comment %}
 
@@ -119,9 +119,9 @@ _Metric shown: Distance to Gaussian (mean ± std over 5 independent generations;
 ## Practical notes
 
 - **Kernel design:** Plug in appearance+label kernels for images or structure+property kernels for molecules to steer the embedding.
-- **Solver:** Entropy-regularized alternating optimization with ε-scheduling; **per-iteration \(O(n^2)\)** complexity.
+- **Solver:** Entropy-regularized alternating optimization with ε-scheduling; **per-iteration $$O(n^2)$$** complexity.
 - **Training:** Shared network with two heads gated by role flag; Euler ODE integration at test time.
-- **Latent choice:** 2-D shown here for interpretability; higher-D \(y\) is supported.
+- **Latent choice:** 2-D shown here for interpretability; higher-D $$y$$ is supported.
 
 ## Resources
 

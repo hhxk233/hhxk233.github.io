@@ -5,7 +5,8 @@
   const STORAGE_KEY = "yuheng-site-language";
   const script = document.currentScript;
   const dictionaryUrl = script?.dataset.translationsUrl || new URL("../json/site-translations.json", script.src).href;
-  const ignored = 'script, style, noscript, pre, code, kbd, samp, math, svg, textarea, [translate="no"], .MathJax, .katex, #site-language-toggle';
+  const ignored =
+    'script, style, noscript, pre, code, kbd, samp, math, svg, textarea, mjx-container, [translate="no"], .MathJax, .katex, #site-language-toggle';
   const originalText = new WeakMap();
   const originalAttributes = new WeakMap();
   const originalTitle = document.title;

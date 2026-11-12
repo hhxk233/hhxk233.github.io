@@ -9,7 +9,7 @@ giscus_comments: false
 ---
 
 - **Coupled-oscillator WPT architecture.**
-  Modeled a transmitter–receiver chain as **bidirectionally injected oscillators** and extended it to a **2n-node array** with alternating oscillator types and asymmetric links, enabling **PT-symmetric** operating points that concentrate energy at the load. I derived lock conditions from **Adler** and **Kuramoto** dynamics and mapped them to circuit parameters (natural frequencies, \(k\_{ij}\)).
+  Modeled a transmitter–receiver chain as **bidirectionally injected oscillators** and extended it to a **2n-node array** with alternating oscillator types and asymmetric links, enabling **PT-symmetric** operating points that concentrate energy at the load. I derived lock conditions from **Adler** and **Kuramoto** dynamics and mapped them to circuit parameters (natural frequencies, $$k_{ij}$$).
 
 - **Phase-programming strategy.**
   Designed a minimal control law to tune the **coupling phase** and **frequency detuning** so the array settles into the desired PT phase (exact ↔ broken) depending on load and coil separation. This yields predictable **phase gradients** and **power flow directionality** without high-Q matching networks.
@@ -29,7 +29,7 @@ giscus_comments: false
   The array maintains near-constant phase gaps across distant nodes in the **exact-PT region**; spikes in the traces correspond to **edge case detuning** or intentional perturbations used to map the transition to **broken-PT** (energy localization at the receiver).
 
 - **Hardware feasibility.**
-  VCO-injection cells in Cadence provide sufficient tuning range to realize the required \(k\_{ij}\) and detunings, supporting on-chip implementation without bulky passives.
+  VCO-injection cells in Cadence provide sufficient tuning range to realize the required $$k_{ij}$$ and detunings, supporting on-chip implementation without bulky passives.
 
 ## Figures
 
@@ -59,4 +59,4 @@ giscus_comments: false
 
 ## Notes
 
-- Next steps: tape-out of the VCO-injection cell, coil-coupling extraction for post-layout \(k\_{ij}\), and closed-loop firmware to nudge the array to a target PT phase in real time.
+- Next steps: tape-out of the VCO-injection cell, coil-coupling extraction for post-layout $$k_{ij}$$, and closed-loop firmware to nudge the array to a target PT phase in real time.

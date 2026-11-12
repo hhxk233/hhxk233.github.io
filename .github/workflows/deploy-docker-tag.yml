@@ -16,6 +16,8 @@ on:
 
 jobs:
   build:
+    # This publishes the upstream al-folio image, not a personal-site image.
+    if: github.repository_owner == 'alshedivat'
     runs-on: ubuntu-latest
 
     steps:
